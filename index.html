@@ -8268,6 +8268,180 @@ EXAM.full({id:"pp22",group:"s2",num:2,lvl:"Set 2 · Paper 2",name:"Paper 2 Highe
 
 </script>
 <script>
+/* Set 3 · Paper 1 (Higher): topics 4.1–4.4 */
+(()=>{
+const {graph}=EXAM;
+const lor6=(t)=>[["Level 3 (5–6)",t[0]],["Level 2 (3–4)",t[1]],["Level 1 (1–2)",t[2]],["0","No relevant content."]];
+const tbl=(head,rows,cap)=>`<div class="tbl-wrap"><table class="gtab" style="min-width:0;max-width:460px"><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</table></div><p class="muted" style="font-size:.85rem">${cap}</p>`;
+const diode=[[0,0],[0.55,0],[0.62,3],[0.68,9],[0.73,18],[0.77,30],[0.8,40],[0.83,54],[0.85,65]];
+
+const qs=[
+/* 01 · electric car */
+{tag:"en2",stem:`<p>An electric car of mass 1500 kg travels along a level road at 20 m/s.</p>`,parts:[
+ {q:"Calculate the kinetic energy of the car.",m:2,ans:{a:300000,unit:"J",tol:0.01},ms:[["1","E<sub>k</sub> = 0.5 × 1500 × 20²"],["1","= 300 000 J"]]},
+ {q:"When the car brakes to a stop, 40% of its kinetic energy is transferred back to the battery.<br>Calculate the energy transferred to the battery.",m:1,ans:{a:120000,unit:"J",tol:0.01},ms:[["1","0.40 × 300 000 = 120 000 J (allow ecf)"]],tag:"en6"},
+ {q:"Which energy store decreases as the car is driven up a hill? Tick one box.",opts:["The chemical store of the battery","The elastic store of the tyres","The gravitational store of the car","The nuclear store of the battery"],a:0,why:"Energy is transferred from the battery’s chemical store, partly to the car’s gravitational store.",tag:"en1"},
+ {q:"The car climbs a hill, gaining 18 m in height.<br>Calculate the gain in gravitational potential energy of the car.",m:2,ans:{a:264600,unit:"J",tol:0.01},ms:[["1","E<sub>p</sub> = 1500 × 9.8 × 18"],["1","= 264 600 J"]]},
+ {q:"The useful output power of the motor is 45 kW.<br>Calculate the minimum time for the car to gain this gravitational potential energy.",m:2,ans:{a:5.88,unit:"s",tol:0.02},ms:[["1","t = E ÷ P = 264 600 ÷ 45 000"],["1","= 5.9 s (allow ecf)"]],tag:"en5"},
+ {q:"Explain why the actual time taken to climb the hill is longer than the value calculated in 01.5.",m:2,lines:3,ms:[["1","work is done against friction and air resistance"],["1","so not all of the output energy is transferred to the gravitational store (some is dissipated to the surroundings)"]],tag:"en6"}]},
+/* 02 · RP4 I–V characteristics */
+{tag:"el3",stem:`<p>A student investigated how the current in a component depends on the potential difference across it.</p>`,parts:[
+ {q:"Describe a method the student could use to obtain the I–V characteristic of a filament lamp. Your answer should include a description of the circuit used.",m:6,lines:12,lor:lor6(["A clear, logically ordered method with a correct circuit, how the p.d. is varied, the readings taken (including negative values) and how the results are presented.","A method with most of the circuit and readings described; some steps are missing or unclear.","Simple statements about measuring current or p.d., with no clear method."]),ind:["Connect the lamp in series with an ammeter and a variable resistor (or use a variable power supply)","Connect a voltmeter in parallel with the lamp","Adjust the variable resistor to change the p.d. across the lamp","Record the current and the p.d. for a range of values (e.g. 0 to 6 V in 1 V steps)","Reverse the connections to the power supply and repeat to get negative values","Plot a graph of current (y-axis) against p.d. (x-axis); repeat readings and calculate means"]},
+ {q:"Which statement describes the I–V characteristic of a diode? Tick one box.",opts:["A straight line through the origin","Current flows in both directions equally","Current flows only in one direction, and only above about 0.6 V","The current decreases as the p.d. increases"],a:2,why:"A diode has a very high resistance in the reverse direction and conducts only above about 0.6 V in the forward direction."},
+ {q:`Figure 1 shows the I–V graph for a diode in the forward direction.${graph({xmax:1.0,xs:0.05,xl:4,ymax:70,ys:5,yl:2,xt:"Potential difference in volts",yt:"Current in milliamperes",lines:[diode],cap:"Figure 1",aria:"Current is zero up to about 0.55 volts, then rises steeply, reaching 40 milliamperes at 0.80 volts"})}Determine the resistance of the diode when the potential difference is 0.80 V.`,m:3,ans:{a:20,unit:"Ω",tol:0.05},ms:[["1","I = 40 mA read from the graph"],["1","= 0.040 A"],["1","R = 0.80 ÷ 0.040 = 20 Ω"]]},
+ {q:"The resistance of a filament lamp increases as the potential difference across it increases. Explain why.",m:3,lines:5,ms:[["1","a larger p.d. gives a larger current"],["1","the filament gets hotter"],["1","the ions in the metal vibrate more, so electrons collide with them more often (more resistance)"]]}]},
+/* 03 · charge, energy and the Grid */
+{tag:"el1",stem:`<p>A mobile phone is charged using a charger with an output of 5.0 V and 2.0 A.</p>`,parts:[
+ {q:"The phone is charged for 1.5 hours.<br>Calculate the charge that flows into the phone.",m:3,ans:{a:10800,unit:"C",tol:0.01},ms:[["1","t = 1.5 × 3600 = 5400 s"],["1","Q = I t = 2.0 × 5400"],["1","= 10 800 C"]]},
+ {q:"Calculate the energy transferred to the phone.",m:2,ans:{a:54000,unit:"J",tol:0.01},ms:[["1","E = Q V = 10 800 × 5.0"],["1","= 54 000 J (allow ecf)"]],tag:"el6"},
+ {q:"An extension cable has a resistance of 0.50 Ω. It carries a current of 13 A.<br>Calculate the power dissipated in the cable.",m:2,ans:{a:84.5,unit:"W",tol:0.01},ms:[["1","P = I² R = 13² × 0.50"],["1","= 84.5 W"]],tag:"el6"},
+ {q:"Which wire in a three-core cable is connected to the fuse in a plug? Tick one box.",opts:["Earth","Live","Neutral","All of them"],a:1,why:"The fuse is in the live wire, so it disconnects the live wire if the current gets too large.",tag:"el5"},
+ {q:"Explain why electricity is transmitted across the National Grid at a very high potential difference.",m:3,lines:5,ms:[["1","for the same power, a higher p.d. means a lower current"],["1","a lower current means less heating of the cables (less energy dissipated)"],["1","so the transmission is more efficient"]],tag:"el7"}]},
+/* 04 · latent heat and gases */
+{tag:"pm3",stem:`<p>A 2.4 kW kettle is left switched on while the water inside is boiling.</p>`,parts:[
+ {q:"Calculate the energy transferred by the kettle in 100 s.",m:2,ans:{a:240000,unit:"J",tol:0.01},ms:[["1","E = P t = 2400 × 100"],["1","= 240 000 J"]],tag:"en5"},
+ {q:"The specific latent heat of vaporisation of water is 2.26 × 10⁶ J/kg.<br>Calculate the mass of water that turns to steam in 100 s. Assume all the energy is used to boil the water.",m:2,ans:{a:0.106,unit:"kg",tol:0.02},ms:[["1","m = E ÷ L = 240 000 ÷ 2 260 000"],["1","= 0.11 kg (0.106)"]]},
+ {q:"Explain why the temperature of the water stays at 100 °C while it is boiling.",m:2,lines:3,ms:[["1","the energy supplied is used to break the bonds between particles (to change state)"],["1","so it increases the potential energy of the particles, not their kinetic energy"]],tag:"pm2"},
+ {q:"What is meant by the specific latent heat of a substance? Tick one box.",opts:["The energy needed to raise the temperature of 1 kg by 1 °C","The energy needed to change the state of 1 kg with no change in temperature","The temperature at which the substance boils","The total energy stored by the particles"],a:1,why:"Specific latent heat is the energy to change the state of 1 kg of a substance with no temperature change."},
+ {q:"The air in a tyre has a volume of 0.0030 m³ at a pressure of 200 kPa. It is squeezed into a volume of 0.0024 m³ at constant temperature.<br>Calculate the new pressure. Use the Physics Equation Sheet.",m:3,ans:{a:250,unit:"kPa",tol:0.01},ms:[["1","p<sub>1</sub>V<sub>1</sub> = p<sub>2</sub>V<sub>2</sub>"],["1","200 × 0.0030 = p × 0.0024"],["1","p = 250 kPa"]],tag:"pm5"},
+ {q:"When a tyre is pumped up quickly, the air in the pump gets warmer. Explain why.",m:2,lines:3,ms:[["1","work is done on the gas (by pushing the piston)"],["1","this increases the internal energy of the gas (the kinetic energy of the particles), so its temperature rises"]],tag:"pm5",ht:true}]},
+/* 05 · radioactive decay */
+{tag:"at5",stem:`<p>Radium-226 (<sup>226</sup><sub>88</sub>Ra) is radioactive. It decays by emitting an alpha particle to form radon.</p>`,parts:[
+ {q:"Give the mass number and the atomic number of the radon nucleus formed.",m:2,lines:1,ms:[["1","mass number 222"],["1","atomic number 86"]],tag:"at4"},
+ {q:"Which source contributes most to the background radiation in the UK? Tick one box.",opts:["Medical X-rays","Nuclear power stations","Radon gas","Fallout from weapons testing"],a:2,why:"Radon gas from rocks and soil is the largest single source of background radiation in the UK.",tag:"at6"},
+ {q:`A student measured the count rate from a different source. The background count rate was 20 counts per minute.${tbl(["Time / min","0","3","6","9","12"],[["Measured count rate / counts per min","820","420","220","120","70"]],"Table 1")}Calculate the corrected count rate at 6 minutes.`,m:1,ans:{a:200,unit:"counts/min",tol:0.01},ms:[["1","220 − 20 = 200 counts per minute"]],tag:"at6"},
+ {q:"Use Table 1 to determine the half-life of the source.",m:2,ans:{a:3,unit:"min",tol:0.02},ms:[["1","corrected values: 800, 400, 200, 100, 50"],["1","the count rate halves every 3 minutes, so half-life = 3 min"]]},
+ {q:"Repeating the experiment gave slightly different count rates. Explain why.",m:1,lines:2,ms:[["1","radioactive decay is random"]],tag:"at3"},
+ {q:"Fruit can be irradiated with gamma rays to kill bacteria. Explain why the fruit does not become radioactive.",m:2,lines:3,ms:[["1","irradiation is exposure to radiation from an outside source"],["1","the fruit is not contaminated with radioactive atoms / gamma rays do not change the nuclei of the fruit"]],tag:"at6"},
+ {q:"The average UK background dose is 2.7 mSv per year. A CT scan gives a dose of 10 mSv.<br>Calculate how many years of background radiation are equal to one CT scan.",m:2,ans:{a:3.7,unit:"years",tol:0.02},ms:[["1","10 ÷ 2.7"],["1","= 3.7 years"]],tag:"at6"}]},
+/* 06 · nuclear model */
+{tag:"at2",stem:`<p>Scientists’ model of the atom has changed over time as new evidence was found.</p>`,parts:[
+ {q:"Describe the alpha particle scattering experiment, and explain how its results led scientists to replace the plum pudding model with the nuclear model.",m:6,lines:12,lor:lor6(["A clear description of the experiment and all the main observations, each linked to the conclusion it supports about the nucleus.","A description of the experiment with some observations, and some link to the nuclear model.","Simple statements about firing alpha particles at foil, or about the nucleus."]),ind:["A beam of alpha particles was fired at a very thin sheet of gold foil, in a vacuum","A detector was moved around the foil to count the alpha particles scattered at different angles","Most alpha particles passed straight through: most of the atom is empty space","Some were deflected through small angles: the centre of the atom is positively charged (repels the alpha particles)","A very few bounced back: the mass and positive charge are concentrated in a tiny nucleus","The plum pudding model (spread-out positive charge) could not explain the large deflections, so it was replaced by the nuclear model"]},
+ {q:"The radius of an atom is about 1 × 10⁻¹⁰ m. The radius of a nucleus is about 1/10 000 of this.<br>Give the radius of a nucleus.",m:1,lines:1,ms:[["1","1 × 10⁻¹⁴ m"]],tag:"at1"},
+ {q:"Explain how an atom can become a positive ion.",m:1,lines:2,ms:[["1","it loses one or more (outer) electrons"]],tag:"at1"},
+ {q:"Niels Bohr adapted the nuclear model. Describe the change he made.",m:1,lines:2,ms:[["1","electrons orbit the nucleus at specific distances (in fixed energy levels / shells)"]]},
+ {q:"Which scientist provided the evidence for the existence of neutrons?",m:1,lines:1,ms:[["1","James Chadwick"]]}]},
+/* 07 · power stations */
+{tag:"en8",stem:`<p>A gas-fired power station has an input power of 2500 MW and an output power of 950 MW.</p>`,parts:[
+ {q:"Calculate the efficiency of the power station.",m:2,ans:{a:0.38,unit:"",tol:0.01},ms:[["1","efficiency = 950 ÷ 2500"],["1","= 0.38 (38 %)"]],tag:"en6"},
+ {q:"Calculate the power wasted.",m:1,ans:{a:1550,unit:"MW",tol:0.01},ms:[["1","2500 − 950 = 1550 MW"]],tag:"en6"},
+ {q:"Give two ways of reducing unwanted energy transfers in machines.",m:2,lines:2,ms:[["1","lubrication (to reduce friction)"],["1","thermal insulation"]],tag:"en6"},
+ {q:"Give one environmental advantage and one environmental disadvantage of generating electricity using a hydroelectric dam.",m:2,lines:3,ms:[["1","advantage: no carbon dioxide (no greenhouse gases or pollution) when generating"],["1","disadvantage: floods a valley, destroying habitats"]]},
+ {q:"Which of these is not a renewable energy resource? Tick one box.",opts:["Geothermal","Tidal","Uranium","Water waves"],a:2,why:"Uranium is a nuclear fuel: there is only a finite supply."}]},
+/* 08 · storage heater */
+{tag:"en4",stem:`<p>A storage heater contains 120 kg of bricks. The bricks are heated overnight from 20 °C to 70 °C. The specific heat capacity of the bricks is 840 J/kg °C.</p>`,parts:[
+ {q:"Calculate the energy stored by the bricks.",m:2,ans:{a:5040000,unit:"J",tol:0.01},ms:[["1","ΔE = m c Δθ = 120 × 840 × 50"],["1","= 5 040 000 J"]]},
+ {q:"The bricks release this energy over 8.0 hours.<br>Calculate the mean power output of the heater.",m:3,ans:{a:175,unit:"W",tol:0.01},ms:[["1","t = 8.0 × 3600 = 28 800 s"],["1","P = E ÷ t = 5 040 000 ÷ 28 800"],["1","= 175 W"]],tag:"en5"},
+ {q:"The casing of the heater contains a layer of insulation. Explain why.",m:2,lines:3,ms:[["1","the insulation has a low thermal conductivity"],["1","so energy is released from the bricks more slowly, and the heater keeps warming the room for longer"]],tag:"en7"},
+ {q:"Suggest why the bricks are made of a material with a high specific heat capacity.",m:1,lines:2,ms:[["1","it can store a lot of energy for each degree of temperature rise"]]}]},
+/* 09 · electric fields */
+{tag:"el8",stem:`<p>Charged objects create electric fields around them.</p>`,parts:[
+ {q:"A charged drop of oil is held still between two horizontal charged metal plates. Explain why it does not fall.",m:2,lines:3,ms:[["1","there is an (upward) electric force on the charged drop"],["1","which is equal and opposite to its weight, so the resultant force is zero"]],ht:true},
+ {q:"In a factory chimney, negatively charged dust particles are collected on a positively charged metal plate. Explain why the dust moves to the plate.",m:2,lines:3,ms:[["1","the dust is in the electric field of the plate"],["1","opposite charges attract, so there is a force on the dust towards the plate"]]},
+ {q:"Explain why the force on a small charge gets smaller as it moves away from a charged sphere.",m:2,lines:3,ms:[["1","the electric field gets weaker further from the sphere"],["1","the field lines are further apart"]]}]},
+/* 10 · LDR potential divider */
+{tag:"el4",stem:`<p>A light-dependent resistor (LDR) is connected in series with a 2.0 kΩ fixed resistor and a 9.0 V battery. In bright light the resistance of the LDR is 1.0 kΩ.</p>`,parts:[
+ {q:"Calculate the total resistance of the circuit in bright light.",m:1,ans:{a:3000,unit:"Ω",tol:0.01},ms:[["1","1.0 + 2.0 = 3.0 kΩ = 3000 Ω"]]},
+ {q:"Calculate the current in the circuit in bright light.",m:2,ans:{a:0.003,unit:"A",tol:0.01},ms:[["1","I = V ÷ R = 9.0 ÷ 3000"],["1","= 0.0030 A"]],tag:"el2"},
+ {q:"Calculate the potential difference across the fixed resistor in bright light.",m:2,ans:{a:6,unit:"V",tol:0.01},ms:[["1","V = I R = 0.0030 × 2000"],["1","= 6.0 V"]],tag:"el2"},
+ {q:"Calculate the power dissipated in the fixed resistor in bright light.",m:2,ans:{a:0.018,unit:"W",tol:0.01},ms:[["1","P = V I = 6.0 × 0.0030"],["1","= 0.018 W"]],tag:"el6"},
+ {q:"The room becomes dark. Describe and explain what happens to the potential difference across the fixed resistor.",m:3,lines:5,ms:[["1","the resistance of the LDR increases"],["1","so the current in the circuit decreases"],["1","so the p.d. across the fixed resistor decreases (the LDR takes a larger share of the 9.0 V)"]],tag:"el3"},
+ {q:"Suggest one use for this circuit.",m:1,lines:1,ms:[["1","to switch on a street light (or security light) automatically when it gets dark"]],tag:"el3"}]}
+];
+EXAM.full({id:"pp31",group:"s3",num:1,lvl:"Set 3 · Paper 1",name:"Paper 1 Higher: energy, electricity, particles, atoms",qs,covers:"topics 4.1 to 4.4: energy, electricity, particle model of matter and atomic structure",lor:"02.1 and 06.1",
+ printTitle:"GCSE Physics · Practice Set 3 · Paper 1H",
+ eyebrow:"AQA GCSE Physics (8463) · Practice Set 3 · Paper 1 Higher",title:"Set 3 · Paper 1 (Higher tier)",
+ intro:"A third full-length practice paper in the style of AQA GCSE Physics Paper 1 Higher: 100 marks in 1 hour 45 minutes, covering energy, electricity, the particle model of matter and atomic structure, with two 6-mark extended-response questions. Sit it under timed conditions, then mark it with the mark schemes."});
+})();
+
+</script>
+<script>
+/* Set 3 · Paper 2 (Higher): topics 4.5–4.8 */
+(()=>{
+const {graph}=EXAM;
+const lor6=(t)=>[["Level 3 (5–6)",t[0]],["Level 2 (3–4)",t[1]],["Level 1 (1–2)",t[2]],["0","No relevant content."]];
+const tbl=(head,rows,cap)=>`<div class="tbl-wrap"><table class="gtab" style="min-width:0;max-width:460px"><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</table></div><p class="muted" style="font-size:.85rem">${cap}</p>`;
+const tv=[[0,0],[0.25,0.15],[0.5,0.25],[0.75,0.305],[1,0.34],[1.25,0.365],[1.5,0.38],[1.75,0.392],[2,0.4],[3,0.4]];
+
+const qs=[
+/* 01 · terminal velocity */
+{tag:"fo10",stem:`<p>A student drops a steel sphere of mass 0.050 kg into a tall tube of oil. Figure 1 shows how the velocity of the sphere changes as it falls through the oil.</p>${graph({xmax:3,xs:0.1,xl:5,ymax:0.5,ys:0.02,yl:5,xt:"Time in seconds",yt:"Velocity in m/s",lines:[tv],cap:"Figure 1",aria:"Velocity rises quickly at first, then more slowly, levelling off at 0.40 metres per second after about 2 seconds"})}`,parts:[
+ {q:"Which statement is Newton’s first law? Tick one box.",opts:["Force equals mass times acceleration","If the resultant force on an object is zero, its velocity does not change","For every action there is an equal and opposite reaction","Momentum is conserved in a closed system"],a:1,why:"Newton’s first law: with zero resultant force, a stationary object stays still and a moving object keeps a constant velocity."},
+ {q:"Determine the terminal velocity of the sphere.",m:1,ans:{a:0.4,unit:"m/s",tol:0.03},ms:[["1","0.40 m/s"]],tag:"fo9"},
+ {q:"Calculate the weight of the sphere.",m:2,ans:{a:0.49,unit:"N",tol:0.01},ms:[["1","W = m g = 0.050 × 9.8"],["1","= 0.49 N"]],tag:"fo2"},
+ {q:"Explain why the acceleration of the sphere decreases as it falls.",m:3,lines:5,ms:[["1","as the velocity increases, the drag (resistive) force increases"],["1","the weight stays the same, so the resultant force decreases"],["1","a smaller resultant force gives a smaller acceleration (a = F ÷ m)"]]},
+ {q:"At terminal velocity, the upthrust on the sphere is 0.090 N.<br>Calculate the drag force on the sphere at terminal velocity.",m:2,ans:{a:0.4,unit:"N",tol:0.02},ms:[["1","resultant force = 0, so drag + upthrust = weight"],["1","drag = 0.49 − 0.090 = 0.40 N (allow ecf)"]]},
+ {q:"Use Figure 1 to estimate the distance the sphere falls in the first 3.0 s.",m:3,ans:{a:1.0,unit:"m",tol:0.1},ms:[["1","distance = area under the velocity–time graph"],["1","counts squares / splits the area into shapes for 0–2 s (about 0.6 m) and adds 2–3 s (0.40 × 1.0 = 0.40 m)"],["1","about 1.0 m (accept 0.9 to 1.1 m)"]],tag:"fo9",ht:true}]},
+/* 02 · train */
+{tag:"fo9",stem:`<p>A train speeds up uniformly from 4.0 m/s to 22 m/s over a distance of 450 m. The mass of the train is 3.5 × 10⁵ kg.</p>`,parts:[
+ {q:"Calculate the acceleration of the train. Use the Physics Equation Sheet.",m:3,ans:{a:0.52,unit:"m/s²",tol:0.01},ms:[["1","v² − u² = 2 a s: 22² − 4.0² = 2 × a × 450"],["1","468 = 900 a"],["1","a = 0.52 m/s²"]]},
+ {q:"Calculate the time taken for the train to speed up.",m:2,ans:{a:34.6,unit:"s",tol:0.02},ms:[["1","t = Δv ÷ a = 18 ÷ 0.52"],["1","= 35 s (allow ecf)"]]},
+ {q:"Calculate the resultant force on the train.",m:2,ans:{a:182000,unit:"N",tol:0.02},ms:[["1","F = m a = 3.5 × 10⁵ × 0.52"],["1","= 182 000 N (allow ecf)"]],tag:"fo10"},
+ {q:"Explain why the driving force from the engines must be greater than the resultant force.",m:1,lines:2,ms:[["1","resistive forces (friction and air resistance) act against the motion, so driving force = resultant force + resistive forces"]],tag:"fo10"},
+ {q:"Explain why a loaded freight train needs a much greater braking force than an empty one to stop in the same distance.",m:2,lines:3,ms:[["1","the loaded train has a larger mass (greater inertia)"],["1","so a greater force is needed to give it the same deceleration (F = m a)"]],tag:"fo10"}]},
+/* 03 · moments and pressure */
+{tag:"fo6",stem:`<p>A gardener uses a wheelbarrow. The load has a weight of 400 N and acts 0.40 m from the wheel axle. The gardener lifts the handles 1.2 m from the axle.</p>`,parts:[
+ {q:"Calculate the upward force the gardener must apply to the handles to just lift the load.",m:3,ans:{a:133,unit:"N",tol:0.02},ms:[["1","clockwise moment = anticlockwise moment"],["1","400 × 0.40 = F × 1.2"],["1","F = 133 N"]]},
+ {q:"Give the unit of a moment. Tick one box.",opts:["N","N/m","N m","kg m/s"],a:2,why:"A moment is force × perpendicular distance, so it is measured in newton metres (N m)."},
+ {q:"Explain why the wheelbarrow is described as a force multiplier.",m:1,lines:2,ms:[["1","a small force at a large distance from the pivot produces a moment that balances a larger force closer to the pivot"]]},
+ {q:"What is meant by the centre of mass of an object?",m:1,lines:2,ms:[["1","the single point through which the weight of the object can be taken to act"]],tag:"fo2"},
+ {q:"In a gear system, a small gear with 10 teeth drives a large gear with 30 teeth. Describe how the motion of the large gear differs from the small gear.",m:2,lines:3,ms:[["1","the large gear turns more slowly (one third as fast) / in the opposite direction"],["1","the large gear has a larger moment (turning effect)"]]},
+ {q:"The tyre of the wheelbarrow exerts a force of 600 N on the ground over an area of 0.0040 m².<br>Calculate the pressure on the ground.",m:2,ans:{a:150000,unit:"Pa",tol:0.01},ms:[["1","p = F ÷ A = 600 ÷ 0.0040"],["1","= 150 000 Pa"]],tag:"fo7"}]},
+/* 04 · recoil and airbags */
+{tag:"fo12",stem:`<p>A rifle of mass 4.0 kg fires a bullet of mass 0.010 kg at 400 m/s.</p>`,parts:[
+ {q:"Calculate the recoil velocity of the rifle.",m:3,ans:{a:1,unit:"m/s",tol:0.01},ms:[["1","momentum before firing = 0"],["1","0.010 × 400 = 4.0 × v"],["1","v = 1.0 m/s (backwards)"]]},
+ {q:"Explain why the rifle moves backwards when the bullet is fired.",m:2,lines:3,ms:[["1","the total momentum must stay zero (momentum is conserved)"],["1","the bullet gains forward momentum, so the rifle gains an equal momentum backwards"]]},
+ {q:"In a crash, a 70 kg passenger travelling at 15 m/s is brought to rest by an airbag in 0.10 s.<br>Calculate the mean force on the passenger.",m:2,ans:{a:10500,unit:"N",tol:0.01},ms:[["1","F = m Δv ÷ Δt = 70 × 15 ÷ 0.10"],["1","= 10 500 N"]],ht:true},
+ {q:"Without an airbag, the passenger would stop in 0.015 s.<br>Calculate the mean force on the passenger without an airbag.",m:1,ans:{a:70000,unit:"N",tol:0.01},ms:[["1","70 × 15 ÷ 0.015 = 70 000 N"]],ht:true},
+ {q:"Use your answers to explain how an airbag reduces injuries.",m:2,lines:3,ms:[["1","the airbag increases the time taken to stop, so the rate of change of momentum is lower"],["1","so the force on the passenger is much smaller"]],ht:true}]},
+/* 05 · RP10 refraction */
+{tag:"wa3",stem:`<p>A student investigated how light is refracted when it passes from air into a glass block.</p>${tbl(["Angle of incidence / °","0","20","40","60"],[["Angle of refraction / °","0","13","25","35"]],"Table 2")}`,parts:[
+ {q:"Describe a method the student could use to obtain the results in Table 2.",m:6,lines:12,lor:lor6(["A clear, logically ordered method describing how the block, normal and rays are drawn, how angles are measured, and how the angle of incidence is changed, with suitable control of variables.","A method describing most of the steps; some details of how the angles are found are missing.","Simple statements about shining a light into a block."]),ind:["Place the glass block on paper and draw round it","Draw a normal at 90° to one surface with a protractor","Use a ray box (with a narrow slit) to shine a ray at the block along a line at a measured angle of incidence to the normal","Mark the ray leaving the block with crosses, then remove the block and join the points to show the ray through the glass","Measure the angle of refraction between the ray in the glass and the normal with a protractor","Repeat for different angles of incidence (e.g. 20°, 40°, 60°) in a darkened room; repeat and take means"]},
+ {q:"Describe the pattern shown in Table 2.",m:2,lines:3,ms:[["1","the angle of refraction increases as the angle of incidence increases"],["1","the angle of refraction is always smaller than the angle of incidence (the ray bends towards the normal)"]]},
+ {q:"Explain why a ray along the normal (angle of incidence 0°) does not change direction.",m:1,lines:2,ms:[["1","the whole wavefront reaches the boundary at the same time, so it all slows down together"]],ht:true},
+ {q:"Describe the difference between specular reflection and diffuse reflection.",m:2,lines:3,ms:[["1","specular: reflection from a smooth surface in a single direction (gives a clear image)"],["1","diffuse: reflection from a rough surface, scattering the light in many directions"]]}]},
+/* 06 · sound */
+{tag:"wa4",stem:`<p>Ships use pulses of ultrasound to measure the depth of the sea.</p>`,parts:[
+ {q:"What is ultrasound? Tick one box.",opts:["Sound with a frequency above 20 kHz","Sound with a frequency below 20 Hz","Sound that travels faster than normal sound","An electromagnetic wave"],a:0,why:"Ultrasound has a frequency higher than the upper limit of human hearing (20 kHz)."},
+ {q:"A pulse returns to the ship 0.80 s after it was sent. The speed of sound in sea water is 1500 m/s.<br>Calculate the depth of the sea.",m:3,ans:{a:600,unit:"m",tol:0.01},ms:[["1","distance = 1500 × 0.80 = 1200 m"],["1","the pulse travels down and back, so divide by 2"],["1","depth = 600 m"]],ht:true},
+ {q:"An oscilloscope shows 4 complete waves of a sound in 0.010 s.<br>Calculate the frequency of the sound.",m:3,ans:{a:400,unit:"Hz",tol:0.01},ms:[["1","period T = 0.010 ÷ 4 = 0.0025 s"],["1","f = 1 ÷ T"],["1","= 400 Hz"]],tag:"wa2"},
+ {q:"The sound passes from air into water, where it travels faster. Explain what happens to its wavelength.",m:2,lines:3,ms:[["1","the frequency stays the same"],["1","so the wavelength increases (v = f λ)"]],tag:"wa2",ht:true}]},
+/* 07 · microwaves and X-rays */
+{tag:"wa6",stem:`<p>A microwave oven uses microwaves with a frequency of 2.45 GHz. Electromagnetic waves travel at 3.0 × 10⁸ m/s.</p>`,parts:[
+ {q:"Calculate the wavelength of the microwaves.",m:3,ans:{a:0.122,unit:"m",tol:0.02},ms:[["1","f = 2.45 × 10⁹ Hz"],["1","λ = v ÷ f = 3.0 × 10⁸ ÷ 2.45 × 10⁹"],["1","= 0.12 m"]],tag:"wa2"},
+ {q:"Explain how microwaves heat food.",m:2,lines:3,ms:[["1","the microwaves are absorbed by water molecules in the food"],["1","energy is transferred to the thermal store of the food (the particles gain kinetic energy)"]]},
+ {q:"What do all electromagnetic waves transfer from a source to an absorber?",m:1,lines:1,ms:[["1","energy"]],tag:"wa5"},
+ {q:"X-rays are used in hospitals to form images of bones. Explain why the number of X-ray images taken of a patient is limited.",m:2,lines:3,ms:[["1","X-rays are ionising"],["1","so each image increases the risk of damage to cells / mutations / cancer"]]},
+ {q:"Which property is the same for all electromagnetic waves in a vacuum? Tick one box.",opts:["Frequency","Speed","Wavelength","Energy"],a:1,why:"All electromagnetic waves travel at 3 × 10⁸ m/s in a vacuum.",tag:"wa5"}]},
+/* 08 · lenses */
+{tag:"wa7",stem:`<p>A camera uses a convex lens to form an image on a sensor.</p>`,parts:[
+ {q:"A tree 30 m tall forms an image 1.2 cm tall on the sensor.<br>Calculate the magnification. Use the Physics Equation Sheet.",m:2,ans:{a:0.0004,unit:"",tol:0.02},ms:[["1","convert to the same units: 1.2 cm ÷ 3000 cm"],["1","= 0.0004 (4 × 10⁻⁴)"]]},
+ {q:"Describe the image formed on the sensor.",m:2,lines:3,ms:[["1","real"],["1","inverted and diminished (smaller than the object)"]]},
+ {q:"Which type of lens always forms a virtual image? Tick one box.",opts:["Concave","Convex","Converging","Both concave and convex"],a:0,why:"A concave (diverging) lens always produces a virtual image."},
+ {q:"Explain how a convex lens forms a real image of a distant object.",m:2,lines:3,ms:[["1","the lens refracts the parallel rays from the object"],["1","so they converge and meet at a point (the principal focus), where the image is formed"]]}]},
+/* 09 · motors and transformers */
+{tag:"mg4",stem:`<p>A simple d.c. electric motor has a rectangular coil of wire between the poles of a magnet. The coil is connected to the supply through a split-ring commutator.</p>`,parts:[
+ {q:"Explain why the coil of the motor rotates continuously when it is connected to a d.c. supply.",m:6,lines:12,lor:lor6(["A clear, logically ordered explanation linking the current in each side of the coil to the motor effect, opposite forces on the two sides, the turning effect and the role of the commutator in reversing the current every half turn.","An explanation that links the current in the magnetic field to forces and rotation, but with gaps (e.g. the commutator is not explained).","Simple statements that the coil turns because of the magnet and the current."]),ind:["The current in the coil produces a magnetic field that interacts with the field of the magnet","There is a force on each side of the coil (the motor effect), at right angles to the field and the current","The current flows in opposite directions on the two sides, so the forces are in opposite directions","This produces a moment (turning effect) that rotates the coil","The split-ring commutator reverses the direction of the current every half turn","So the forces keep acting to turn the coil in the same direction, and it keeps rotating"]},
+ {q:"A transformer steps down 230 V to 5.75 V. The primary coil has 1600 turns.<br>Calculate the number of turns on the secondary coil.",m:3,ans:{a:40,unit:"turns",tol:0.01},ms:[["1","V<sub>p</sub> ÷ V<sub>s</sub> = n<sub>p</sub> ÷ n<sub>s</sub>"],["1","230 ÷ 5.75 = 1600 ÷ n<sub>s</sub>"],["1","n<sub>s</sub> = 40"]],tag:"mg6",ht:true},
+ {q:"Explain why a transformer does not work with a direct current supply.",m:2,lines:3,ms:[["1","a direct current produces a magnetic field in the core that does not change"],["1","a potential difference is only induced in the secondary coil by a changing magnetic field"]],tag:"mg6",ht:true},
+ {q:"Describe the magnetic field inside a long solenoid carrying a current.",m:2,lines:3,ms:[["1","strong"],["1","uniform (field lines parallel and evenly spaced)"]],tag:"mg2"}]},
+/* 10 · the expanding universe */
+{tag:"sx3",stem:`<p>Light from distant galaxies is red-shifted.</p>`,parts:[
+ {q:"Explain how red-shift provides evidence for the Big Bang theory.",m:3,lines:5,ms:[["1","light from almost all distant galaxies is red-shifted, so they are moving away from us"],["1","more distant galaxies show greater red-shift, so they are moving away faster"],["1","so the universe is expanding, which suggests it began from a very small, hot, dense region"]]},
+ {q:"Since 1998, observations of supernovae suggest that distant galaxies are moving away faster and faster. What does this suggest about the expansion of the universe?",m:1,lines:2,ms:[["1","the expansion of the universe is accelerating (possibly due to dark energy)"]]},
+ {q:"Explain how elements heavier than iron are formed.",m:2,lines:3,ms:[["1","they are formed by fusion in a supernova"],["1","the explosion of a massive star, which also spreads the elements through the universe"]],tag:"sx1"},
+ {q:"State the period of a geostationary communications satellite.",m:1,lines:1,ms:[["1","24 hours (one day)"]],tag:"sx2"},
+ {q:"What type of object is the Moon? Tick one box.",opts:["A dwarf planet","A natural satellite","An artificial satellite","A planet"],a:1,why:"The Moon is a natural satellite of the Earth.",tag:"sx1"},
+ {q:"Galaxy P is further away than galaxy Q. How does the red-shift of galaxy P compare with galaxy Q?",m:1,lines:1,ms:[["1","galaxy P has a greater red-shift"]]}]}
+];
+EXAM.full({id:"pp32",group:"s3",num:2,lvl:"Set 3 · Paper 2",name:"Paper 2 Higher: forces, waves, magnetism, space",qs,covers:"topics 4.5 to 4.8: forces, waves, magnetism and electromagnetism, and space physics",lor:"05.1 and 09.1",
+ printTitle:"GCSE Physics · Practice Set 3 · Paper 2H",
+ eyebrow:"AQA GCSE Physics (8463) · Practice Set 3 · Paper 2 Higher",title:"Set 3 · Paper 2 (Higher tier)",
+ intro:"A third full-length practice paper in the style of AQA GCSE Physics Paper 2 Higher: 100 marks in 1 hour 45 minutes, covering forces, waves, magnetism and electromagnetism, and space physics, with two 6-mark extended-response questions. Sit it under timed conditions, then mark it with the mark schemes."});
+})();
+
+</script>
+<script>
 /* Foundation Set · Paper 1 (Foundation): topics 4.1–4.4 */
 (()=>{
 const S=SYM;
@@ -8358,9 +8532,9 @@ const qs=[
  {q:"Which material has the lowest thermal conductivity? Tick one box.",opts:["Copper","Glass","Steel","Wool"],a:3,why:"Wool traps air and is a very poor conductor, so it is a good insulator."},
  {q:"Describe and explain ways the family could reduce the rate of energy transfer from their house.",m:6,lines:12,lor:lor6(["Several ways are described, each with a clear explanation of how it reduces energy transfer (by reducing conduction or convection, or by using materials of low thermal conductivity).","Some ways are described, with some explanation of how they work.","One or two ways are named, with little or no explanation."]),ind:["Loft insulation (e.g. fibreglass or wool) traps air, which has a low thermal conductivity, reducing conduction through the roof","Cavity wall insulation fills the gap between the walls with foam that traps air, reducing conduction and stopping convection currents in the cavity","Double glazing has a layer of air (or a vacuum) between the panes, reducing conduction through the windows","Draught excluders and closing doors reduce convection and the loss of warm air","Thicker walls reduce the rate of energy transfer","Curtains and carpets trap air and reduce energy transfer"]}]}
 ];
-EXAM.full({id:"pf11",group:"f1",num:1,lvl:"Foundation · Paper 1",name:"Paper 1 Foundation: energy, electricity, particles, atoms",qs,tier:"Foundation",covers:"topics 4.1 to 4.4: energy, electricity, particle model of matter and atomic structure",lor:"08.2 and 10.2",
- printTitle:"GCSE Physics · Foundation Practice Set · Paper 1F",
- eyebrow:"AQA GCSE Physics (8463) · Foundation Practice Set · Paper 1 Foundation",title:"Foundation · Paper 1",
+EXAM.full({id:"pf11",group:"f1",num:1,lvl:"Foundation Set 1 · Paper 1",name:"Paper 1 Foundation: energy, electricity, particles, atoms",qs,tier:"Foundation",covers:"topics 4.1 to 4.4: energy, electricity, particle model of matter and atomic structure",lor:"08.2 and 10.2",
+ printTitle:"GCSE Physics · Foundation Practice Set 1 · Paper 1F",
+ eyebrow:"AQA GCSE Physics (8463) · Foundation Practice Set 1 · Paper 1 Foundation",title:"Foundation Set 1 · Paper 1",
  intro:"A full-length practice paper in the style of AQA GCSE Physics Paper 1 Foundation: 100 marks in 1 hour 45 minutes, covering energy, electricity, the particle model of matter and atomic structure. There are more short-answer and multiple-choice questions than on the Higher paper, step-by-step calculations, and two 6-mark extended-response questions."});
 })();
 
@@ -8455,10 +8629,413 @@ const qs=[
  {q:"Light from distant galaxies shows red-shift. What is meant by red-shift?",m:2,lines:3,ms:[["1","an increase in the observed wavelength of light"],["1","from galaxies that are moving away from us"]],tag:"sx3"},
  {q:"What does red-shift tell scientists about the universe?",m:1,lines:2,ms:[["1","the universe is expanding (supports the Big Bang theory)"]],tag:"sx3"}]}
 ];
-EXAM.full({id:"pf12",group:"f1",num:2,lvl:"Foundation · Paper 2",name:"Paper 2 Foundation: forces, waves, magnetism, space",qs,tier:"Foundation",covers:"topics 4.5 to 4.8: forces, waves, magnetism and electromagnetism, and space physics",lor:"09.2",
- printTitle:"GCSE Physics · Foundation Practice Set · Paper 2F",
- eyebrow:"AQA GCSE Physics (8463) · Foundation Practice Set · Paper 2 Foundation",title:"Foundation · Paper 2",
+EXAM.full({id:"pf12",group:"f1",num:2,lvl:"Foundation Set 1 · Paper 2",name:"Paper 2 Foundation: forces, waves, magnetism, space",qs,tier:"Foundation",covers:"topics 4.5 to 4.8: forces, waves, magnetism and electromagnetism, and space physics",lor:"09.2",
+ printTitle:"GCSE Physics · Foundation Practice Set 1 · Paper 2F",
+ eyebrow:"AQA GCSE Physics (8463) · Foundation Practice Set 1 · Paper 2 Foundation",title:"Foundation Set 1 · Paper 2",
  intro:"A full-length practice paper in the style of AQA GCSE Physics Paper 2 Foundation: 100 marks in 1 hour 45 minutes, covering forces, waves, magnetism and electromagnetism, and space physics. There are more short-answer and multiple-choice questions than on the Higher paper, step-by-step calculations, and a 6-mark extended-response question."});
+})();
+
+</script>
+<script>
+/* Foundation Set 2 · Paper 1 (Foundation): topics 4.1–4.4 */
+(()=>{
+const {graph}=EXAM;
+const lor6=(t)=>[["Level 3 (5–6)",t[0]],["Level 2 (3–4)",t[1]],["Level 1 (1–2)",t[2]],["0","No relevant content."]];
+const tbl=(head,rows,cap)=>`<div class="tbl-wrap"><table class="gtab" style="min-width:0;max-width:460px"><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</table></div><p class="muted" style="font-size:.85rem">${cap}</p>`;
+
+const qs=[
+/* 01 · energy stores and efficiency */
+{tag:"en1",stem:`<p>A hairdryer is switched on for 1 second. It transfers 1500 J of energy. 1100 J heats the air, 300 J makes the fan turn and 100 J is transferred as sound.</p>`,parts:[
+ {q:"In which energy store is energy stored in a battery? Tick one box.",opts:["Chemical","Elastic potential","Kinetic","Thermal"],a:0,why:"A battery stores energy in a chemical store."},
+ {q:"A ball is thrown upwards. In which store does it have the most energy at the top of its flight? Tick one box.",opts:["Chemical","Gravitational potential","Kinetic","Nuclear"],a:1,why:"At the top it has stopped rising, and has gained the most height, so its gravitational potential store is largest."},
+ {q:"Which energy transfer from the hairdryer is wasted?",m:1,lines:1,ms:[["1","sound (100 J)"]],tag:"en6"},
+ {q:"Calculate the efficiency of the hairdryer.",m:2,ans:{a:0.933,unit:"",tol:0.01},ms:[["1","useful energy = 1100 + 300 = 1400 J; efficiency = 1400 ÷ 1500"],["1","= 0.93 (93 %)"]],tag:"en6"},
+ {q:"Describe the energy transfer when an electric kettle heats water.",m:2,lines:3,ms:[["1","energy is transferred electrically (by the current doing work)"],["1","to the thermal store of the water"]]},
+ {q:"Explain why the efficiency of a device can never be more than 100%.",m:2,lines:3,ms:[["1","energy cannot be created"],["1","so the useful energy output cannot be more than the total energy input"]],tag:"en6"}]},
+/* 02 · bungee jumping */
+{tag:"en2",stem:`<p>A bungee jumper of mass 70 kg climbs to a platform 15 m above a river. Gravitational field strength = 9.8 N/kg.</p>`,parts:[
+ {q:"Write down the equation that links gravitational potential energy, mass, gravitational field strength and height.",m:1,lines:1,ms:[["1","g.p.e. = mass × gravitational field strength × height (E<sub>p</sub> = m g h)"]]},
+ {q:"Calculate the gravitational potential energy gained by the jumper.",m:2,ans:{a:10290,unit:"J",tol:0.01},ms:[["1","E<sub>p</sub> = 70 × 9.8 × 15"],["1","= 10 290 J"]]},
+ {q:"The bungee cord has a spring constant of 80 N/m. At the lowest point it is stretched by 12 m.<br>Calculate the elastic potential energy stored in the cord. Use the Physics Equation Sheet.",m:2,ans:{a:5760,unit:"J",tol:0.01},ms:[["1","E<sub>e</sub> = 0.5 × 80 × 12²"],["1","= 5760 J"]],tag:"en3"},
+ {q:"Describe the energy changes from the moment the jumper leaves the platform until the lowest point.",m:3,lines:5,ms:[["1","gravitational potential energy decreases as the jumper falls"],["1","kinetic energy increases while the jumper speeds up"],["1","as the cord stretches, energy is transferred to the elastic potential store of the cord"]],tag:"en1"},
+ {q:"Write down the equation that links kinetic energy, mass and speed.",m:1,lines:1,ms:[["1","kinetic energy = 0.5 × mass × (speed)² (E<sub>k</sub> = ½ m v²)"]]},
+ {q:"A tennis ball of mass 0.060 kg moves at 25 m/s.<br>Calculate its kinetic energy.",m:2,ans:{a:18.75,unit:"J",tol:0.01},ms:[["1","E<sub>k</sub> = 0.5 × 0.060 × 25²"],["1","= 18.75 J (19 J)"]]}]},
+/* 03 · RP4 resistor I–V */
+{tag:"el3",stem:`<p>A student measured the current in a resistor for different potential differences. Figure 1 shows the results.</p>${graph({xmax:6,xs:0.5,xl:2,ymax:0.35,ys:0.01,yl:5,xt:"Potential difference in volts",yt:"Current in amperes",lines:[[[0,0],[6,0.3]]],cap:"Figure 1",aria:"Current against potential difference: a straight line through the origin, reaching 0.30 amperes at 6 volts"})}`,parts:[
+ {q:"Which piece of equipment is used to change the potential difference across the resistor? Tick one box.",opts:["Ammeter","Fuse","Variable resistor","Voltmeter"],a:2,why:"A variable resistor changes the current in the circuit, and so the p.d. across the component."},
+ {q:"How should the voltmeter be connected?",m:1,lines:1,ms:[["1","in parallel with the resistor"]],tag:"el1"},
+ {q:"Use Figure 1 to determine the resistance of the resistor at 3.0 V.",m:3,ans:{a:20,unit:"Ω",tol:0.03},ms:[["1","I = 0.15 A read from the graph"],["1","R = V ÷ I = 3.0 ÷ 0.15"],["1","= 20 Ω"]],tag:"el2"},
+ {q:"Describe how the graph would be different for a filament lamp.",m:2,lines:3,ms:[["1","it would be a curve (not a straight line)"],["1","becoming less steep as the p.d. increases (the resistance increases)"]]},
+ {q:"What does a diode do?",m:1,lines:2,ms:[["1","it only lets current flow in one direction"]]},
+ {q:"What does the straight line in Figure 1 tell you about the resistance of the resistor?",m:1,lines:2,ms:[["1","the resistance is constant (current is directly proportional to p.d.)"]],tag:"el2"}]},
+/* 04 · microwave oven */
+{tag:"el6",stem:`<p>A microwave oven is connected to the 230 V mains supply. The current in the oven is 3.5 A.</p>`,parts:[
+ {q:"Write down the equation that links power, potential difference and current.",m:1,lines:1,ms:[["1","power = potential difference × current (P = V I)"]]},
+ {q:"Calculate the power of the microwave oven.",m:2,ans:{a:805,unit:"W",tol:0.01},ms:[["1","P = 230 × 3.5"],["1","= 805 W"]]},
+ {q:"Calculate the energy transferred by the oven in 120 s.",m:2,ans:{a:96600,unit:"J",tol:0.01},ms:[["1","E = P t = 805 × 120"],["1","= 96 600 J (allow ecf)"]]},
+ {q:"Calculate the charge that flows through the oven in 60 s.",m:2,ans:{a:210,unit:"C",tol:0.01},ms:[["1","Q = I t = 3.5 × 60"],["1","= 210 C"]],tag:"el1"},
+ {q:"What is the unit of charge? Tick one box.",opts:["Ampere","Coulomb","Joule","Ohm"],a:1,why:"Charge is measured in coulombs (C).",tag:"el1"},
+ {q:"Fuses are available rated at 3 A, 5 A and 13 A. Which fuse should be used for the microwave oven?",m:1,lines:1,ms:[["1","5 A (just above the normal current of 3.5 A)"]],tag:"el5"},
+ {q:"Describe what a fuse does if a fault causes the current to become too large.",m:2,lines:3,ms:[["1","the wire in the fuse heats up and melts"],["1","this breaks the circuit (disconnects the live wire), so the current stops"]],tag:"el5"},
+ {q:"A kettle cable is thicker than a lamp cable. Explain why.",m:2,lines:3,ms:[["1","the kettle has a much larger current"],["1","a thicker wire has a lower resistance, so it does not overheat"]],tag:"el5"}]},
+/* 05 · RP5 density of an irregular object */
+{tag:"pm1",stem:`<p>A student wants to find the density of a small, irregularly shaped pebble.</p>`,parts:[
+ {q:"Describe a method the student could use to determine the density of the pebble. You should name the equipment used.",m:6,lines:12,lor:lor6(["A clear, logically ordered method for measuring both the mass and the volume of the pebble, naming the equipment, with the volume found by displacement and the density calculated.","A method that measures mass and volume, but with some steps missing or unclear.","Simple statements about measuring the mass or the volume."]),ind:["Measure the mass of the pebble with a top-pan balance","Fill a eureka (displacement) can with water up to the spout","Place a measuring cylinder under the spout","Lower the pebble gently into the can on a thread","Measure the volume of water collected in the measuring cylinder: this equals the volume of the pebble (or use the rise in level in a measuring cylinder)","Density = mass ÷ volume; repeat and take a mean"]},
+ {q:"The pebble has a mass of 39 g and a volume of 15 cm³.<br>Calculate its density.",m:2,ans:{a:2.6,unit:"g/cm³",tol:0.01},ms:[["1","ρ = m ÷ V = 39 ÷ 15"],["1","= 2.6 g/cm³"]]},
+ {q:"In which state is a substance usually most dense? Tick one box.",opts:["Gas","Liquid","Solid","All the same"],a:2,why:"Particles in a solid are closest together, so solids are usually most dense."},
+ {q:"Describe the movement of the particles in a gas.",m:2,lines:3,ms:[["1","the particles move randomly"],["1","at high speed (far apart, colliding with each other and the walls)"]]}]},
+/* 06 · freezing water */
+{tag:"pm2",stem:`<p>A student heated a tube of stearic acid until it melted, then let it cool. Figure 2 shows how the temperature of the stearic acid changed as it cooled.</p>${graph({xmax:20,xs:1,xl:5,ymax:90,ys:5,yl:2,xt:"Time in minutes",yt:"Temperature in °C",lines:[[[0,80],[5,55],[15,55],[20,40]]],cap:"Figure 2",aria:"Temperature falls from 80 °C to 55 °C in 5 minutes, stays at 55 °C until 15 minutes, then falls to 40 °C at 20 minutes"})}`,parts:[
+ {q:"Use Figure 2 to find the melting point of stearic acid.",m:1,ans:{a:55,unit:"°C",tol:0.02},ms:[["1","55 °C"]]},
+ {q:"What is happening to the stearic acid between 5 and 15 minutes?",m:1,lines:1,ms:[["1","it is freezing / solidifying (changing from a liquid to a solid)"]]},
+ {q:"Explain why the temperature stays the same while the stearic acid freezes.",m:2,lines:3,ms:[["1","energy is being transferred out of the water as the particles form bonds"],["1","the internal energy (potential energy) decreases, but the kinetic energy of the particles does not change"]]},
+ {q:"What is meant by the internal energy of a substance?",m:2,lines:3,ms:[["1","the total energy stored by the particles"],["1","= the total kinetic energy and potential energy of the particles"]]},
+ {q:"The tube contains 0.020 kg of stearic acid. The specific latent heat of fusion of stearic acid is 200 000 J/kg.<br>Calculate the energy transferred from the stearic acid as it freezes. Use the Physics Equation Sheet.",m:2,ans:{a:4000,unit:"J",tol:0.01},ms:[["1","E = m L = 0.020 × 200 000"],["1","= 4000 J"]],tag:"pm3"},
+ {q:"Which change of state happens when a liquid turns into a gas? Tick one box.",opts:["Condensing","Evaporating","Freezing","Melting"],a:1,why:"A liquid turning into a gas is evaporating (or boiling)."}]},
+/* 07 · atoms and isotopes */
+{tag:"at1",stem:`<p>Carbon-12 (<sup>12</sup><sub>6</sub>C) and carbon-14 (<sup>14</sup><sub>6</sub>C) are isotopes of carbon.</p>`,parts:[
+ {q:"Give the number of protons and the number of neutrons in a carbon-14 nucleus.",m:2,lines:2,ms:[["1","protons: 6"],["1","neutrons: 14 − 6 = 8"]]},
+ {q:"What does the number 14 in carbon-14 tell you about the nucleus?",m:1,lines:2,ms:[["1","the mass number: the total number of protons and neutrons is 14"]]},
+ {q:"Explain why carbon-12 and carbon-14 are both atoms of carbon.",m:1,lines:2,ms:[["1","they have the same number of protons (6)"]]},
+ {q:"Which particle is found in the nucleus of an atom? Tick one box.",opts:["Electron","Neutron","Ion","Photon"],a:1,why:"The nucleus contains protons and neutrons."},
+ {q:"Explain why an atom has no overall charge.",m:1,lines:2,ms:[["1","it has equal numbers of protons (positive) and electrons (negative)"]]},
+ {q:"How do the electrons in an atom move?",m:1,lines:2,ms:[["1","they orbit the nucleus at different distances / in energy levels (shells)"]]},
+ {q:"How does the radius of a nucleus compare with the radius of an atom?",m:1,lines:2,ms:[["1","it is about 1/10 000 of the radius of the atom"]]},
+ {q:"Explain why the plum pudding model of the atom was replaced.",m:2,lines:3,ms:[["1","the results of the alpha particle scattering experiment could not be explained by the plum pudding model"],["1","some alpha particles bounced back, showing the mass and charge are in a tiny nucleus"]],tag:"at2"}]},
+/* 08 · smoke detector */
+{tag:"at7",stem:`<p>A smoke detector uses a radioactive source. Table 1 gives information about four radioactive isotopes.</p>${tbl(["Isotope","Radiation emitted","Half-life"],[["A","alpha","430 years"],["B","beta","5 years"],["C","gamma","2 years"],["D","alpha","3 days"]],"Table 1")}<p>In the detector, alpha particles ionise the air between two plates, so a small current flows. Smoke absorbs the alpha particles, the current falls and the alarm sounds.</p>`,parts:[
+ {q:"Explain which isotope in Table 1 is the most suitable for a smoke detector. Your answer should refer to each isotope.",m:6,lines:12,lor:lor6(["A clear choice of isotope A, supported by reasons about both the type of radiation and the half-life, with reasons for rejecting each of the other isotopes.","A choice with some correct reasons about radiation type or half-life; not every isotope is considered.","Simple statements about one or two isotopes, or a choice with no valid reason."]),ind:["Isotope A is the most suitable","An alpha emitter is needed: alpha is strongly ionising, so it ionises the air to produce a current","Alpha is easily absorbed by smoke (and has a short range in air), so the current falls when there is smoke","Alpha does not pass out of the detector case, so it is safe for people nearby","A long half-life (430 years) means the activity stays nearly constant, so the source does not need replacing","B and C are rejected: beta and gamma are weakly ionising, penetrate smoke and could escape; D is rejected: its 3-day half-life is too short"]},
+ {q:"What is the unit of activity? Tick one box.",opts:["Becquerel","Joule","Sievert","Watt"],a:0,why:"Activity is measured in becquerels (Bq): one decay per second.",tag:"at5"},
+ {q:"Name two sources of background radiation.",m:2,lines:2,ms:[["1","radon gas / rocks / cosmic rays"],["1","a second correct source (e.g. medical X-rays, nuclear accidents, food)"]],tag:"at6"},
+ {q:"A source has a count rate of 800 counts per minute. Its half-life is 10 minutes.<br>How long will it take for the count rate to fall to 100 counts per minute?",m:2,ans:{a:30,unit:"minutes",tol:0.01},ms:[["1","800 → 400 → 200 → 100 is 3 half-lives"],["1","3 × 10 = 30 minutes"]],tag:"at5"},
+ {q:"What is meant by radioactive contamination?",m:1,lines:2,ms:[["1","unwanted radioactive atoms on or inside other materials"]],tag:"at6"}]},
+/* 09 · energy resources */
+{tag:"en8",stem:`<p>Electricity can be generated from renewable and non-renewable resources.</p>`,parts:[
+ {q:"Give two renewable energy resources used to generate electricity.",m:2,lines:2,ms:[["1","any one of: wind, solar, hydroelectric, tidal, waves, geothermal, biofuel"],["1","a second correct resource"]]},
+ {q:"Explain why solar panels cannot be the only source of electricity for a country.",m:2,lines:3,ms:[["1","they produce no electricity at night (and little on cloudy days)"],["1","so they cannot always meet the demand / they are unreliable"]]},
+ {q:"Which resource releases no carbon dioxide while generating electricity? Tick one box.",opts:["Coal","Gas","Nuclear","Oil"],a:2,why:"Nuclear power stations do not burn fuel, so they release no carbon dioxide while generating."},
+ {q:"Explain why burning fossil fuels harms the environment.",m:2,lines:3,ms:[["1","releases carbon dioxide, a greenhouse gas"],["1","which contributes to global warming / climate change (sulfur dioxide also causes acid rain)"]]},
+ {q:"Give one renewable fuel that can be used for transport.",m:1,lines:1,ms:[["1","biofuel (e.g. bioethanol, biodiesel)"]]}]},
+/* 10 · static */
+{tag:"el8",stem:`<p>A student rubs a plastic comb with a cloth. The comb becomes negatively charged and picks up small pieces of paper.</p>`,parts:[
+ {q:"Explain how the comb becomes negatively charged.",m:2,lines:3,ms:[["1","electrons are transferred by friction"],["1","from the cloth to the comb"]]},
+ {q:"What happens when two negatively charged objects are brought close together? Tick one box.",opts:["They attract","They repel","Nothing happens","They become positive"],a:1,why:"Like charges repel."},
+ {q:"A glass rod becomes positively charged when it is rubbed with a cloth. What happens to the electrons?",m:1,lines:2,ms:[["1","electrons move from the rod to the cloth"]]},
+ {q:"Sometimes people get a small electric shock when they touch a car door after a journey. Explain why.",m:2,lines:3,ms:[["1","charge builds up on the car (or person) due to friction"],["1","when they touch the door, charge flows (electrons jump) between the car and the person, causing a spark / shock"]]},
+ {q:"A charged balloon sticks to a wall. Suggest why.",m:2,lines:3,ms:[["1","the charged balloon attracts opposite charges in the wall (induces a charge)"],["1","opposite charges attract, so there is a force holding the balloon on the wall"]]}]}
+];
+EXAM.full({id:"pf21",group:"f2",num:1,lvl:"Foundation Set 2 · Paper 1",name:"Paper 1 Foundation: energy, electricity, particles, atoms",qs,tier:"Foundation",covers:"topics 4.1 to 4.4: energy, electricity, particle model of matter and atomic structure",lor:"05.1 and 08.1",
+ printTitle:"GCSE Physics · Foundation Practice Set 2 · Paper 1F",
+ eyebrow:"AQA GCSE Physics (8463) · Foundation Practice Set 2 · Paper 1 Foundation",title:"Foundation Set 2 · Paper 1",
+ intro:"A second full-length practice paper in the style of AQA GCSE Physics Paper 1 Foundation: 100 marks in 1 hour 45 minutes, covering energy, electricity, the particle model of matter and atomic structure, with two 6-mark extended-response questions."});
+})();
+
+</script>
+<script>
+/* Foundation Set 2 · Paper 2 (Foundation): topics 4.5–4.8 */
+(()=>{
+const {graph}=EXAM;
+const lor6=(t)=>[["Level 3 (5–6)",t[0]],["Level 2 (3–4)",t[1]],["Level 1 (1–2)",t[2]],["0","No relevant content."]];
+const tbl=(head,rows,cap)=>`<div class="tbl-wrap"><table class="gtab" style="min-width:0;max-width:460px"><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</table></div><p class="muted" style="font-size:.85rem">${cap}</p>`;
+
+const qs=[
+/* 01 · forces and weight */
+{tag:"fo1",stem:`<p>A book rests on a table.</p>`,parts:[
+ {q:"Name the two forces acting on the book.",m:2,lines:2,ms:[["1","weight (gravitational force) downwards"],["1","normal contact force (reaction) from the table upwards"]]},
+ {q:"Which of these is a non-contact force? Tick one box.",opts:["Air resistance","Friction","Magnetic force","Tension"],a:2,why:"Magnetic forces act between objects that are not touching."},
+ {q:"What is the difference between speed and velocity?",m:1,lines:2,ms:[["1","velocity is speed in a given direction (velocity is a vector, speed is a scalar)"]]},
+ {q:"An astronaut has a mass of 80 kg. The gravitational field strength on Mars is 3.7 N/kg.<br>Calculate the weight of the astronaut on Mars.",m:2,ans:{a:296,unit:"N",tol:0.01},ms:[["1","W = m g = 80 × 3.7"],["1","= 296 N"]],tag:"fo2"},
+ {q:"What is the gravitational field strength on Earth?",m:1,lines:1,ms:[["1","9.8 N/kg"]],tag:"fo2"},
+ {q:"What is the unit of mass? Tick one box.",opts:["Kilogram","Newton","Newton per kilogram","Metre"],a:0,why:"Mass is measured in kilograms (kg); weight is a force, measured in newtons.",tag:"fo2"},
+ {q:"What is meant by the centre of mass of an object?",m:1,lines:2,ms:[["1","the single point where the weight of the object can be taken to act"]],tag:"fo2"}]},
+/* 02 · work and springs */
+{tag:"fo4",stem:`<p>A child pulls a sledge across the snow with a constant force of 60 N.</p>`,parts:[
+ {q:"The child pulls the sledge 25 m.<br>Calculate the work done.",m:2,ans:{a:1500,unit:"J",tol:0.01},ms:[["1","W = F s = 60 × 25"],["1","= 1500 J"]]},
+ {q:"Complete the sentence: 1 joule is the work done when a force of 1 newton moves an object through ____.",m:1,lines:1,ms:[["1","1 metre (in the direction of the force)"]]},
+ {q:"Why is more than one force needed to stretch a spring?",m:1,lines:2,ms:[["1","the spring must be pulled at both ends (one force alone would just move it)"]],tag:"fo5"},
+ {q:"A spring has a spring constant of 25 N/m. It is stretched by 0.12 m.<br>Calculate the force needed.",m:2,ans:{a:3,unit:"N",tol:0.01},ms:[["1","F = k e = 25 × 0.12"],["1","= 3.0 N"]],tag:"fo5"},
+ {q:"What is meant by elastic deformation?",m:1,lines:2,ms:[["1","the object returns to its original shape (and length) when the forces are removed"]],tag:"fo5"},
+ {q:"What is meant by the limit of proportionality?",m:1,lines:2,ms:[["1","the point beyond which extension is no longer directly proportional to force"]],tag:"fo5"},
+ {q:"In which store is energy stored in a stretched spring? Tick one box.",opts:["Chemical","Elastic potential","Gravitational potential","Kinetic"],a:1,why:"A stretched spring stores energy in its elastic potential store.",tag:"en3"}]},
+/* 03 · velocity–time graph */
+{tag:"fo9",stem:`<p>Figure 1 shows a velocity–time graph for a bus between two stops.</p>${graph({xmax:40,xs:2,xl:5,ymax:14,ys:1,yl:2,xt:"Time in seconds",yt:"Velocity in m/s",lines:[[[0,0],[10,12],[30,12],[36,0],[40,0]]],cap:"Figure 1",aria:"Velocity rises from 0 to 12 metres per second in 10 seconds, stays constant until 30 seconds, then falls to zero at 36 seconds"})}`,parts:[
+ {q:"What does the gradient of a velocity–time graph represent? Tick one box.",opts:["Acceleration","Distance","Force","Speed"],a:0,why:"The gradient of a velocity–time graph is the acceleration."},
+ {q:"Calculate the acceleration of the bus in the first 10 s.",m:3,ans:{a:1.2,unit:"m/s²",tol:0.02},ms:[["1","a = Δv ÷ t"],["1","= 12 ÷ 10"],["1","= 1.2 m/s²"]]},
+ {q:"Describe the motion of the bus between 10 s and 30 s.",m:1,lines:1,ms:[["1","constant velocity (12 m/s)"]]},
+ {q:"Calculate the distance travelled between 10 s and 30 s.",m:2,ans:{a:240,unit:"m",tol:0.01},ms:[["1","distance = speed × time = 12 × 20"],["1","= 240 m"]]},
+ {q:"Calculate the deceleration of the bus between 30 s and 36 s.",m:2,ans:{a:2,unit:"m/s²",tol:0.02},ms:[["1","12 ÷ 6"],["1","= 2.0 m/s²"]]},
+ {q:"How could the total distance travelled be found from Figure 1?",m:1,lines:2,ms:[["1","find the area under the graph"]]},
+ {q:"What is a typical speed of sound in air? Tick one box.",opts:["3 m/s","33 m/s","330 m/s","3300 m/s"],a:2,why:"Sound travels at about 330 m/s in air.",tag:"fo8"}]},
+/* 04 · Newton's laws */
+{tag:"fo10",stem:`<p>A student investigates how force affects the acceleration of a trolley.</p>`,parts:[
+ {q:"State Newton’s first law.",m:1,lines:2,ms:[["1","if the resultant force on an object is zero, it stays still or keeps moving at the same speed in the same direction"]]},
+ {q:"Write down the equation that links force, mass and acceleration.",m:1,lines:1,ms:[["1","resultant force = mass × acceleration (F = m a)"]]},
+ {q:"A force of 2.0 N acts on a trolley of mass 0.80 kg.<br>Calculate the acceleration of the trolley.",m:2,ans:{a:2.5,unit:"m/s²",tol:0.01},ms:[["1","a = F ÷ m = 2.0 ÷ 0.80"],["1","= 2.5 m/s²"]]},
+ {q:"Describe the relationship between resultant force and acceleration for an object of constant mass.",m:2,lines:3,ms:[["1","acceleration increases when force increases"],["1","acceleration is directly proportional to force"]]},
+ {q:"The force stays the same but the mass of the trolley is doubled. What happens to the acceleration? Tick one box.",opts:["It doubles","It halves","It stays the same","It becomes zero"],a:1,why:"a = F ÷ m, so doubling the mass halves the acceleration."},
+ {q:"The student used a light gate instead of a stopwatch. Give one advantage of this.",m:1,lines:2,ms:[["1","no human reaction time / more accurate (higher resolution) timing"]]},
+ {q:"A swimmer pushes on the wall of a pool to start a race. Describe the force pair involved (Newton’s third law).",m:2,lines:3,ms:[["1","the swimmer pushes on the wall"],["1","the wall pushes back on the swimmer with an equal force in the opposite direction"]]}]},
+/* 05 · stopping distances */
+{tag:"fo11",stem:`<p>Table 1 shows the thinking distance and the braking distance for a car at different speeds.</p>${tbl(["Speed / m/s","Thinking distance / m","Braking distance / m"],[["10","6","5"],["20","12","20"],["30","18","45"]],"Table 1")}`,parts:[
+ {q:"Calculate the stopping distance at 20 m/s.",m:1,ans:{a:32,unit:"m",tol:0.01},ms:[["1","12 + 20 = 32 m"]]},
+ {q:"Describe how the thinking distance depends on speed.",m:2,lines:3,ms:[["1","thinking distance increases as speed increases"],["1","it is directly proportional to speed (doubling the speed doubles it)"]]},
+ {q:"How does the braking distance change when the speed is doubled from 10 m/s to 20 m/s?",m:1,lines:1,ms:[["1","it increases by four times (from 5 m to 20 m)"]]},
+ {q:"Use Table 1 to calculate the driver’s reaction time.",m:2,ans:{a:0.6,unit:"s",tol:0.01},ms:[["1","time = distance ÷ speed = 6 ÷ 10"],["1","= 0.6 s"]]},
+ {q:"What is a typical reaction time? Tick one box.",opts:["0.002 s to 0.009 s","0.2 s to 0.9 s","2 s to 9 s","20 s to 90 s"],a:1,why:"Typical reaction times are between about 0.2 s and 0.9 s."},
+ {q:"Give one danger of braking very hard.",m:1,lines:1,ms:[["1","the brakes may overheat / the car may skid / large forces on passengers"]]}]},
+/* 06 · momentum */
+{tag:"fo12",stem:`<p>A car of mass 1200 kg travels at 15 m/s.</p>`,parts:[
+ {q:"Calculate the momentum of the car.",m:2,ans:{a:18000,unit:"kg m/s",tol:0.01},ms:[["1","p = m v = 1200 × 15"],["1","= 18 000 kg m/s"]]},
+ {q:"What is the unit of momentum? Tick one box.",opts:["kg m/s","N","J","m/s²"],a:0,why:"Momentum = mass × velocity, so its unit is kg m/s."},
+ {q:"A snooker ball of mass 0.17 kg moving at 2.0 m/s hits an identical stationary ball. The first ball stops.<br>Calculate the velocity of the second ball.",m:2,ans:{a:2,unit:"m/s",tol:0.01},ms:[["1","momentum before = 0.17 × 2.0 = 0.34 kg m/s = momentum after"],["1","v = 0.34 ÷ 0.17 = 2.0 m/s"]]},
+ {q:"Explain why momentum is a vector quantity.",m:1,lines:2,ms:[["1","it has both size and direction"]]},
+ {q:"State what is meant by conservation of momentum.",m:1,lines:2,ms:[["1","in a closed system, the total momentum before an event equals the total momentum after"]]}]},
+/* 07 · waves and sound */
+{tag:"wa1",stem:`<p>Waves transfer energy from one place to another.</p>`,parts:[
+ {q:"Describe the direction of the oscillations in a transverse wave.",m:1,lines:2,ms:[["1","perpendicular (at right angles) to the direction of energy transfer"]]},
+ {q:"Which of these is a longitudinal wave? Tick one box.",opts:["Light","Radio","Sound","A wave on a rope"],a:2,why:"Sound waves are longitudinal."},
+ {q:"What is meant by the frequency of a wave?",m:1,lines:2,ms:[["1","the number of waves passing a point each second"]]},
+ {q:"Write down the equation that links wave speed, frequency and wavelength.",m:1,lines:1,ms:[["1","wave speed = frequency × wavelength (v = f λ)"]],tag:"wa2"},
+ {q:"A sound wave in water has a frequency of 500 Hz and a wavelength of 3.0 m.<br>Calculate its speed.",m:2,ans:{a:1500,unit:"m/s",tol:0.01},ms:[["1","v = 500 × 3.0"],["1","= 1500 m/s"]],tag:"wa2"},
+ {q:"Calculate the period of a wave with a frequency of 500 Hz. Use the Physics Equation Sheet.",m:2,ans:{a:0.002,unit:"s",tol:0.01},ms:[["1","T = 1 ÷ f = 1 ÷ 500"],["1","= 0.002 s"]],tag:"wa2"},
+ {q:"Describe a method to measure the speed of sound in air outdoors.",m:3,lines:5,ms:[["1","one person makes a loud sound with a visible action (e.g. bangs cymbals) a measured distance (e.g. 400 m) away, measured with a trundle wheel"],["1","another person starts a stopwatch on seeing the action and stops it on hearing the sound"],["1","speed = distance ÷ time; repeat and take a mean"]],tag:"wa2"},
+ {q:"Suggest why the result of this method may not be accurate.",m:1,lines:2,ms:[["1","human reaction time is large compared with the time measured"]],tag:"wa2"}]},
+/* 08 · EM spectrum and colour */
+{tag:"wa5",stem:`<p>The electromagnetic spectrum, in order: radio waves, microwaves, ______, visible light, ultraviolet, X-rays, gamma rays.</p>`,parts:[
+ {q:"Name the missing part of the electromagnetic spectrum.",m:1,lines:1,ms:[["1","infrared"]]},
+ {q:"Which type of electromagnetic radiation is used to sterilise surgical instruments? Tick one box.",opts:["Gamma rays","Infrared","Microwaves","Radio waves"],a:0,why:"Gamma rays kill bacteria on instruments.",tag:"wa6"},
+ {q:"Give one use of radio waves and one use of ultraviolet.",m:2,lines:2,ms:[["1","radio: television and radio broadcasting"],["1","ultraviolet: energy-efficient lamps / sun tanning / security marking"]],tag:"wa6"},
+ {q:"Ultraviolet can harm the skin. Give one harmful effect and one way of protecting the skin.",m:2,lines:3,ms:[["1","ages the skin prematurely / increases the risk of skin cancer"],["1","use sun cream / cover up / stay in the shade"]],tag:"wa6"},
+ {q:"Explain why a red apple looks red in white light.",m:2,lines:3,ms:[["1","it reflects red light"],["1","and absorbs all the other colours"]],tag:"wa8"},
+ {q:"What does a green filter do to white light?",m:1,lines:2,ms:[["1","it transmits only green light (absorbs the other colours)"]],tag:"wa8"},
+ {q:"Why does a white object look white?",m:1,lines:2,ms:[["1","it reflects all colours (wavelengths) of visible light equally"]],tag:"wa8"}]},
+/* 09 · electromagnets */
+{tag:"mg2",stem:`<p>A student makes an electromagnet by wrapping insulated wire around an iron nail and connecting it to a power supply.</p>`,parts:[
+ {q:"Describe how the student could investigate how the number of turns of wire affects the strength of the electromagnet.",m:6,lines:12,lor:lor6(["A clear, logically ordered method in which the number of turns is changed, the strength is measured in a valid way, and control variables and repeats are described.","A method in which the number of turns is changed and the strength is measured, but with some steps or controls missing.","Simple statements about winding wire or picking up paper clips."]),ind:["Wrap a measured number of turns (e.g. 10) around the nail and connect to the supply","Dip the end of the nail into a pile of paper clips and count how many it picks up","Switch off and remove the clips; increase the number of turns (e.g. 20, 30, 40, 50) and repeat","Keep the current (or p.d. setting), the nail and the size of the paper clips the same","Repeat each reading and calculate a mean","Plot the number of clips against the number of turns; more turns should pick up more clips"]},
+ {q:"What happens when two north poles are brought close together? Tick one box.",opts:["They attract","They repel","Nothing happens","They become south poles"],a:1,why:"Like poles repel.",tag:"mg1"},
+ {q:"Describe the shape of the magnetic field around a straight wire carrying a current.",m:1,lines:2,ms:[["1","concentric circles around the wire"]]},
+ {q:"Why is an iron core used in an electromagnet?",m:1,lines:2,ms:[["1","it makes the magnetic field (much) stronger"]]},
+ {q:"Explain why an electromagnet, rather than a permanent magnet, is used on a crane in a scrapyard.",m:2,lines:3,ms:[["1","an electromagnet can be switched off"],["1","so it can drop the scrap metal where it is wanted"]]},
+ {q:"In Fleming’s left-hand rule, what does the thumb represent?",m:1,lines:1,ms:[["1","the direction of the force (motion)"]],tag:"mg3"},
+ {q:"Explain why a compass needle points north.",m:1,lines:2,ms:[["1","it lines up with the Earth’s magnetic field"]],tag:"mg1"}]},
+/* 10 · space */
+{tag:"sx1",stem:`<p>The Sun is a star in the Milky Way galaxy.</p>`,parts:[
+ {q:"Which of these is the largest? Tick one box.",opts:["A galaxy","A planet","The solar system","The Sun"],a:0,why:"A galaxy contains billions of stars and their solar systems."},
+ {q:"Which planet is closest to the Sun? Tick one box.",opts:["Earth","Mars","Mercury","Venus"],a:2,why:"Mercury is the closest planet to the Sun."},
+ {q:"These are stages in the life cycle of a star the size of the Sun: main sequence, nebula, white dwarf, red giant, protostar, black dwarf.<br>Write the stages in the correct order.",m:3,lines:2,ms:[["1","nebula → protostar"],["1","→ main sequence → red giant"],["1","→ white dwarf → black dwarf"]]},
+ {q:"Fusion in stars produces new elements. Which elements are produced in a supernova?",m:2,lines:3,ms:[["1","elements heavier than iron"],["1","which are spread through the universe by the explosion"]]},
+ {q:"Which force keeps the Moon in orbit around the Earth?",m:1,lines:1,ms:[["1","gravity (gravitational attraction)"]],tag:"sx2"},
+ {q:"A satellite moves in a circular orbit at a constant speed. What is changing?",m:1,lines:1,ms:[["1","its direction (and so its velocity)"]],tag:"sx2"},
+ {q:"What is the difference between a natural satellite and an artificial satellite? Give an example of each.",m:2,lines:3,ms:[["1","natural satellites are not made by people, e.g. the Moon"],["1","artificial satellites are made and launched by people, e.g. communications or weather satellites"]],tag:"sx2"}]}
+];
+EXAM.full({id:"pf22",group:"f2",num:2,lvl:"Foundation Set 2 · Paper 2",name:"Paper 2 Foundation: forces, waves, magnetism, space",qs,tier:"Foundation",covers:"topics 4.5 to 4.8: forces, waves, magnetism and electromagnetism, and space physics",lor:"09.1",
+ printTitle:"GCSE Physics · Foundation Practice Set 2 · Paper 2F",
+ eyebrow:"AQA GCSE Physics (8463) · Foundation Practice Set 2 · Paper 2 Foundation",title:"Foundation Set 2 · Paper 2",
+ intro:"A second full-length practice paper in the style of AQA GCSE Physics Paper 2 Foundation: 100 marks in 1 hour 45 minutes, covering forces, waves, magnetism and electromagnetism, and space physics, with a 6-mark extended-response question."});
+})();
+
+</script>
+<script>
+/* Foundation Set 3 · Paper 1 (Foundation): topics 4.1–4.4 */
+(()=>{
+const {graph}=EXAM, S=SYM;
+const lor6=(t)=>[["Level 3 (5–6)",t[0]],["Level 2 (3–4)",t[1]],["Level 1 (1–2)",t[2]],["0","No relevant content."]];
+const tbl=(head,rows,cap)=>`<div class="tbl-wrap"><table class="gtab" style="min-width:0;max-width:460px"><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</table></div><p class="muted" style="font-size:.85rem">${cap}</p>`;
+const par=`<figure><svg viewBox="0 0 420 240" role="img" aria-label="Circuit: 6.0 V battery with an ammeter in the main circuit and two lamps, X and Y, connected in parallel"><g fill="none">
+${S.wire([[60,95],[60,40],[180,40]])}${S.wire([[180,40],[267,40]])}${S.wire([[293,40],[360,40],[360,200],[130,200]])}${S.wire([[100,200],[60,200],[60,145]])}${S.wire([[180,40],[180,120],[267,120]])}${S.wire([[293,120],[360,120]])}</g>
+${S.battery(60,120,true,"")}${S.lamp(280,40,false,"X")}${S.lamp(280,120,false,"Y")}${S.meter(115,200,"A")}${S.dot(180,40)}${S.dot(360,120)}
+<text x="22" y="125" font-size="13" text-anchor="middle">6.0 V</text></svg><figcaption class="muted" style="font-size:.85rem">Figure 1</figcaption></figure>`;
+const decay=[];for(let t=0;t<=20;t+=0.5)decay.push([t,800*Math.pow(0.5,t/5)]);
+
+const qs=[
+/* 01 · wind-up radio */
+{tag:"en6",stem:`<p>A wind-up radio has a spring inside. Turning the handle winds up the spring. As the spring unwinds, it turns a generator that powers the radio.</p>`,parts:[
+ {q:"In which store is energy stored when the spring is wound up? Tick one box.",opts:["Chemical","Elastic potential","Nuclear","Thermal"],a:1,why:"A wound-up spring stores energy in its elastic potential store.",tag:"en1"},
+ {q:"The spring transfers 900 J of energy. The radio usefully transfers 270 J as sound.<br>Calculate the efficiency of the radio.",m:2,ans:{a:0.3,unit:"",tol:0.01},ms:[["1","efficiency = 270 ÷ 900"],["1","= 0.30 (30 %)"]]},
+ {q:"Calculate the energy wasted.",m:1,ans:{a:630,unit:"J",tol:0.01},ms:[["1","900 − 270 = 630 J"]]},
+ {q:"Describe how most of the wasted energy is transferred.",m:1,lines:2,ms:[["1","it heats the radio and the surroundings (due to friction in the gears / resistance in the wires)"]]},
+ {q:"Suggest one way of reducing the wasted energy.",m:1,lines:1,ms:[["1","lubricate the moving parts (to reduce friction)"]]},
+ {q:"Write down the equation that links power, energy transferred and time.",m:1,lines:1,ms:[["1","power = energy transferred ÷ time (P = E ÷ t)"]],tag:"en5"},
+ {q:"The 270 J of sound energy is transferred in 90 s.<br>Calculate the useful power output of the radio.",m:2,ans:{a:3,unit:"W",tol:0.01},ms:[["1","P = 270 ÷ 90"],["1","= 3.0 W"]],tag:"en5"},
+ {q:"Give one advantage of a wind-up radio for people living in remote areas.",m:1,lines:2,ms:[["1","no need for batteries or a mains supply"]]}]},
+/* 02 · hot water bottle */
+{tag:"en4",stem:`<p>A hot water bottle contains 1.5 kg of water at 60 °C. The water cools to 20 °C. The specific heat capacity of water is 4200 J/kg °C.</p>`,parts:[
+ {q:"Calculate the energy transferred from the water. Use the Physics Equation Sheet.",m:2,ans:{a:252000,unit:"J",tol:0.01},ms:[["1","ΔE = m c Δθ = 1.5 × 4200 × 40"],["1","= 252 000 J"]]},
+ {q:"The water cools over 3.0 hours.<br>Calculate the mean rate of energy transfer (power).",m:3,ans:{a:23.3,unit:"W",tol:0.02},ms:[["1","t = 3.0 × 3600 = 10 800 s"],["1","P = E ÷ t = 252 000 ÷ 10 800"],["1","= 23 W"]],tag:"en5"},
+ {q:"What is the unit of specific heat capacity? Tick one box.",opts:["J","J/kg","J/kg °C","W/°C"],a:2,why:"Specific heat capacity is measured in joules per kilogram per degree Celsius."},
+ {q:"Suggest why water is a good material to use in a hot water bottle.",m:1,lines:2,ms:[["1","water has a high specific heat capacity, so it stores a lot of energy"]]},
+ {q:"The bottle has a fleece cover. Explain how this keeps the bottle warm for longer.",m:2,lines:3,ms:[["1","the fleece traps air, which has a low thermal conductivity"],["1","so the rate of energy transfer to the surroundings is reduced"]],tag:"en7"}]},
+/* 03 · parallel circuit */
+{tag:"el4",stem:`<p>Figure 1 shows two lamps, X and Y, connected in parallel. The current in lamp X is 0.40 A and the current in lamp Y is 0.20 A.</p>${par}`,parts:[
+ {q:"Calculate the reading on the ammeter.",m:1,ans:{a:0.6,unit:"A",tol:0.01},ms:[["1","0.40 + 0.20 = 0.60 A"]]},
+ {q:"What is the potential difference across lamp Y?",m:1,ans:{a:6,unit:"V",tol:0.01},ms:[["1","6.0 V (the same as the battery for each parallel branch)"]]},
+ {q:"Calculate the resistance of lamp X.",m:2,ans:{a:15,unit:"Ω",tol:0.01},ms:[["1","R = V ÷ I = 6.0 ÷ 0.40"],["1","= 15 Ω"]],tag:"el2"},
+ {q:"Calculate the power of lamp X.",m:2,ans:{a:2.4,unit:"W",tol:0.01},ms:[["1","P = V I = 6.0 × 0.40"],["1","= 2.4 W"]],tag:"el6"},
+ {q:"Calculate the charge that flows through lamp X in 50 s.",m:2,ans:{a:20,unit:"C",tol:0.01},ms:[["1","Q = I t = 0.40 × 50"],["1","= 20 C"]],tag:"el1"},
+ {q:"Explain why lamp Y stays lit if lamp X breaks.",m:2,lines:3,ms:[["1","lamp Y is on a separate branch (loop) connected to the battery"],["1","so there is still a complete circuit through lamp Y"]]},
+ {q:"Which statement about a series circuit is correct? Tick one box.",opts:["The current is the same everywhere","The p.d. is the same across every component","The total resistance is less than the smallest resistance","Each component has its own branch"],a:0,why:"In a series circuit the same current flows through every component."},
+ {q:"A 10 Ω resistor and a 20 Ω resistor are connected in series. Calculate the total resistance.",m:1,ans:{a:30,unit:"Ω",tol:0.01},ms:[["1","10 + 20 = 30 Ω"]]},
+ {q:"How does the total resistance of two resistors in parallel compare with the resistance of each resistor?",m:1,lines:2,ms:[["1","it is less than the smallest individual resistance"]]}]},
+/* 04 · mains and the Grid */
+{tag:"el5",stem:`<p>Appliances are connected to the mains with a plug and three-core cable.</p>`,parts:[
+ {q:"Give the colour of the insulation on the live wire and on the neutral wire.",m:2,lines:2,ms:[["1","live: brown"],["1","neutral: blue"]]},
+ {q:"Which wire is at or close to 0 V? Tick one box.",opts:["Earth only","Live","Neutral","Live and neutral"],a:2,why:"The neutral wire completes the circuit and is at or close to earth potential (0 V)."},
+ {q:"Which wire is connected to the metal case of an appliance? Tick one box.",opts:["Earth","Live","Neutral","None of them"],a:0,why:"The earth wire is connected to the metal case for safety."},
+ {q:"What is the frequency of the UK mains supply?",m:1,lines:1,ms:[["1","50 Hz"]]},
+ {q:"A heater has a power of 2.3 kW and is connected to the 230 V mains.<br>Calculate the current in the heater.",m:2,ans:{a:10,unit:"A",tol:0.01},ms:[["1","I = P ÷ V = 2300 ÷ 230"],["1","= 10 A"]],tag:"el6"},
+ {q:"A hairdryer has a plastic case and no earth wire. Explain why it is still safe to use.",m:2,lines:3,ms:[["1","plastic is an electrical insulator"],["1","so the case cannot become live (it is double insulated)"]]},
+ {q:"What does a step-up transformer do in the National Grid?",m:1,lines:1,ms:[["1","it increases the potential difference (before transmission)"]],tag:"el7"},
+ {q:"Explain why electricity is transmitted at a high potential difference.",m:2,lines:3,ms:[["1","a high p.d. means a lower current for the same power"],["1","so less energy is lost (by heating the cables), making it more efficient"]],tag:"el7"}]},
+/* 05 · states and gases */
+{tag:"pm1",stem:`<p>A balloon filled with helium is left in a sunny window.</p>`,parts:[
+ {q:"What is the name of the change of state from a solid directly to a gas? Tick one box.",opts:["Condensing","Evaporating","Melting","Sublimating"],a:3,why:"Sublimation is the change from a solid straight to a gas."},
+ {q:"Describe the arrangement and movement of the particles in a liquid.",m:2,lines:3,ms:[["1","particles are close together but in no regular pattern (random arrangement)"],["1","they can move around (slide past) each other"]]},
+ {q:"Explain why the pressure of the helium in the balloon increases as it warms up.",m:3,lines:5,ms:[["1","the particles move faster (gain kinetic energy)"],["1","they collide with the walls of the balloon more often"],["1","and with greater force, so the pressure increases"]],tag:"pm4"},
+ {q:"What is the temperature of a gas related to?",m:1,lines:2,ms:[["1","the average kinetic energy of its particles"]],tag:"pm4"},
+ {q:"A gas is squashed into a smaller volume at constant temperature. What happens to its pressure? Tick one box.",opts:["It decreases","It increases","It stays the same","It becomes zero"],a:1,why:"For a fixed mass of gas at constant temperature, pressure increases when volume decreases.",tag:"pm5"},
+ {q:"A block of wood has a volume of 0.25 m³ and a mass of 150 kg.<br>Calculate the density of the wood.",m:2,ans:{a:600,unit:"kg/m³",tol:0.01},ms:[["1","ρ = m ÷ V = 150 ÷ 0.25"],["1","= 600 kg/m³"]]}]},
+/* 06 · RP3 resistance of a wire */
+{tag:"el2",stem:`<p>A student wants to investigate how the length of a wire affects its resistance.</p>`,parts:[
+ {q:"Describe a method the student could use. Your answer should include the equipment used and how the resistance is calculated.",m:6,lines:12,lor:lor6(["A clear, logically ordered method including the circuit, how the length is changed and measured, the readings taken, how resistance is calculated and how the investigation is made fair and accurate.","A method with the circuit and some readings, but with some steps missing or unclear.","Simple statements about measuring a wire or using a circuit."]),ind:["Tape the wire to a metre rule; connect it in series with a battery (or power supply) and an ammeter","Connect a voltmeter across the length of wire being tested, using crocodile clips","Set the length between the clips, e.g. 10 cm, measured with the metre rule","Switch on, record the current and the p.d., then switch off","Repeat for different lengths (e.g. 20, 30, 40, 50 cm); calculate R = V ÷ I for each","Keep the same wire (thickness and material); use a small current and switch off between readings so the wire does not heat up; repeat and take means"]},
+ {q:"For one length, the voltmeter read 2.4 V and the ammeter read 0.30 A.<br>Calculate the resistance.",m:2,ans:{a:8,unit:"Ω",tol:0.01},ms:[["1","R = V ÷ I = 2.4 ÷ 0.30"],["1","= 8.0 Ω"]]},
+ {q:"Why should the student switch off the current between readings?",m:1,lines:2,ms:[["1","to stop the wire heating up (which would change its resistance)"]]}]},
+/* 07 · radioactive decay */
+{tag:"at3",stem:`<p>Uranium-238 (<sup>238</sup><sub>92</sub>U) decays by emitting an alpha particle to form thorium.</p>`,parts:[
+ {q:"Give the mass number and atomic number of the thorium nucleus formed.",m:2,lines:1,ms:[["1","mass number 234"],["1","atomic number 90"]],tag:"at4"},
+ {q:"What is an alpha particle made of? Tick one box.",opts:["An electron","Two protons and two neutrons","A neutron","Electromagnetic radiation"],a:1,why:"An alpha particle is a helium nucleus: two protons and two neutrons."},
+ {q:"What happens to the atomic number of a nucleus when it emits a beta particle?",m:1,lines:1,ms:[["1","it increases by 1"]],tag:"at4"},
+ {q:"Why does emitting gamma radiation not change the mass number or the atomic number?",m:1,lines:2,ms:[["1","gamma rays are electromagnetic waves with no mass and no charge"]],tag:"at4"},
+ {q:"What is meant by saying radioactive decay is random?",m:1,lines:2,ms:[["1","you cannot predict when a particular nucleus will decay"]]},
+ {q:`Figure 2 shows how the activity of a radioactive sample changes with time.${graph({xmax:20,xs:1,xl:5,ymax:800,ys:50,yl:2,xt:"Time in days",yt:"Activity in Bq",lines:[decay],cap:"Figure 2",aria:"Activity falls from 800 becquerels, halving every 5 days"})}Use Figure 2 to determine the half-life of the sample.`,m:2,ans:{a:5,unit:"days",tol:0.05},ms:[["1","reads the time for the activity to fall from 800 Bq to 400 Bq (or 400 to 200 Bq)"],["1","half-life = 5 days"]],tag:"at5"},
+ {q:"What is the activity of the sample after 15 days?",m:1,ans:{a:100,unit:"Bq",tol:0.05},ms:[["1","100 Bq"]],tag:"at5"},
+ {q:"Doctors use radioactive tracers inside the body. Explain why a tracer with a short half-life is chosen.",m:2,lines:3,ms:[["1","the activity falls quickly"],["1","so the patient is exposed to radiation for a shorter time (less risk of damage)"]],tag:"at7"}]},
+/* 08 · fission and fusion */
+{tag:"at8",stem:`<p>Nuclear power stations release energy from the nuclei of atoms.</p>`,parts:[
+ {q:"Which fuel is used in most nuclear power stations? Tick one box.",opts:["Coal","Hydrogen","Uranium","Natural gas"],a:2,why:"Nuclear reactors use uranium (or plutonium)."},
+ {q:"What is meant by nuclear fission?",m:2,lines:3,ms:[["1","a large, unstable nucleus splits into two smaller nuclei"],["1","releasing energy (and two or three neutrons)"]]},
+ {q:"Describe how a chain reaction happens.",m:2,lines:3,ms:[["1","neutrons are released in each fission"],["1","these neutrons are absorbed by other nuclei, causing them to split"]]},
+ {q:"What is meant by nuclear fusion?",m:1,lines:2,ms:[["1","two light nuclei join to form a heavier nucleus (releasing energy)"]]},
+ {q:"Where does nuclear fusion happen naturally?",m:1,lines:1,ms:[["1","in stars (e.g. the Sun)"]]},
+ {q:"Give one advantage and one disadvantage of nuclear power.",m:2,lines:3,ms:[["1","advantage: no carbon dioxide while generating / reliable / lots of energy from a small amount of fuel"],["1","disadvantage: radioactive waste / risk of accidents / expensive to build and decommission"]]}]},
+/* 09 · choosing a power station */
+{tag:"en8",stem:`<p>A town needs a new source of electricity. The council is choosing between a gas-fired power station and a solar farm.</p>${tbl(["","Gas-fired power station","Solar farm"],[["Cost to build","£120 million","£90 million"],["Fuel cost per year","£15 million","£0"],["Carbon dioxide released","high","none while generating"],["Land area needed","small","very large"],["Electricity available","whenever needed","only in daylight"]],"Table 1")}`,parts:[
+ {q:"Evaluate the use of each energy resource for the town. Use information from Table 1 and your own knowledge.",m:6,lines:12,lor:lor6(["Both options are compared, using several points from the table and own knowledge, with advantages and disadvantages of each and a conclusion that is justified.","Advantages or disadvantages of both options are given, with some comparison; a conclusion may not be justified.","Simple statements about one or both options, mostly copied from the table."]),ind:["Gas: reliable, can be switched on quickly to meet demand at any time, small land area","Gas: fuel costs every year, a non-renewable resource that will run out","Gas: releases carbon dioxide, contributing to global warming / climate change","Solar: renewable, no fuel costs and no carbon dioxide while generating, cheaper to build","Solar: no electricity at night and less in cloudy weather, needs a very large area of land","Conclusion, e.g. solar farm for low running costs and emissions, backed up by another source (or storage) for times of high demand or no sunlight"]},
+ {q:"Give one reason why many countries are now generating more electricity from renewable resources.",m:1,lines:2,ms:[["1","to reduce carbon dioxide emissions (global warming) / fossil fuels will run out / to be less dependent on imported fuel"]]}]},
+/* 10 · ski jumper */
+{tag:"en2",stem:`<p>A skier of mass 60 kg starts at rest at the top of a slope. The bottom of the slope is 45 m lower. Gravitational field strength = 9.8 N/kg.</p>`,parts:[
+ {q:"Calculate the gravitational potential energy lost by the skier.",m:2,ans:{a:26460,unit:"J",tol:0.01},ms:[["1","E<sub>p</sub> = m g h = 60 × 9.8 × 45"],["1","= 26 460 J"]]},
+ {q:"Write down the equation that links kinetic energy, mass and speed.",m:1,lines:1,ms:[["1","kinetic energy = 0.5 × mass × (speed)² (E<sub>k</sub> = ½ m v²)"]]},
+ {q:"Assume all the gravitational potential energy is transferred to kinetic energy.<br>Calculate the speed of the skier at the bottom of the slope.",m:3,ans:{a:29.7,unit:"m/s",tol:0.02},ms:[["1","26 460 = 0.5 × 60 × v²"],["1","v² = 882"],["1","v = 30 m/s (29.7)"]]},
+ {q:"The skier’s real speed at the bottom is less than this. Explain why.",m:2,lines:3,ms:[["1","work is done against friction (with the snow) and air resistance"],["1","so some energy is dissipated to the thermal store of the surroundings, not transferred to kinetic energy"]],tag:"en6"},
+ {q:"Suggest one way the skier can reduce air resistance.",m:1,lines:1,ms:[["1","crouch down / wear tight-fitting clothing (to reduce the area or make a more streamlined shape)"]],tag:"en6"},
+ {q:"What is the unit of energy? Tick one box.",opts:["Joule","Newton","Volt","Watt"],a:0,why:"Energy is measured in joules (J)."}]}
+];
+EXAM.full({id:"pf31",group:"f3",num:1,lvl:"Foundation Set 3 · Paper 1",name:"Paper 1 Foundation: energy, electricity, particles, atoms",qs,tier:"Foundation",covers:"topics 4.1 to 4.4: energy, electricity, particle model of matter and atomic structure",lor:"06.1 and 09.1",
+ printTitle:"GCSE Physics · Foundation Practice Set 3 · Paper 1F",
+ eyebrow:"AQA GCSE Physics (8463) · Foundation Practice Set 3 · Paper 1 Foundation",title:"Foundation Set 3 · Paper 1",
+ intro:"A third full-length practice paper in the style of AQA GCSE Physics Paper 1 Foundation: 100 marks in 1 hour 45 minutes, covering energy, electricity, the particle model of matter and atomic structure, with two 6-mark extended-response questions."});
+})();
+
+</script>
+<script>
+/* Foundation Set 3 · Paper 2 (Foundation): topics 4.5–4.8 */
+(()=>{
+const lor6=(t)=>[["Level 3 (5–6)",t[0]],["Level 2 (3–4)",t[1]],["Level 1 (1–2)",t[2]],["0","No relevant content."]];
+
+const qs=[
+/* 01 · forces on a car */
+{tag:"fo3",stem:`<p>A car of mass 1100 kg drives along a straight, level road. The driving force is 2400 N. The air resistance is 1600 N and the friction force is 800 N.</p>`,parts:[
+ {q:"Which of these forces is a contact force? Tick one box.",opts:["Air resistance","Electrostatic force","Gravitational force","Magnetic force"],a:0,why:"Air resistance acts only when the air is in contact with the car.",tag:"fo1"},
+ {q:"Calculate the resultant force on the car and describe the motion of the car.",m:2,lines:3,ms:[["1","resultant force = 2400 − (1600 + 800) = 0 N"],["1","the car moves at a constant speed (in a straight line)"]]},
+ {q:"Calculate the weight of the car. Gravitational field strength = 9.8 N/kg.",m:2,ans:{a:10780,unit:"N",tol:0.01},ms:[["1","W = m g = 1100 × 9.8"],["1","= 10 780 N"]],tag:"fo2"},
+ {q:"Explain the difference between mass and weight.",m:2,lines:3,ms:[["1","mass is the amount of matter in an object, measured in kg (it does not change)"],["1","weight is the force acting on the mass due to gravity, measured in N (it depends on the gravitational field strength)"]],tag:"fo2"},
+ {q:"Which instrument is used to measure weight? Tick one box.",opts:["Ammeter","Newtonmeter","Ruler","Thermometer"],a:1,why:"Weight is a force, measured with a newtonmeter (a calibrated spring balance).",tag:"fo2"},
+ {q:"The gravitational field strength on the Moon is lower than on Earth. Why?",m:1,lines:2,ms:[["1","the Moon has a smaller mass than the Earth"]],tag:"fo2"}]},
+/* 02 · speed */
+{tag:"fo8",stem:`<p>An athlete runs one lap of a 400 m track in 50 s.</p>`,parts:[
+ {q:"Write down the equation that links distance travelled, speed and time.",m:1,lines:1,ms:[["1","distance travelled = speed × time (s = v t)"]]},
+ {q:"Calculate the athlete’s average speed.",m:2,ans:{a:8,unit:"m/s",tol:0.01},ms:[["1","v = 400 ÷ 50"],["1","= 8.0 m/s"]]},
+ {q:"After one lap the athlete is back at the start. What is the athlete’s displacement? Explain your answer.",m:2,lines:3,ms:[["1","zero"],["1","displacement is the distance in a straight line from the start (in a given direction), and the athlete finishes where they started"]],tag:"fo1"},
+ {q:"What is a typical speed for a person cycling? Tick one box.",opts:["0.6 m/s","6 m/s","60 m/s","600 m/s"],a:1,why:"A typical cycling speed is about 6 m/s."},
+ {q:"The athlete runs around a bend at a constant speed. Explain why her velocity changes.",m:1,lines:2,ms:[["1","her direction changes, and velocity includes direction"]]},
+ {q:"Convert 72 km/h into m/s.",m:2,ans:{a:20,unit:"m/s",tol:0.01},ms:[["1","72 000 m ÷ 3600 s"],["1","= 20 m/s"]]}]},
+/* 03 · aircraft and skydiver */
+{tag:"fo9",stem:`<p>An aircraft of mass 50 000 kg accelerates along a runway from rest to 80 m/s in 40 s.</p>`,parts:[
+ {q:"Calculate the acceleration of the aircraft.",m:3,ans:{a:2,unit:"m/s²",tol:0.01},ms:[["1","a = Δv ÷ t"],["1","= 80 ÷ 40"],["1","= 2.0 m/s²"]]},
+ {q:"Calculate the resultant force on the aircraft.",m:2,ans:{a:100000,unit:"N",tol:0.01},ms:[["1","F = m a = 50 000 × 2.0"],["1","= 100 000 N (allow ecf)"]],tag:"fo10"},
+ {q:"What is meant by terminal velocity?",m:1,lines:2,ms:[["1","the constant (maximum) velocity reached by a falling object when the resultant force on it is zero"]]},
+ {q:"What is the acceleration of an object falling freely near the Earth’s surface?",m:1,lines:1,ms:[["1","9.8 m/s²"]]},
+ {q:"A skydiver jumps from a plane. Describe and explain the motion of the skydiver from the moment she jumps until she lands. Your answer should include the parachute opening.",m:6,lines:12,lor:lor6(["A clear, logically ordered description of all stages of the motion, each explained in terms of the forces acting and the resultant force.","A description of most stages, with some explanation in terms of forces.","Simple statements about the skydiver speeding up or slowing down."]),ind:["At first she accelerates because her weight is greater than air resistance","As her speed increases, air resistance increases, so the resultant force and acceleration decrease","When air resistance equals her weight, the resultant force is zero and she falls at a constant (terminal) velocity","When the parachute opens, air resistance increases suddenly and becomes greater than her weight, so she slows down","As she slows down, air resistance decreases until it equals her weight again","She reaches a new, lower terminal velocity, which is safe for landing"]}]},
+/* 04 · moments and pressure */
+{tag:"fo6",stem:`<p>A mechanic uses a spanner to undo a nut.</p>`,parts:[
+ {q:"The mechanic applies a force of 40 N at a perpendicular distance of 0.25 m from the nut.<br>Calculate the moment of the force.",m:2,ans:{a:10,unit:"N m",tol:0.01},ms:[["1","M = F d = 40 × 0.25"],["1","= 10 N m"]]},
+ {q:"Explain why it is easier to undo a tight nut with a longer spanner.",m:1,lines:2,ms:[["1","a larger distance gives a larger moment for the same force (so less force is needed)"]]},
+ {q:"State the principle of moments.",m:1,lines:2,ms:[["1","for an object in balance, the total clockwise moment about a pivot equals the total anticlockwise moment"]]},
+ {q:"On a see-saw, a child of weight 300 N sits 2.0 m from the pivot. Where must a child of weight 400 N sit to balance the see-saw?",m:2,ans:{a:1.5,unit:"m",tol:0.01},ms:[["1","300 × 2.0 = 400 × d"],["1","d = 1.5 m from the pivot (on the other side)"]]},
+ {q:"A person of weight 700 N stands on snow wearing snowshoes. The area of the snowshoes in contact with the snow is 0.035 m².<br>Calculate the pressure on the snow.",m:2,ans:{a:20000,unit:"Pa",tol:0.01},ms:[["1","p = F ÷ A = 700 ÷ 0.035"],["1","= 20 000 Pa"]],tag:"fo7"},
+ {q:"Explain why snowshoes stop the person sinking into the snow.",m:1,lines:2,ms:[["1","they have a large area, so the pressure on the snow is lower"]],tag:"fo7"}]},
+/* 05 · stopping */
+{tag:"fo11",stem:`<p>A driver is travelling at 20 m/s when she sees a hazard. Her reaction time is 0.70 s.</p>`,parts:[
+ {q:"Which of these increases the braking distance of a car? Tick one box.",opts:["A tired driver","Using a mobile phone","Wet roads","Drinking alcohol"],a:2,why:"Wet roads reduce friction and increase braking distance; the others increase thinking distance."},
+ {q:"Calculate the thinking distance.",m:2,ans:{a:14,unit:"m",tol:0.01},ms:[["1","s = v t = 20 × 0.70"],["1","= 14 m"]]},
+ {q:"The braking distance is 30 m. Calculate the stopping distance.",m:1,ans:{a:44,unit:"m",tol:0.01},ms:[["1","14 + 30 = 44 m (allow ecf)"]]},
+ {q:"Explain why drinking alcohol increases the stopping distance.",m:2,lines:3,ms:[["1","alcohol increases the driver’s reaction time"],["1","so the thinking distance (and stopping distance) increases"]]},
+ {q:"Suggest why the speed limit is lower near schools.",m:1,lines:2,ms:[["1","a lower speed gives a shorter stopping distance, so drivers can stop before hitting a child who runs out"]]}]},
+/* 06 · waves on a string */
+{tag:"wa2",stem:`<p>A student uses a vibration generator to make waves on a stretched string.</p>`,parts:[
+ {q:"Describe how the student can measure the wavelength accurately.",m:2,lines:3,ms:[["1","use a metre rule to measure the length of several complete waves"],["1","divide by the number of waves"]]},
+ {q:"Write down the equation that links wave speed, frequency and wavelength.",m:1,lines:1,ms:[["1","wave speed = frequency × wavelength (v = f λ)"]]},
+ {q:"The waves have a wavelength of 0.50 m and a frequency of 40 Hz.<br>Calculate the speed of the waves.",m:2,ans:{a:20,unit:"m/s",tol:0.01},ms:[["1","v = 40 × 0.50"],["1","= 20 m/s"]]},
+ {q:"The frequency is increased. Which quantity stays the same? Tick one box.",opts:["Wave speed","Wavelength","Number of waves on the string","Period"],a:0,why:"The wave speed depends on the string, so it stays the same; the wavelength gets shorter."},
+ {q:"A cork floats on a pond. Ripples pass it. Explain what this shows about waves.",m:2,lines:3,ms:[["1","the cork moves up and down but does not travel along with the wave"],["1","so the wave transfers energy, not the water"]],tag:"wa1"},
+ {q:"What is the unit of frequency?",m:1,lines:1,ms:[["1","hertz (Hz)"]]},
+ {q:"What is meant by the amplitude of a wave?",m:1,lines:2,ms:[["1","the maximum displacement of a point on the wave from its undisturbed position"]],tag:"wa1"}]},
+/* 07 · echoes */
+{tag:"wa4",stem:`<p>A walker shouts towards a cliff and hears an echo 1.5 s later. The speed of sound in air is 340 m/s.</p>`,parts:[
+ {q:"Calculate the distance from the walker to the cliff.",m:3,ans:{a:255,unit:"m",tol:0.01},ms:[["1","distance travelled by the sound = 340 × 1.5 = 510 m"],["1","the sound travels to the cliff and back, so divide by 2"],["1","= 255 m"]]},
+ {q:"What is the range of normal human hearing?",m:1,lines:1,ms:[["1","20 Hz to 20 000 Hz (20 kHz)"]]},
+ {q:"Describe how a sound wave travels through air.",m:2,lines:3,ms:[["1","the air particles vibrate (oscillate) backwards and forwards, parallel to the direction of the wave (longitudinal)"],["1","making compressions and rarefactions"]],tag:"wa1"},
+ {q:"How does the pitch of a sound depend on its frequency?",m:1,lines:1,ms:[["1","the higher the frequency, the higher the pitch"]]}]},
+/* 08 · EM waves */
+{tag:"wa5",stem:`<p>Electromagnetic waves have many uses in hospitals and in the home.</p>`,parts:[
+ {q:"Which type of electromagnetic wave has the highest frequency? Tick one box.",opts:["Gamma rays","Microwaves","Radio waves","Visible light"],a:0,why:"Gamma rays have the highest frequency (and shortest wavelength)."},
+ {q:"At what speed do all electromagnetic waves travel in a vacuum? Tick one box.",opts:["340 m/s","300 000 m/s","300 000 000 m/s","Each type travels at a different speed"],a:2,why:"All electromagnetic waves travel at 3 × 10⁸ m/s in a vacuum."},
+ {q:"Give one use of infrared and one use of visible light.",m:2,lines:2,ms:[["1","infrared: cooking / electric heaters / infrared cameras"],["1","visible light: fibre optic communications / seeing / photography"]],tag:"wa6"},
+ {q:"Explain how X-rays can be used to form an image of a broken bone.",m:2,lines:3,ms:[["1","X-rays pass through soft tissue (flesh)"],["1","but are absorbed by bone, so the bone shows as a shadow on the detector"]],tag:"wa6"},
+ {q:"What is meant by ionising radiation?",m:1,lines:2,ms:[["1","radiation that can remove electrons from atoms (making ions)"]],tag:"wa6"},
+ {q:"A radiographer stands behind a lead screen when taking X-ray images. Explain why.",m:2,lines:3,ms:[["1","lead absorbs X-rays"],["1","the radiographer takes many images each day, so this reduces their dose and the risk of cancer"]],tag:"wa6"},
+ {q:"Which type of electromagnetic wave is used to cook food in a microwave oven?",m:1,lines:1,ms:[["1","microwaves"]],tag:"wa6"}]},
+/* 09 · colour and black bodies */
+{tag:"wa9",stem:`<p>All objects emit and absorb infrared radiation.</p>`,parts:[
+ {q:"Describe how the infrared radiation emitted by an object changes as its temperature increases.",m:2,lines:3,ms:[["1","it emits more radiation (a greater intensity)"],["1","and more of it is at shorter wavelengths"]]},
+ {q:"What is a perfect black body? Tick one box.",opts:["An object that absorbs all the radiation that hits it","An object that reflects all the radiation that hits it","An object that is painted black","An object that emits no radiation"],a:0,why:"A perfect black body absorbs all the radiation incident on it (and is also the best emitter)."},
+ {q:"Explain why grass looks green.",m:2,lines:3,ms:[["1","it reflects green light"],["1","and absorbs the other colours"]],tag:"wa8"},
+ {q:"What is the difference between a transparent object and an opaque object?",m:1,lines:2,ms:[["1","light passes through a transparent object; an opaque object does not let light through"]],tag:"wa8"},
+ {q:"Why does a cup of hot tea cool down?",m:1,lines:2,ms:[["1","it emits more radiation than it absorbs (and loses energy to the cooler surroundings)"]]}]},
+/* 10 · magnetism */
+{tag:"mg1",stem:`<p>A student investigates magnets and electric motors.</p>`,parts:[
+ {q:"Which pair of poles attract each other? Tick one box.",opts:["North and north","North and south","South and south","None of these"],a:1,why:"Unlike poles attract."},
+ {q:"In which direction do magnetic field lines point?",m:1,lines:1,ms:[["1","from the north pole to the south pole"]]},
+ {q:"Which material can be made into a permanent magnet? Tick one box.",opts:["Aluminium","Copper","Plastic","Steel"],a:3,why:"Steel keeps its magnetism, so it is used for permanent magnets."},
+ {q:"A paper clip hangs from a magnet. A second paper clip then sticks to the bottom of the first one. Explain why.",m:2,lines:3,ms:[["1","the first paper clip becomes an induced magnet"],["1","because it is in the magnetic field of the magnet, so it attracts the second clip"]]},
+ {q:"What is the motor effect?",m:1,lines:2,ms:[["1","a wire carrying a current in a magnetic field experiences a force"]],tag:"mg3"},
+ {q:"In Fleming’s left-hand rule, what does the first finger represent?",m:1,lines:1,ms:[["1","the direction of the magnetic field"]],tag:"mg3"},
+ {q:"Give two ways of increasing the force on a wire in a magnetic field.",m:2,lines:2,ms:[["1","increase the current"],["1","use a stronger magnet (increase the magnetic flux density)"]],tag:"mg3"},
+ {q:"Give one everyday use of an electric motor.",m:1,lines:1,ms:[["1","e.g. a fan / washing machine / electric car / drill"]],tag:"mg4"}]},
+/* 11 · space */
+{tag:"sx1",stem:`<p>Our Sun is a main sequence star.</p>`,parts:[
+ {q:"What will a star the size of the Sun become at the end of its life? Tick one box.",opts:["A black hole","A neutron star","A supernova","A white dwarf"],a:3,why:"A star like the Sun becomes a red giant, then a white dwarf."},
+ {q:"Explain why the Sun stays the same size during its main sequence stage.",m:2,lines:3,ms:[["1","the outward force (pressure) from fusion energy"],["1","is balanced by the inward pull of gravity"]]},
+ {q:"Which of these is a dwarf planet? Tick one box.",opts:["Jupiter","Mars","Pluto","The Moon"],a:2,why:"Pluto is classed as a dwarf planet."},
+ {q:"Describe the Big Bang theory.",m:2,lines:3,ms:[["1","the universe began from a very small region that was extremely hot and dense"],["1","and has been expanding ever since"]],tag:"sx3"},
+ {q:"Light from a distant galaxy is red-shifted. What does this tell us about the galaxy?",m:1,lines:2,ms:[["1","it is moving away from us"]],tag:"sx3"},
+ {q:"Give one thing about the universe that scientists do not yet understand.",m:1,lines:1,ms:[["1","dark mass (dark matter) / dark energy"]],tag:"sx3"},
+ {q:"Which force keeps artificial satellites in orbit around the Earth?",m:1,lines:1,ms:[["1","gravity"]],tag:"sx2"}]}
+];
+EXAM.full({id:"pf32",group:"f3",num:2,lvl:"Foundation Set 3 · Paper 2",name:"Paper 2 Foundation: forces, waves, magnetism, space",qs,tier:"Foundation",covers:"topics 4.5 to 4.8: forces, waves, magnetism and electromagnetism, and space physics",lor:"03.5",
+ printTitle:"GCSE Physics · Foundation Practice Set 3 · Paper 2F",
+ eyebrow:"AQA GCSE Physics (8463) · Foundation Practice Set 3 · Paper 2 Foundation",title:"Foundation Set 3 · Paper 2",
+ intro:"A third full-length practice paper in the style of AQA GCSE Physics Paper 2 Foundation: 100 marks in 1 hour 45 minutes, covering forces, waves, magnetism and electromagnetism, and space physics, with a 6-mark extended-response question."});
 })();
 
 </script>
@@ -8487,8 +9064,8 @@ const U0=[
   [["a","4.8.1 Solar system, stars and orbits"],["b","4.8.2 Red-shift"],["r","Review and exam practice"]]),
 {key:"papers",kind:"Full practice papers",title:"Exam papers",sub:"Complete AQA-style Paper 1 and Paper 2, Higher and Foundation",icon:"u-papers",noun:"papers",listLabel:"All exam papers",done,
   desc:"Full-length practice papers in the AQA 8463 format: 100 marks in 1 h 45 min each, with an equation sheet, timer, self-marking mark schemes, a grade guide and printable versions.",
-  intro:"Each set has a Paper 1 (topics 4.1–4.4) and a Paper 2 (topics 4.5–4.8), in Higher tier (Sets 1 and 2) and Foundation tier. A paper is ticked off once every part is marked.",
-  groups:[["papers:s1","Practice Set 1 · Higher tier"],["papers:s2","Practice Set 2 · Higher tier"],["papers:f1","Practice Set F · Foundation tier"]]},
+  intro:"Each set has a Paper 1 (topics 4.1–4.4) and a Paper 2 (topics 4.5–4.8), in Higher tier (Sets 1 to 3) and Foundation tier (Foundation Sets 1 to 3). A paper is ticked off once every part is marked.",
+  groups:[["papers:s1","Practice Set 1 · Higher tier"],["papers:s2","Practice Set 2 · Higher tier"],["papers:s3","Practice Set 3 · Higher tier"],["papers:f1","Foundation Set 1 · Foundation tier"],["papers:f2","Foundation Set 2 · Foundation tier"],["papers:f3","Foundation Set 3 · Foundation tier"]]},
  {key:"lab",kind:"Required practicals",title:"Practical Lab",sub:"AQA GCSE Physics required practicals 1–10",icon:"u-lab",noun:"practicals",listLabel:"All practicals",
   desc:"Virtual versions of the ten AQA required practicals: set up the apparatus, take readings, plot graphs and work out the result.",
   intro:"Choose a practical to open it; use Next to work through them in order.",
