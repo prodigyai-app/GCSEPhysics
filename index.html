@@ -1,5 +1,9 @@
 <!doctype html>
+<html lang="en">
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="numeric-tools.js"></script>
+<script src="physics-equations.js"></script>
 <title>GCSE Physics</title>
 <meta name="description" content="AQA GCSE Physics: interactive lessons, required practicals, topic tests and full practice papers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -850,7 +854,7 @@ body.rp-on{overflow:hidden}
 </style>
 
 <script>
-window.EXAM_BOARD="AQA";window.REPORT_TITLE="GCSE Physics";window.REPORT_SUB="AQA GCSE Physics (8463) · Higher tier";
+window.EXAM_BOARD="AQA";window.REPORT_TITLE="GCSE Physics";window.REPORT_SUB="AQA GCSE Physics (8463) · Foundation and Higher";
 </script>
 <script>
 window.LAB=(()=>{
@@ -3399,14 +3403,12 @@ let restored=false;
 function restore(){ restored=true; document.querySelectorAll("section.lab .qi[data-q]").forEach(el=>{ const qid=el.dataset.q, k=qkey(qid); if(k&&CSAVED[k]) STATE[qid]=CSAVED[k]; }); Object.keys(QZ).forEach(id=>{ if(document.getElementById(id)&&QZ[id].some((_,i)=>STATE[`${id}-${i}`])) score(id); }); }
 
 /* parse a typed number: accepts 1.2e3, 1.2×10^3, 1.2 x 10^-3, commas */
-function num(s){ if(s==null) return NaN; s=String(s).trim().replace(/,/g,"").replace(/−/g,"-").replace(/\s+/g,"");
-  let m=s.match(/^([-+]?\d*\.?\d+)(?:[x×*]10\^?([-+]?\d+))$/i); if(m) return +m[1]*Math.pow(10,+m[2]);
-  return s===""?NaN:Number(s); }
+function num(s){ return NumericTools.parseNumber(s); }
 function grade(qid){ const [id,i]=qid.split(/-(?=\d+$)/), q=QZ[id][+i], fb=$(`#${qid}-fb`); let ok=false, ans;
   if(q.opts){ const sel=$(`input[name="${qid}"]:checked`); if(!sel){ fb.hidden=false; fb.className="qfb nok"; fb.innerHTML="Choose an answer first."; return; } ans=+sel.value; ok=ans===q.a;
     $$(`[data-q="${qid}"] .qo label`).forEach((l,j)=>{ l.classList.toggle("right",ok&&j===q.a); l.classList.toggle("wrong",!ok&&j===ans); }); }
-  else { const v=num($(`#${qid}-in`).value); if(isNaN(v)){ fb.hidden=false; fb.className="qfb nok"; fb.innerHTML="Type a number (you can write 3.2e-3 for 3.2 × 10⁻³)."; return; }
-    const tol=q.tol??0.02; ok=Math.abs(v-q.a)<=Math.abs(q.a)*tol+(q.abs||0)+1e-12; }
+  else { const v=num($(`#${qid}-in`).value); if(isNaN(v)){ fb.hidden=false; fb.className="qfb nok"; fb.innerHTML="Enter a number or expression, such as 1/2, sqrt(2) or 3.2e-3."; return; }
+    const tol=q.tol??0.02; ok=NumericTools.matches(v,q.a,tol,q.abs||0); }
   fb.hidden=false; fb.className="qfb "+(ok?"ok":"nok"); fb.innerHTML=(ok?"<b>Correct.</b> ":"<b>Not quite.</b> ")+(ok?(q.why||""):(q.hint?q.hint+" ":"")+"Try again, or show the answer.");
   STATE[qid]=ok||STATE[qid]==="shown"?(ok?"ok":"shown"):"no"; persist(qid); score(id); }
 function reveal(qid){ const [id,i]=qid.split(/-(?=\d+$)/), q=QZ[id][+i], fb=$(`#${qid}-fb`);
@@ -3525,7 +3527,7 @@ Object.entries({
 window.EXAM=(()=>{
 const {$,$$,store}=LAB, {num}=LEARN;
 const KEY="learn-motion-exam", saved=store.get(KEY)||{};
-let st; const save=()=>{ clearTimeout(st); st=setTimeout(()=>store.set(KEY,saved),250); };
+const save=()=>store.set(KEY,saved);
 const CARDS={}, PARTS={};
 const kind=`<span class="kind k-exam">Exam</span>`;
 const L="abcdefghij";
@@ -3547,7 +3549,7 @@ function partHTML(p,qi){ const s=saved[p.id]||{};
   let body="";
   if(p.opts){ body=`<div class="xmcq">${p.opts.map((o,j)=>`<label class="${s.done?(j===p.a?"right":(j===s.c?"wrong":"")):""}"><input type="radio" name="${p.id}" value="${j}" ${s.c===j?"checked":""}><span><b>${"ABCD"[j]}</b> ${o}</span></label>`).join("")}</div><div class="xbtns"><button class="btn primary" data-xmcq="${p.id}">Check</button></div>`; }
   else { body=`<textarea class="xans" data-xw="${p.id}" rows="${p.lines||3}" aria-label="Your answer to part ${p.l}" placeholder="Write your answer and working here">${(s.w||"").replace(/</g,"&lt;")}</textarea>`;
-    if(p.ans) body+=`<div class="xfinal"><span>Final answer</span><input type="text" inputmode="decimal" data-xin="${p.id}" value="${s.f??""}" aria-label="Final answer" autocomplete="off"><span class="u">${p.ans.unit||""}</span><button class="btn" data-xchk="${p.id}">Check answer</button></div>`;
+    if(p.ans) body+=`<div class="xfinal"><span>Final answer</span><input type="text" inputmode="decimal" data-xin="${p.id}" value="${String(s.f??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}" aria-label="Final answer" autocomplete="off"><span class="u">${p.ans.unit||""}</span><button class="btn" data-xchk="${p.id}">Check answer</button></div>`;
     body+=`<div class="xbtns"><button class="btn primary" data-xms="${p.id}">${s.done?(s.hid?"Show mark scheme":"Hide mark scheme"):"Mark it: show mark scheme"}</button></div>`; }
   let ms="";
   if(p.lor){ ms=`<div class="xmsh"><span>Levels of response mark scheme</span><span>Award: <select data-xlor="${p.id}">${Array.from({length:p.m+1},(_,i)=>`<option value="${i}" ${+s.v===i?"selected":""}>${i}</option>`).join("")}</select> / ${p.m}</span></div>${p.lor.map(([lv,d])=>`<div class="lv"><b>${lv}</b><span>${d}</span></div>`).join("")}${p.ind?`<div class="note"><b>Indicative scientific content</b><ul>${p.ind.map(x=>`<li>${x}</li>`).join("")}</ul></div>`:""}`; }
@@ -3580,14 +3582,17 @@ document.addEventListener("click",e=>{ const t=e.target.closest("[data-xms],[dat
   if(t.dataset.xmcq){ const sel=$(`input[name="${id}"]:checked`); const fb=$(`#${id}-fb`); if(!sel){ fb.hidden=false; fb.className="xfb nok"; fb.textContent="Choose an answer first."; return; } s.c=+sel.value; s.done=true; save(); rerender(p.card); return; }
   if(t.dataset.xms){ const ms=$(`#${id}-ms`); if(!s.done){ s.done=true; s.hid=false; if(!s.t) s.t=[]; } else s.hid=!s.hid; ms.hidden=!!s.hid; t.textContent=s.hid?"Show mark scheme":"Hide mark scheme"; save(); refresh(p.card); return; }
   if(t.dataset.xchk){ const raw=$(`[data-xin="${id}"]`).value, v=num(raw), fb=$(`#${id}-fb`); fb.hidden=false; s.f=raw;
-    if(isNaN(v)){ fb.className="xfb nok"; fb.textContent="Type a number (you can write 3.2e-3 for 3.2 × 10⁻³)."; save(); return; }
-    const a=p.ans, tol=a.tol??0.03, x=a.abs?Math.abs(v):v, ok=Math.abs(x-a.a)<=Math.abs(a.a)*tol+1e-12;
-    if(ok){ fb.className="xfb ok"; fb.innerHTML=`<b>Final answer correct.</b> In ${window.EXAM_BOARD||"OCR"} mark schemes a correct final answer normally earns full marks, so all ${p.m} are ticked. Check your working against the scheme anyway.`; s.done=true; s.hid=false; s.t=p.ms.map(()=>true); save(); const ms=$(`#${id}-ms`); ms.hidden=false; $$(`[data-xt="${id}"]`).forEach(c=>c.checked=true); $(`[data-xms="${id}"]`).textContent="Hide mark scheme"; refresh(p.card); }
+    if(isNaN(v)){ fb.className="xfb nok"; fb.textContent="Enter a number or expression, such as 1/2, sqrt(2) or 3.2e-3."; save(); return; }
+    const a=p.ans, tol=a.tol??0.03, x=a.abs?Math.abs(v):v, ok=NumericTools.matches(x,a.a,tol,a.atol??0);
+    if(ok){ const single=p.m===1&&p.ms.length===1;
+      fb.className="xfb ok"; fb.innerHTML=single?"<b>Final answer correct.</b> One mark awarded.":"<b>Final numerical value correct.</b> Open the mark scheme and tick the marks earned for working, accuracy and any explanation. A matching number alone does not establish all the required method marks.";
+      s.done=true; s.hid=false; s.t=s.t||[]; if(single) s.t=[true]; save();
+      const ms=$(`#${id}-ms`); ms.hidden=false; $$(`[data-xt="${id}"]`).forEach((c,j)=>c.checked=!!s.t[j]); $(`[data-xms="${id}"]`).textContent="Hide mark scheme"; refresh(p.card); }
     else { fb.className="xfb nok"; fb.innerHTML=`<b>That doesn't match.</b> ${a.hint||"Check your working, units and significant figures."} You can still pick up method marks: open the mark scheme to see which you earned.`; save(); } } });
 document.addEventListener("change",e=>{ const t=e.target;
   if(t.dataset.xt){ const id=t.dataset.xt, s=saved[id]=saved[id]||{}; s.t=s.t||[]; s.t[+t.dataset.j]=t.checked; save(); refresh(PARTS[id].card); }
   else if(t.dataset.xlor){ const id=t.dataset.xlor, s=saved[id]=saved[id]||{}; s.v=+t.value; s.done=true; save(); refresh(PARTS[id].card); } });
-document.addEventListener("input",e=>{ const t=e.target; if(t.dataset.xw){ const s=saved[t.dataset.xw]=saved[t.dataset.xw]||{}; s.w=t.value; save(); } });
+document.addEventListener("input",e=>{ const t=e.target, id=t.dataset.xw||t.dataset.xin; if(id){ const s=saved[id]=saved[id]||{}; if(t.dataset.xin) s.f=t.value; else s.w=t.value; save(); } });
 
 return {graph,attach,build,refresh,allParts,pscore,PARTS,CARDS};
 })();
@@ -3712,7 +3717,7 @@ Object.entries({
 /* GCSE helpers: higher-tier badges, equation tags, store bars */
 window.G=(()=>{
 const HT='<span class="ht">Higher</span>';
-const R='<span class="eqk rc">Recall</span>', S='<span class="eqk">Equation sheet</span>';
+const R='<span class="eqk">Equation sheet</span>', S='<span class="eqk">Equation sheet</span>';
 const ht=html=>`<div class="htbox">${HT} ${html}</div>`;
 const eb=(spec,n)=>`AQA GCSE Physics · ${spec}${n?` · Lesson ${n}`:""}`;
 /* horizontal bar chart in SVG: items [[label,value,cls]] ; returns markup */
@@ -4217,7 +4222,7 @@ const {W}=LAB, {B,lesson}=LEARN, {v,fr}=W, {eb,R,S}=G;
 lesson({id:"en9",group:"r",num:9,lvl:"Review",name:"Energy: review and exam practice",icon:"rev",
  eyebrow:eb("4.1 Energy · Review"),title:"Energy: review and exam practice",
  intro:"A one-page summary of energy stores, the energy equations, power, efficiency and energy resources, followed by mixed questions with full explanations.",
- outcomes:[["Recall the equations of topic 4.1 and know which are on the equation sheet"],["Apply them to unfamiliar exam-style problems"]],
+ outcomes:[["Select and apply the equations of topic 4.1 using the current equation sheet"],["Apply them to unfamiliar exam-style problems"]],
  blocks:[
   B.text("Summary: equations",B.eq(`${v("E","k")} = ½ ${v("m")}${v("v")}² ${R}`,`${v("E","p")} = ${v("m")}${v("g")}${v("h")} ${R}`,`${v("E","e")} = ½ ${v("k")}${v("e")}² ${S}`,`Δ${v("E")} = ${v("m")}${v("c")}Δθ ${S}`,`${v("P")} = ${fr(v("E"),v("t"))} = ${fr(v("W"),v("t"))} ${R}`,`efficiency = ${fr("useful output","total input")} ${R}`)+`<ul><li>Stores: kinetic, gravitational potential, elastic potential, thermal, chemical, magnetic, electrostatic, nuclear. Pathways: mechanically, electrically, by heating, by radiation.</li><li>Closed system: total energy constant. Energy is dissipated, usually by heating the surroundings.</li><li>Reduce waste: lubrication, thermal insulation, streamlining. Higher thermal conductivity ⇒ faster conduction; thicker walls ⇒ slower.</li><li>Renewable: bio-fuel, wind, hydro, geothermal, tidal, wave, solar. Non-renewable: coal, oil, gas, nuclear.</li></ul>`),
   B.check([
@@ -4772,7 +4777,7 @@ const {W}=LAB, {B,lesson}=LEARN, {v,fr}=W, {eb,R}=G;
 lesson({id:"el9",group:"r",num:9,lvl:"Review",name:"Electricity: review and exam practice",icon:"rev",
  eyebrow:eb("4.2 Electricity · Review"),title:"Electricity: review and exam practice",
  intro:"A one-page summary of current, resistance, circuits, mains electricity, power and static electricity, followed by mixed questions with full explanations.",
- outcomes:[["Recall the equations of topic 4.2"],["Apply them to unfamiliar exam-style problems"]],
+ outcomes:[["Select and apply the equations of topic 4.2"],["Apply them to unfamiliar exam-style problems"]],
  blocks:[
   B.text("Summary: equations",B.eq(`${v("Q")} = ${v("I")}${v("t")} ${R}`,`${v("V")} = ${v("I")}${v("R")} ${R}`,`${v("P")} = ${v("V")}${v("I")} = ${v("I")}²${v("R")} ${R}`,`${v("E")} = ${v("P")}${v("t")} = ${v("Q")}${v("V")} ${R}`)+`<ul><li>Series: same current; p.d.s add; R = R₁ + R₂. Parallel: same p.d.; currents add; total R less than the smallest.</li><li>Ohmic resistor: straight-line I–V. Lamp: R rises with temperature. Diode: one way only. Thermistor: R falls as T rises. LDR: R falls as light rises.</li><li>Mains: a.c., 50 Hz, 230 V. Live brown (230 V), neutral blue (≈ 0 V), earth green/yellow (0 V).</li><li>National Grid: step-up for transmission (low current, low I²R loss), step-down for homes.</li><li>Rubbing insulators transfers electrons. Like charges repel. Field lines go from + to −; force weakens with distance.</li></ul>`),
   B.check([
@@ -5153,7 +5158,7 @@ const {W}=LAB, {B,lesson}=LEARN, {v,fr}=W, {eb,R,S}=G;
 lesson({id:"pm6",group:"r",num:6,lvl:"Review",name:"Particle model: review and exam practice",icon:"rev",
  eyebrow:eb("4.3 Particle model of matter · Review"),title:"Particle model: review and exam practice",
  intro:"A one-page summary of density, changes of state, internal energy, latent heat and gas pressure, followed by mixed questions with full explanations.",
- outcomes:[["Recall the equations of topic 4.3"],["Apply them to unfamiliar exam-style problems"]],
+ outcomes:[["Select and apply the equations of topic 4.3"],["Apply them to unfamiliar exam-style problems"]],
  blocks:[
   B.text("Summary",B.eq(`ρ = ${fr(v("m"),v("V"))} ${R}`,`Δ${v("E")} = ${v("m")}${v("c")}Δθ ${S}`,`${v("E")} = ${v("m")}${v("L")} ${S}`,`${v("p")}${v("V")} = constant ${S}`)+`<ul><li>Solids and liquids are dense (particles close); gases are not (particles far apart). Mass is conserved in changes of state.</li><li>Internal energy = total kinetic + potential energy of the particles. Heating changes temperature or state, not both.</li><li>Latent heat of fusion (solid ↔ liquid), of vaporisation (liquid ↔ gas). Temperature is constant during a change of state.</li><li>Gas pressure comes from molecular collisions with the walls, at right angles. At constant volume, hotter ⇒ higher pressure. At constant temperature, pV = constant.</li><li>(HT) Doing work on a gas raises its internal energy and temperature.</li></ul>`),
   B.check([
@@ -6374,7 +6379,7 @@ const {W}=LAB, {B,lesson}=LEARN, {v,fr}=W, {eb,R,S,HT}=G;
 lesson({id:"fo13",group:"r",num:13,lvl:"Review",name:"Forces: review and exam practice",icon:"rev",
  eyebrow:eb("4.5 Forces · Review"),title:"Forces: review and exam practice",
  intro:"A one-page summary of forces, work, elasticity, moments, pressure, motion, Newton’s laws, stopping distances and momentum, followed by mixed questions with full explanations.",
- outcomes:[["Recall the equations of topic 4.5 and know which are on the equation sheet"],["Apply them to unfamiliar exam-style problems"]],
+ outcomes:[["Select and apply the equations of topic 4.5 using the current equation sheet"],["Apply them to unfamiliar exam-style problems"]],
  blocks:[
   B.text("Summary: equations",B.eq(`${v("W")} = ${v("m")}${v("g")} ${R}`,`${v("W")} = ${v("F")}${v("s")} ${R}`,`${v("F")} = ${v("k")}${v("e")} ${R}`,`${v("M")} = ${v("F")}${v("d")} ${R}`,`${v("p")} = ${fr(v("F"),v("A"))} ${R}`,`${v("p")} = ${v("h")}ρ${v("g")} ${S} ${HT}`,`${v("s")} = ${v("v")}${v("t")} ${R}`,`${v("a")} = ${fr("Δ"+v("v"),v("t"))} ${R}`,`${v("v")}² − ${v("u")}² = 2${v("a")}${v("s")} ${S}`,`${v("F")} = ${v("m")}${v("a")} ${R}`,`${v("p")} = ${v("m")}${v("v")} ${R} ${HT}`,`${v("F")} = ${fr(v("m")+"Δ"+v("v"),"Δ"+v("t"))} ${S} ${HT}`)+`<ul><li>Scalars vs vectors; contact vs non-contact forces; resultant force. (HT) Resolve forces; scale drawings; equilibrium.</li><li>Elastic vs inelastic deformation; limit of proportionality.</li><li>Balanced object: clockwise moments = anticlockwise moments. Levers and gears multiply force.</li><li>Upthrust from pressure difference; atmospheric pressure falls with height.</li><li>d–t gradient = speed; v–t gradient = acceleration; (HT) area = distance. Terminal velocity.</li><li>Newton’s laws. Stopping distance = thinking + braking. (HT) Conservation of momentum; safety features increase impact time.</li></ul>`),
   B.check([
@@ -6973,7 +6978,7 @@ const {W}=LAB, {B,lesson}=LEARN, {v,fr}=W, {eb,R,S,HT}=G;
 lesson({id:"wa10",group:"r",num:10,lvl:"Review",name:"Waves: review and exam practice",icon:"rev",
  eyebrow:eb("4.6 Waves · Review"),title:"Waves: review and exam practice",
  intro:"A one-page summary of wave properties, reflection and refraction, sound, the electromagnetic spectrum, lenses, colour and black body radiation, followed by mixed questions with full explanations.",
- outcomes:[["Recall the equations and key facts of topic 4.6"],["Apply them to unfamiliar exam-style problems"]],
+ outcomes:[["Select and apply the equations and key facts of topic 4.6"],["Apply them to unfamiliar exam-style problems"]],
  blocks:[
   B.text("Summary",B.eq(`${v("v")} = ${v("f")}λ ${R}`,`${v("T")} = ${fr("1",v("f"))} ${S}`,`magnification = ${fr("image height","object height")} ${R}`)+`<ul><li>Transverse (EM, water ripples) vs longitudinal (sound: compressions and rarefactions). Waves transfer energy, not matter.</li><li>Angle of incidence = angle of reflection. Refraction: change of speed ⇒ change of direction; slower ⇒ towards the normal. (HT) Wave fronts.</li><li>${HT} Hearing 20 Hz–20 kHz. Ultrasound echoes: distance = speed × time ÷ 2. P-waves longitudinal (solids and liquids); S-waves transverse (solids only).</li><li>EM spectrum: radio, micro, IR, visible, UV, X, gamma; all 3.0 × 10⁸ m/s in a vacuum. UV: skin ageing and cancer; X and gamma: ionising.</li><li>Convex lenses: real or virtual images; concave: always virtual.</li><li>Opaque objects reflect their colour; filters transmit their colour.</li><li>All bodies emit and absorb IR; hotter ⇒ more and shorter wavelength. Perfect black body absorbs all radiation.</li></ul>`),
   B.check([
@@ -7815,20 +7820,8 @@ const {$,$$,store}=LAB, {lesson,done,mark}=LEARN, {build,refresh,allParts,pscore
 const pad=n=>String(n).padStart(2,"0");
 const UT={energy:"4.1 Energy",elec:"4.2 Electricity",particle:"4.3 Particle model of matter",atomic:"4.4 Atomic structure",forces:"4.5 Forces",waves:"4.6 Waves",magnet:"4.7 Magnetism and electromagnetism",space:"4.8 Space physics"};
 const UORD=Object.keys(UT);
-/* Physics Equation Sheet (the equations given in the exam; all others must be recalled) */
-const EQS=[
- ["(final velocity)² − (initial velocity)² = 2 × acceleration × distance","v² − u² = 2 a s"],
- ["force = change in momentum ÷ time taken","F = mΔv ÷ Δt",1],
- ["elastic potential energy = 0.5 × spring constant × (extension)²","E<sub>e</sub> = ½ k e²"],
- ["change in thermal energy = mass × specific heat capacity × temperature change","ΔE = m c Δθ"],
- ["period = 1 ÷ frequency","T = 1 ÷ f"],
- ["magnification = image height ÷ object height",""],
- ["force on a conductor (at right angles to a magnetic field) carrying a current = magnetic flux density × current × length","F = B I l",1],
- ["thermal energy for a change of state = mass × specific latent heat","E = m L"],
- ["potential difference across primary coil ÷ potential difference across secondary coil = number of turns in primary coil ÷ number of turns in secondary coil","V<sub>p</sub> ÷ V<sub>s</sub> = n<sub>p</sub> ÷ n<sub>s</sub>"],
- ["potential difference across primary coil × current in primary coil = potential difference across secondary coil × current in secondary coil","V<sub>p</sub> I<sub>p</sub> = V<sub>s</sub> I<sub>s</sub>"],
- ["for gases: pressure × volume = constant","p V = constant"],
- ["pressure due to a column of liquid = height of column × density of liquid × gravitational field strength","p = h ρ g",1]];
+/* Current AQA equation-sheet summary; the official insert is linked below. */
+const EQS=PhysicsEquations.rows;
 const eqsF=F=>EQS.filter(e=>!(F&&e[2]));
 const eqsheet=F=>`<div class="fp-eq">${eqsF(F).map((e,i)=>`<div><b>${i+1}</b><span>${e[0]}${e[2]?` <span class="ht">Higher</span>`:""}</span><code>${e[1]}</code></div>`).join("")}</div>`;
 /* rough guide only: proportions loosely based on recent AQA physics boundaries for each tier */
@@ -7849,7 +7842,7 @@ EXAM.full=function(cfg){
 <div class="fp-front"><div><h4>Materials</h4><ul><li>a ruler</li><li>a scientific calculator</li><li>the Physics Equation Sheet (below)</li></ul></div>
 <div><h4>Instructions</h4><ul><li>Answer all questions in the spaces provided.</li><li>Show all your working in calculations: you can gain marks for a correct method even if your final answer is wrong.</li><li>Give units with your answers where you are asked to.</li></ul></div>
 <div><h4>Information</h4><ul><li>The marks for each question are shown in brackets.</li><li>Covers ${cfg.covers}.</li><li>${/ and |,/.test(cfg.lor)?`Questions ${cfg.lor} are extended-response questions`:`Question ${cfg.lor} is an extended-response question`}, where the quality and organisation of your answer is assessed.</li><li>Take g = 9.8 N/kg where needed.</li>${F?"<li>This is a Foundation-tier paper: grades 1 to 5 are available.</li>":""}</ul></div></div></div>
-<div class="lcard"><details><summary>Physics Equation Sheet</summary><p class="muted" style="margin-top:8px;font-size:.92rem">These are the equations you are given in the exam. All other equations (for example <i>E</i><sub>k</sub> = ½ m v², <i>V</i> = <i>I R</i>, <i>F</i> = <i>m a</i>, <i>v</i> = <i>f</i> λ) must be recalled.</p>${eqsheet(F)}</details></div>`]});
+<div class="lcard"><details><summary>Physics Equation Sheet</summary><p class="muted" style="margin-top:8px;font-size:.92rem">AQA provides the full equation sheet in 2026 and 2027. Use this summary to select and apply the equations; Higher-only entries are omitted on Foundation papers. <a href="${PhysicsEquations.officialURL}" target="_blank" rel="noopener">Open the official AQA June 2027 equation sheet</a>.</p>${eqsheet(F)}</details></div>`]});
  sec.classList.add("fp");
  const lsec=sec.querySelector(".lsec");
  lsec.appendChild(build(cid,{title:"Answer all questions",intro:"Write your answers and working in the boxes. When you have finished (or the timer runs out), open each mark scheme and tick the marks you earned. Multiple-choice parts mark themselves.",tag:id,qs:cfg.qs,qfmt:pad}));
@@ -8581,11 +8574,7 @@ const qs=[
  {q:"When the brakes are applied, the brakes get hot. Explain why.",m:2,lines:3,ms:[["1","work is done by the friction force between the brakes and the wheel"],["1","energy is transferred from the car’s kinetic store to the thermal store of the brakes"]],tag:"fo4"},
  {q:"Why do car tyres need a good depth of tread?",m:2,lines:3,ms:[["1","the tread lets water escape from under the tyre on wet roads"],["1","so the tyre keeps its grip (friction) and the car can brake safely"]]}]},
 /* 05 · momentum */
-{tag:"fo12",stem:`<p>A trolley of mass 2.0 kg moves along a track at 1.5 m/s.</p>`,parts:[
- {q:"Write down the equation that links momentum, mass and velocity.",m:1,lines:1,ms:[["1","momentum = mass × velocity (p = m v)"]]},
- {q:"Calculate the momentum of the trolley.",m:2,ans:{a:3,unit:"kg m/s",tol:0.01},ms:[["1","p = 2.0 × 1.5"],["1","= 3.0 kg m/s"]]},
- {q:"The trolley hits a stationary trolley of mass 1.0 kg. They stick together and move off.<br>Calculate their velocity after the collision.",m:3,ans:{a:1,unit:"m/s",tol:0.01},ms:[["1","momentum before = momentum after = 3.0 kg m/s"],["1","3.0 = (2.0 + 1.0) × v"],["1","v = 1.0 m/s"]]},
- {q:"State the law of conservation of momentum.",m:1,lines:2,ms:[["1","in a closed system, the total momentum before an event is equal to the total momentum after the event"]]}]},
+{"tag":"fo10","stem":"<p>A trolley has a mass of 2.0 kg. It accelerates from rest to 1.5 m/s in 3.0 s.</p>","parts":[{"q":"Write down the equation linking resultant force, mass and acceleration.","m":1,"ms":[["1","F = ma"]]},{"q":"Calculate the acceleration of the trolley.","m":2,"ms":[["1","a = (1.5 − 0)/3.0"],["1","= 0.50 m/s²"]],"ans":{"a":0.5,"unit":"m/s²","tol":0.01}},{"q":"Friction opposes the motion with a force of 0.40 N. Calculate the driving force needed for this acceleration.","m":3,"ms":[["1","resultant force = 2.0 × 0.50 = 1.0 N"],["1","driving force − friction = resultant force"],["1","driving force = 1.0 + 0.40 = 1.4 N"]],"ans":{"a":1.4,"unit":"N","tol":0.01}},{"q":"The trolley then moves at constant velocity. What is the resultant force?","m":1,"ms":[["1","zero / 0 N"]]}]},
 /* 06 · waves */
 {tag:"wa2",stem:`<p>A student uses a ripple tank to make water waves.</p>`,parts:[
  {q:"Which of these is a transverse wave? Tick one box.",opts:["A sound wave","An ultrasound wave","A P-wave","A ripple on water"],a:3,why:"Ripples on water are transverse; sound, ultrasound and P-waves are longitudinal.",tag:"wa1"},
@@ -8595,7 +8584,7 @@ const qs=[
  {q:"Write down the equation that links frequency, wavelength and wave speed.",m:1,lines:1,ms:[["1","wave speed = frequency × wavelength (v = f λ)"]]},
  {q:"The waves have a frequency of 2.0 Hz and a wavelength of 0.15 m.<br>Calculate the speed of the waves.",m:2,ans:{a:0.3,unit:"m/s",tol:0.01},ms:[["1","v = 2.0 × 0.15"],["1","= 0.30 m/s"]]},
  {q:"Calculate the period of the waves. Use the Physics Equation Sheet.",m:2,ans:{a:0.5,unit:"s",tol:0.01},ms:[["1","T = 1 ÷ f = 1 ÷ 2.0"],["1","= 0.50 s"]]},
- {q:"Sound cannot travel through space. Explain why.",m:2,lines:3,ms:[["1","sound is a vibration of particles (needs a medium)"],["1","space is a vacuum, with no particles to vibrate"]],tag:"wa4"}]},
+ {q:"Sound cannot travel through space. Explain why.",m:2,lines:3,ms:[["1","sound is a vibration of particles (needs a medium)"],["1","space is a vacuum, with no particles to vibrate"]],tag:"wa1"}]},
 /* 07 · EM spectrum and colour */
 {tag:"wa5",stem:`<p>Radio waves, microwaves, infrared, visible light, ultraviolet, X-rays and gamma rays are all electromagnetic waves.</p>`,parts:[
  {q:"Which type of electromagnetic wave has the longest wavelength? Tick one box.",opts:["Gamma rays","Radio waves","Visible light","X-rays"],a:1,why:"Radio waves have the longest wavelength."},
@@ -8616,8 +8605,8 @@ const qs=[
  {q:"Describe the difference between a permanent magnet and an induced magnet.",m:2,lines:3,ms:[["1","a permanent magnet produces its own magnetic field"],["1","an induced magnet only becomes a magnet when it is placed in a magnetic field (and loses most of its magnetism when removed)"]]},
  {q:"A compass needle points north when it is far from any magnet. Explain why.",m:1,lines:2,ms:[["1","it lines up with the Earth’s magnetic field (the Earth’s core is magnetic)"]]},
  {q:"Give two uses of electromagnets.",m:2,lines:2,ms:[["1","scrapyard crane / electric bell / relay / door lock"],["1","a second correct use (e.g. loudspeaker, motor, MRI scanner)"]],tag:"mg2"},
- {q:"The direction of the current in an electric motor is reversed. What happens to the motor?",m:1,lines:1,ms:[["1","it spins (rotates) in the opposite direction"]],tag:"mg4"},
- {q:"Give one way of making an electric motor spin faster.",m:1,lines:1,ms:[["1","increase the current / use a stronger magnet / more turns on the coil"]],tag:"mg4"}]},
+ {"q":"The current through a solenoid is reversed. What happens to its magnetic poles?","m":1,"ms":[["1","the north and south poles swap"]],"tag":"mg2"},
+ {"q":"Give one way of increasing the magnetic field strength of a solenoid.","m":1,"ms":[["1","increase the current / add more turns per unit length / add an iron core"]],"tag":"mg2"}]},
 /* 10 · space */
 {tag:"sx1",stem:`<p>Our solar system is one of many in the Milky Way galaxy.</p>`,parts:[
  {q:"Which of these orbits a planet? Tick one box.",opts:["A comet","A moon","A star","The Sun"],a:1,why:"Moons are natural satellites that orbit planets."},
@@ -8763,7 +8752,7 @@ const qs=[
  {q:"Describe the motion of the bus between 10 s and 30 s.",m:1,lines:1,ms:[["1","constant velocity (12 m/s)"]]},
  {q:"Calculate the distance travelled between 10 s and 30 s.",m:2,ans:{a:240,unit:"m",tol:0.01},ms:[["1","distance = speed × time = 12 × 20"],["1","= 240 m"]]},
  {q:"Calculate the deceleration of the bus between 30 s and 36 s.",m:2,ans:{a:2,unit:"m/s²",tol:0.02},ms:[["1","12 ÷ 6"],["1","= 2.0 m/s²"]]},
- {q:"How could the total distance travelled be found from Figure 1?",m:1,lines:2,ms:[["1","find the area under the graph"]]},
+ {"q":"Which feature of a velocity–time graph gives the acceleration?","m":1,"ms":[["1","the gradient / change in velocity divided by change in time"]]},
  {q:"What is a typical speed of sound in air? Tick one box.",opts:["3 m/s","33 m/s","330 m/s","3300 m/s"],a:2,why:"Sound travels at about 330 m/s in air.",tag:"fo8"}]},
 /* 04 · Newton's laws */
 {tag:"fo10",stem:`<p>A student investigates how force affects the acceleration of a trolley.</p>`,parts:[
@@ -8783,12 +8772,7 @@ const qs=[
  {q:"What is a typical reaction time? Tick one box.",opts:["0.002 s to 0.009 s","0.2 s to 0.9 s","2 s to 9 s","20 s to 90 s"],a:1,why:"Typical reaction times are between about 0.2 s and 0.9 s."},
  {q:"Give one danger of braking very hard.",m:1,lines:1,ms:[["1","the brakes may overheat / the car may skid / large forces on passengers"]]}]},
 /* 06 · momentum */
-{tag:"fo12",stem:`<p>A car of mass 1200 kg travels at 15 m/s.</p>`,parts:[
- {q:"Calculate the momentum of the car.",m:2,ans:{a:18000,unit:"kg m/s",tol:0.01},ms:[["1","p = m v = 1200 × 15"],["1","= 18 000 kg m/s"]]},
- {q:"What is the unit of momentum? Tick one box.",opts:["kg m/s","N","J","m/s²"],a:0,why:"Momentum = mass × velocity, so its unit is kg m/s."},
- {q:"A snooker ball of mass 0.17 kg moving at 2.0 m/s hits an identical stationary ball. The first ball stops.<br>Calculate the velocity of the second ball.",m:2,ans:{a:2,unit:"m/s",tol:0.01},ms:[["1","momentum before = 0.17 × 2.0 = 0.34 kg m/s = momentum after"],["1","v = 0.34 ÷ 0.17 = 2.0 m/s"]]},
- {q:"Explain why momentum is a vector quantity.",m:1,lines:2,ms:[["1","it has both size and direction"]]},
- {q:"State what is meant by conservation of momentum.",m:1,lines:2,ms:[["1","in a closed system, the total momentum before an event equals the total momentum after"]]}]},
+{"tag":"en2","stem":"<p>A car of mass 1200 kg is raised through a vertical height of 2.0 m in 12 s. Take g = 9.8 N/kg.</p>","parts":[{"q":"Calculate the gain in gravitational potential energy.","m":2,"ms":[["1","Eₚ = 1200 × 9.8 × 2.0"],["1","= 23 520 J"]],"ans":{"a":23520,"unit":"J","tol":0.01}},{"q":"What is the unit of energy? Tick one box.","opts":["Joule","Watt","Newton","Kilogram"],"a":0,"why":"Energy is measured in joules."},{"q":"Calculate the useful power needed to raise the car.","m":2,"ms":[["1","P = 23 520/12"],["1","= 1960 W"]],"ans":{"a":1960,"unit":"W","tol":0.01}},{"q":"Is energy a scalar or a vector quantity?","m":1,"ms":[["1","scalar"]],"tag":"fo1"},{"q":"State what happens to total energy in a closed system.","m":1,"ms":[["1","it remains constant / energy is conserved"]],"tag":"en6"}]},
 /* 07 · waves and sound */
 {tag:"wa1",stem:`<p>Waves transfer energy from one place to another.</p>`,parts:[
  {q:"Describe the direction of the oscillations in a transverse wave.",m:1,lines:2,ms:[["1","perpendicular (at right angles) to the direction of energy transfer"]]},
@@ -8815,7 +8799,7 @@ const qs=[
  {q:"Describe the shape of the magnetic field around a straight wire carrying a current.",m:1,lines:2,ms:[["1","concentric circles around the wire"]]},
  {q:"Why is an iron core used in an electromagnet?",m:1,lines:2,ms:[["1","it makes the magnetic field (much) stronger"]]},
  {q:"Explain why an electromagnet, rather than a permanent magnet, is used on a crane in a scrapyard.",m:2,lines:3,ms:[["1","an electromagnet can be switched off"],["1","so it can drop the scrap metal where it is wanted"]]},
- {q:"In Fleming’s left-hand rule, what does the thumb represent?",m:1,lines:1,ms:[["1","the direction of the force (motion)"]],tag:"mg3"},
+ {"q":"Describe the magnetic field inside a long solenoid.","m":1,"ms":[["1","strong and uniform / parallel equally spaced field lines"]],"tag":"mg2"},
  {q:"Explain why a compass needle points north.",m:1,lines:2,ms:[["1","it lines up with the Earth’s magnetic field"]],tag:"mg1"}]},
 /* 10 · space */
 {tag:"sx1",stem:`<p>The Sun is a star in the Milky Way galaxy.</p>`,parts:[
@@ -8990,11 +8974,7 @@ const qs=[
  {q:"What is the unit of frequency?",m:1,lines:1,ms:[["1","hertz (Hz)"]]},
  {q:"What is meant by the amplitude of a wave?",m:1,lines:2,ms:[["1","the maximum displacement of a point on the wave from its undisturbed position"]],tag:"wa1"}]},
 /* 07 · echoes */
-{tag:"wa4",stem:`<p>A walker shouts towards a cliff and hears an echo 1.5 s later. The speed of sound in air is 340 m/s.</p>`,parts:[
- {q:"Calculate the distance from the walker to the cliff.",m:3,ans:{a:255,unit:"m",tol:0.01},ms:[["1","distance travelled by the sound = 340 × 1.5 = 510 m"],["1","the sound travels to the cliff and back, so divide by 2"],["1","= 255 m"]]},
- {q:"What is the range of normal human hearing?",m:1,lines:1,ms:[["1","20 Hz to 20 000 Hz (20 kHz)"]]},
- {q:"Describe how a sound wave travels through air.",m:2,lines:3,ms:[["1","the air particles vibrate (oscillate) backwards and forwards, parallel to the direction of the wave (longitudinal)"],["1","making compressions and rarefactions"]],tag:"wa1"},
- {q:"How does the pitch of a sound depend on its frequency?",m:1,lines:1,ms:[["1","the higher the frequency, the higher the pitch"]]}]},
+{"tag":"wa2","stem":"<p>A sound wave travels 0.51 km through air in 1.5 s.</p>","parts":[{"q":"Calculate the speed of the sound wave in m/s.","m":3,"ms":[["1","0.51 km = 510 m"],["1","speed = distance/time = 510/1.5"],["1","= 340 m/s"]],"ans":{"a":340,"unit":"m/s","tol":0.01}},{"q":"What is the unit of frequency?","m":1,"ms":[["1","hertz / Hz"]]},{"q":"Describe how a sound wave travels through air.","m":2,"ms":[["1","particles vibrate backwards and forwards parallel to the direction of travel"],["1","producing compressions and rarefactions"]],"tag":"wa1"},{"q":"How does the pitch of a sound depend on its frequency?","m":1,"ms":[["1","higher frequency gives higher pitch"]],"tag":"wa1"}]},
 /* 08 · EM waves */
 {tag:"wa5",stem:`<p>Electromagnetic waves have many uses in hospitals and in the home.</p>`,parts:[
  {q:"Which type of electromagnetic wave has the highest frequency? Tick one box.",opts:["Gamma rays","Microwaves","Radio waves","Visible light"],a:0,why:"Gamma rays have the highest frequency (and shortest wavelength)."},
@@ -9012,15 +8992,15 @@ const qs=[
  {q:"What is the difference between a transparent object and an opaque object?",m:1,lines:2,ms:[["1","light passes through a transparent object; an opaque object does not let light through"]],tag:"wa8"},
  {q:"Why does a cup of hot tea cool down?",m:1,lines:2,ms:[["1","it emits more radiation than it absorbs (and loses energy to the cooler surroundings)"]]}]},
 /* 10 · magnetism */
-{tag:"mg1",stem:`<p>A student investigates magnets and electric motors.</p>`,parts:[
+{tag:"mg1",stem:`<p>A student investigates magnets and electromagnets.</p>`,parts:[
  {q:"Which pair of poles attract each other? Tick one box.",opts:["North and north","North and south","South and south","None of these"],a:1,why:"Unlike poles attract."},
  {q:"In which direction do magnetic field lines point?",m:1,lines:1,ms:[["1","from the north pole to the south pole"]]},
  {q:"Which material can be made into a permanent magnet? Tick one box.",opts:["Aluminium","Copper","Plastic","Steel"],a:3,why:"Steel keeps its magnetism, so it is used for permanent magnets."},
  {q:"A paper clip hangs from a magnet. A second paper clip then sticks to the bottom of the first one. Explain why.",m:2,lines:3,ms:[["1","the first paper clip becomes an induced magnet"],["1","because it is in the magnetic field of the magnet, so it attracts the second clip"]]},
- {q:"What is the motor effect?",m:1,lines:2,ms:[["1","a wire carrying a current in a magnetic field experiences a force"]],tag:"mg3"},
- {q:"In Fleming’s left-hand rule, what does the first finger represent?",m:1,lines:1,ms:[["1","the direction of the magnetic field"]],tag:"mg3"},
- {q:"Give two ways of increasing the force on a wire in a magnetic field.",m:2,lines:2,ms:[["1","increase the current"],["1","use a stronger magnet (increase the magnetic flux density)"]],tag:"mg3"},
- {q:"Give one everyday use of an electric motor.",m:1,lines:1,ms:[["1","e.g. a fan / washing machine / electric car / drill"]],tag:"mg4"}]},
+ {"q":"What happens to the magnetic field of an electromagnet when its current is switched off?","m":1,"ms":[["1","the field disappears / becomes much weaker"]],"tag":"mg2"},
+ {"q":"Why is an iron core placed inside a solenoid?","m":1,"ms":[["1","it increases the magnetic field strength"]],"tag":"mg2"},
+ {"q":"Give two ways of increasing the strength of an electromagnet.","m":2,"ms":[["1","increase the current"],["1","increase the number of turns per unit length / add an iron core"]],"tag":"mg2"},
+ {"q":"Give one use of an electromagnet.","m":1,"ms":[["1","relay / electric bell / lifting scrap iron / suitable other example"]],"tag":"mg2"}]},
 /* 11 · space */
 {tag:"sx1",stem:`<p>Our Sun is a main sequence star.</p>`,parts:[
  {q:"What will a star the size of the Sun become at the end of its life? Tick one box.",opts:["A black hole","A neutron star","A supernova","A white dwarf"],a:3,why:"A star like the Sun becomes a red giant, then a white dwarf."},
