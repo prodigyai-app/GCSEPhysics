@@ -3,6 +3,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="numeric-tools.js"></script>
+<script>window.ALP_SITE="gcse-physics";</script>
+<script src="lab-notebook.js"></script>
 <script src="physics-equations.js"></script>
 <title>GCSE Physics</title>
 <meta name="description" content="AQA GCSE Physics: interactive lessons, required practicals, topic tests and full practice papers.">
@@ -1189,6 +1191,7 @@ ${cfg.mid||""}
 ${cfg.work!==false?`<div class="card"><div class="card-h"><h3>${cfg.workTitle||"Worked calculation"}</h3><span class="muted" style="font-size:.85rem">${cfg.workSub||"Uses your own readings"}</span></div><div id="${cfg.id}-work"><p class="empty">${cfg.workEmpty||"Take some readings and the calculation will appear here."}</p></div></div>`:""}
 ${info(cfg.info)}`;
   $(".wrap").appendChild(s);
+  LabNotebook.attach(cfg,s);
   return s;
 }
 
@@ -1309,6 +1312,7 @@ const MAT={al:{name:"Aluminium",c:900,grad:"g-alu",top:"#d9dfe3",sw:"linear-grad
            fe:{name:"Steel",c:450,grad:"g-steelBlk",top:"#9ba4ab",sw:"linear-gradient(90deg,#3f464c,#a8b1b8,#353b40)"}};
 const RH=2.90, RI=0.18, M=1.00;
 const st={mat:"al",V:12,lag:true,oil:true,dur:600,speed:30,stage:"ready",t:0,Tb:20,Th:20,Tth:20,Ta:20,next:0,data:[],runs:store.get("pl-shc-runs")||[],vr:0,ir:0};
+LabNotebook.observe("shc",st);
 st.Ta=20+Math.round(Math.random()*10)/10; st.Tb=st.Th=st.Tth=st.Ta;
 
 /* ---------- scene ---------- */
@@ -1528,6 +1532,7 @@ const WIRES={c30:{name:"Constantan 0.32 mm",r:0.0612,col:"#c9b39a"},c26:{name:"C
 const RVALS=[10,22,47], BANDS={10:["#7b3f00","#111","#111"],22:["#c62828","#c62828","#111"],47:["#e6b800","#7b2fa8","#111"]};
 const actual={}; RVALS.forEach(v=>actual[v]=v*(1+(Math.random()-.5)*.04));
 const st={mode:"wire",wire:"c30",L:50,closed:false,r1:10,r2:22,arr:"series",dataA:[],dataB:[],E:1.55,rint:0.35};
+LabNotebook.observe("rs",st);
 const X0=70, PX=7.6, WY=386;
 const xOf=L=>X0+L*PX;
 
@@ -1759,6 +1764,7 @@ const {$,C,W,fmt,fx,gauss,linfit,plot,rows,build,register,setPsu,clamp}=LAB;
 const COMP={res:{name:"Fixed resistor"},lamp:{name:"Filament lamp"},diode:{name:"Diode"}};
 const RVAL=10*(1+(Math.random()-.5)*.02), RP=100, RINT=0.3;
 const st={comp:"lamp",Vs:3,rev:false,on:true,data:{res:[],lamp:[],diode:[]}};
+LabNotebook.observe("iv",st);
 
 /* models: return {V across component, I} for supply Vs (signed) */
 function lampI(V){ return Math.sign(V)*0.1024*Math.pow(Math.abs(V),0.6); }
@@ -1959,6 +1965,7 @@ Object.values(IRR).forEach(r=>{ r.Vt=r.V+(Math.random()-.5)*.6; r.m=r.Vt*r.rho; 
 const CYL_MASS=92.37+Math.random()*2;
 
 const st={mode:"reg",reg:"al",irr:"peb",liq:"oil",vol:50,done:{},meas:{},bal:0,tare:0,data:[],busy:false};
+LabNotebook.observe("de",st);
 
 /* ---------- scene ---------- */
 const magCx=812, magCy=112;
@@ -2202,6 +2209,7 @@ const {$,C,W,fmt,fx,gauss,linfit,plot,rows,build,register,clamp}=LAB;
 const SPR={A:{name:"Spring A (soft)",k:24,lop:4.9,el:5.4},B:{name:"Spring B (stiff)",k:42,lop:7.0,el:7.5}};
 const G=9.8, MAXM=800;
 const st={spr:"A",m:0,fmax:0,R0:10+Math.round((Math.random()-.5)*6)/10,y:0,y0:0,target:0,t:0,data:[]};
+LabNotebook.observe("sp",st);
 const RY0=60, PX=5.6, SX=360, RULEX=284;
 const yOf=cm=>RY0+cm*PX;
 
@@ -2368,6 +2376,7 @@ register({id:"sp",group:"gcse",num:6,name:"Force and extension",icon:"spring",on
 const {$,C,W,fmt,fx,gauss,linfit,plot,rows,build,register,clamp}=LAB;
 const G=9.8, MT=0.500, SLOT=0.020, CARD=0.050, K=500, X0=120, G1=0.30, G2=0.80, DROP=0.90, SEND=1.20;
 const st={mode:"force",n:3,extra:0,comp:true,speed:1,run:null,dataF:[],dataM:[]};
+LabNotebook.observe("ac",st);
 const gx=s=>X0+s*K;
 
 function sys(){
@@ -2565,6 +2574,7 @@ register({id:"ac",group:"gcse",num:7,name:"Acceleration",icon:"accel",onShow:dra
 (()=>{
 const {$,W,fmt,fx,gauss,linfit,plot,rows,build,register,clamp}=LAB;
 const st={mode:"ripple",f:10,depth:8,frozen:false,mA:200,mB:400,fs:40,mass:200,data:{ripple:[],string:[]},t:0};
+LabNotebook.observe("wv",st);
 const VW=900, VH=500;
 /* ripple tank: interior 80..680 px = 30 cm */
 const TX0=80, TX1=680, TY0=70, TY1=390, PXCM=20, DIP=100;
@@ -2787,6 +2797,7 @@ const {$,W,fmt,fx,gauss,plot,rows,build,register,clamp}=LAB;
 const MATS={glass:{name:"Glass block",n:1.52,tint:"rgba(190,235,225,.22)",edge:"rgba(220,255,245,.7)"},perspex:{name:"Perspex block",n:1.49,tint:"rgba(215,230,240,.16)",edge:"rgba(240,248,255,.75)"},water:{name:"Water in a clear box",n:1.33,tint:"rgba(120,180,230,.22)",edge:"rgba(220,240,255,.6)"}};
 const SURF={mirror:"Plane mirror",card:"White card",foil:"Crinkled foil"};
 const st={mode:"refr",mat:"glass",surf:"mirror",i:40,prot:true,lift:false,data:[]};
+LabNotebook.observe("lt",st);
 const VW=900, VH=500, BX0=300, BX1=600, BY0=205, BY1=355, PX=400, MY=260, MPX=450;
 const R=d=>d*Math.PI/180, D=r=>r*180/Math.PI;
 const foilSeed=Array.from({length:7},()=>(Math.random()-.5)*70);
@@ -2981,6 +2992,7 @@ const {$,C,W,fmt,fx,gauss,bars,rows,build,register,clamp,setThermo}=LAB;
 const SURF=[{k:"mb",name:"Matt black",e:.95},{k:"sb",name:"Shiny black",e:.80},{k:"mw",name:"Matt white",e:.88},{k:"ss",name:"Shiny silver",e:.07}];
 const TA=20.5;
 const st={face:0,phi:40,d:10,T:TA,filled:false,t:0,data:[],busy:false};
+LabNotebook.observe("ir",st);
 const CX=470, CY=300, H=62, EL=0.42;
 
 const stage=`<svg id="ir-svg" viewBox="0 0 900 470" role="img" aria-label="A Leslie cube filled with hot water, with an infrared detector connected to a meter pointing at one face">
@@ -3162,6 +3174,7 @@ const INS=(()=>{
   };
   const st={mat:"bubble",layers:1,lid:true,interval:60,duration:600,speed:30,stage:"ready",
     Tw:TA,Tcol:TA,vol:0,t:0,T0:0,k:0,next:0,readings:[],runs:store.get("pl-ins-runs")||[],anim:null,lidY:-70,lidA:0};
+  LabNotebook.observe("insulation",st);
 
   // build controls
   $("#ins-mats").innerHTML=Object.entries(MAT).map(([k,m])=>`<label class="opt"><input type="radio" name="ins-mat" value="${k}" ${k===st.mat?"checked":""}><span><i class="sw" style="background:${m.sw}"></i>${m.name}</span></label>`).join("");
@@ -9403,6 +9416,7 @@ function stats(d){ d=d||{}; const done=new Set((d["learn-motion-done"]||[]).filt
   Object.entries(cs).forEach(([k,v])=>{ const lid=k.split(":")[0]; const u=unitOf(lid); if(v==="ok"){ R.cok++; if(u) R.unit[u.key].cok++; } });
   Object.values(EXAM.PARTS).forEach(p=>{ const v=partScore(p,ex[p.id]); if(v==null) return; const lid=partLesson[p.id], u=unitOf(lid);
     if(PIDS.has(lid)){ const pp=R.paper[lid]=R.paper[lid]||{g:0,m:0}; pp.g+=v; pp.m+=p.m; } else { R.em+=v; R.emk+=p.m; if(u){ R.unit[u.key].em+=v; R.unit[u.key].emk+=p.m; } } });
+  R.labs=LabNotebook.summary(d);
   return R; }
 const pc=(a,b)=>b?Math.round(a/b*100):null;
 const pcell=(a,b)=>{ const p=pc(a,b); return p==null?`<span class="muted">–</span>`:`<span class="td-pc ${p<50?"lo":p<70?"mid":"hi"}">${p} %</span>`; };
@@ -9426,8 +9440,10 @@ function renderDash(){ const c=classes.find(x=>x.id===cur);
 function detail(id){ sel=id; const s=students.find(x=>x.id===id), p=prog[id]||{st:stats({})}, S=p.st;
   const ur=units.map(u=>{ const x=S.unit[u.key]; return `<tr><td>${esc(x.title)}</td><td class="num">${x.done} / ${x.n}</td><td class="num">${pcell(x.cok,x.cq)}</td><td class="num">${pcell(x.em,x.emk)}</td></tr>`; }).join("");
   const pr=PAPERS.map(x=>{ const q=S.paper[x.id]; return `<tr><td>${esc(x.set?x.set+" · ":"")}${esc(x.name)}</td><td class="num">${q?`${q.g} / ${q.m}`:"–"}</td><td class="num">${q?pcell(q.g,q.m):"<span class=\"muted\">not started</span>"}</td></tr>`; }).join("");
+  const labrows=LAB.list.filter(p=>!p.unit&&!p.group?.startsWith("papers:")).map(p=>{const q=S.labs.reviews.find(r=>r.id===p.id);return `<tr><td>${esc(p.name)}</td><td>${q?.complete?"Complete":q?"Started":"Not started"}</td><td>${q?.score==null?"–":q.score+" / 2"}</td><td>${esc(q?.reflection||"")}</td></tr>`;}).join("");
   const opts=classes.filter(c=>c.id!==cur).map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("");
   $("#td-d").innerHTML=`<div class="lcard"><h3>${esc(s.display_name||s.username)} <span class="muted" style="font-weight:400;font-size:.95rem">${esc(s.username)} · ${S.days} day${S.days===1?"":"s"} active · ${hm(S.time)}</span></h3>
+   <h4>Practical reviews · ${S.labs.complete} complete</h4><div class="tbl-wrap"><table class="tbl-mini"><thead><tr><th>Practical</th><th>Review</th><th>Skills check</th><th>Conclusion and evaluation (student written)</th></tr></thead><tbody>${labrows}</tbody></table></div>
    <div class="td-two"><div class="tbl-wrap"><table class="tbl-mini"><tr><th>Unit</th><th>Lessons</th><th>Checks</th><th>Exam Qs</th></tr>${ur}</table></div><div class="tbl-wrap"><table class="tbl-mini"><tr><th>Full paper</th><th>Marks</th><th>Score</th></tr>${pr}</table></div></div>
    <div class="td-actions" style="margin-top:14px"><button class="btn" id="td-pw">Reset password</button>${opts?`<select id="td-mv" aria-label="Move to class"><option value="">Move to class…</option>${opts}</select>`:""}<button class="btn" id="td-out">Remove from class</button><button class="btn" id="td-rm">Delete account</button></div></div>`;
   $("#td-d").scrollIntoView({behavior:"smooth",block:"nearest"}); }
