@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="en">
 <meta charset="utf-8">
+<script src="math-notation.js?v=20261022-keyboard"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="numeric-tools.js"></script>
+<script src="numeric-tools.js?v=20261022-keyboard"></script>
 <script>window.ALP_SITE="gcse-physics";</script>
 <script src="lab-notebook.js"></script>
 <script src="physics-equations.js"></script>
@@ -7904,6 +7905,7 @@ EXAM.full=function(cfg){
  const msg=t=>{ $(`#${P}-msg`).textContent=t; };
  async function download(html,kind){ const name=`${cfg.printTitle.replace(/[^\w ·-]/g,"").replace(/ · /g," - ")} ${kind}.html`;
   const doc=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${cfg.printTitle} ${kind}</title><style>${PZCSS}</style><link rel="stylesheet" href="assignments.css">
+<link rel="stylesheet" href="maths-keyboard.css?v=20261022-keyboard">
 </head><body>${html}</body></html>`;
   const blob=new Blob([doc],{type:"text/html"}); let dl=null; try{ dl=window.claude&&window.claude.use?await window.claude.use("downloads"):null; }catch(_){ dl=null; }
   try{ if(dl){ await dl.save({filename:name,data:blob}); msg("Saved. Open the file in a browser and print it, or save it as a PDF."); }
@@ -9473,6 +9475,7 @@ window.ALP_ACCOUNTS={sb,merge,stats,get user(){ return user; },get profile(){ re
 })();
 </script>
 
+<script src="maths-keyboard.js?v=20261022-keyboard"></script>
 <script src="course-links.js"></script>
 <script src="assessment-core.js"></script>
 <script src="assignments.js"></script>
