@@ -4778,7 +4778,7 @@ function draw(){ const s=$("#el8"); if(!s) return; const cx=170, cy=160, r=40, q
   const px=cx+st.d*sc+20, F=1/(st.d*st.d), dir=q*st.tq>0?1:-1, L=Math.min(200,70*F*4);
   const LL=dir<0?Math.min(L,px-cx-r-22):L; g+=arr(px,cy,px+dir*LL,cy,"acc","",4);
   g+=`<circle cx="${px}" cy="${cy}" r="11" class="${st.tq>0?"fbd":"fdat"}"/><text x="${px}" y="${cy+5}" text-anchor="middle" font-size="15" font-weight="700" style="fill:#fff">${st.tq>0?"+":"−"}</text>`;
-  g+=`<text x="${px}" y="${cy+40}" text-anchor="middle" font-size="12" class="tm">${fx(st.d,1)} units away</text>`;
+  g+=`<text x="${px}" y="${cy+40}" text-anchor="middle" font-size="12" class="tm" style="paint-order:stroke;stroke:#0b1020;stroke-width:5px;stroke-linejoin:round">${fx(st.d,1)} units away</text>`;
   s.innerHTML=g; $("#el8-dl").textContent=`${fx(st.d,1)} units`; $("#el8-F").textContent=`${fx(F/1,2)} × (force at 1 unit)`; $("#el8-dir").textContent=dir>0?"away from the sphere (repulsion)":"towards the sphere (attraction)"; }
 $("#el8-q").addEventListener("change",e=>{ st.q=+e.target.value; draw(); });
 $("#el8-t").addEventListener("change",e=>{ st.tq=+e.target.value; draw(); });
@@ -5411,9 +5411,9 @@ lesson({id:"at3",group:"b",num:3,lvl:"4.4.2 · Lesson 3",name:"Radioactive decay
  ],onShow:()=>draw()});
 
 function draw(){ const s=$("#at3"); if(!s) return; const [n,R0,col]=SRC[st.s], px=40+st.d*24+80, r=rate();
-  let g=`<rect x="20" y="90" width="50" height="50" rx="6" class="fsunk ink" stroke-width="2"/><text x="45" y="160" text-anchor="middle" font-size="11" class="tm">source</text><circle cx="62" cy="115" r="6" style="fill:${col}"/>`;
-  if(st.ab!=="none"){ const w=st.ab==="paper"?3:st.ab==="al"?8:30, c=st.ab==="paper"?"#f2efe6":st.ab==="al"?"#b7c0c8":"#6c7480"; g+=`<rect x="${(px-50-w/2).toFixed(0)}" y="60" width="${w}" height="110" style="fill:${c}" class="ink" stroke-width="1"/><text x="${px-50}" y="190" text-anchor="middle" font-size="11" class="tm">${ABS[st.ab][0]}</text>`; }
-  g+=`<rect x="${px}" y="100" width="90" height="30" rx="6" class="fpan ink" stroke-width="2"/><text x="${px+45}" y="120" text-anchor="middle" font-size="11" class="tm">G–M tube</text><path d="M${px+90} 115 H${px+130}" class="ink" stroke-width="2"/><rect x="${px+130}" y="85" width="150" height="60" rx="6" class="fpan ink" stroke-width="2"/><text x="${px+205}" y="122" text-anchor="middle" font-size="20" font-weight="700" class="tm">${Math.round(st.counts)}</text><text x="${px+205}" y="160" text-anchor="middle" font-size="11" class="tmut">counts</text>`;
+  let g=(LAB.C&&LAB.C.room?LAB.C.room(180,230):"")+`<rect x="14" y="96" width="44" height="38" rx="3" fill="#5d646a"/><rect x="18" y="100" width="40" height="30" rx="2" fill="#7b838a"/><rect x="56" y="108" width="10" height="14" rx="2" fill="#b9a24a"/><circle cx="66" cy="115" r="4" style="fill:${col}"/><path d="M36 134V178M20 178h32" stroke="#4a5258" stroke-width="5"/><text x="36" y="200" text-anchor="middle" font-size="11" fill="#c9d2d5">sealed source</text><text x="36" y="214" text-anchor="middle" font-size="10" fill="#c9d2d5">(handle with tongs)</text>`;
+  if(st.ab!=="none"){ const w=st.ab==="paper"?3:st.ab==="al"?8:30, c=st.ab==="paper"?"#f2efe6":st.ab==="al"?"#b7c0c8":"#6c7480"; g+=`<rect x="${(px-50-w/2).toFixed(0)}" y="64" width="${w}" height="104" style="fill:${c}" stroke="#555" stroke-width=".8"/><rect x="${(px-50-14)}" y="168" width="28" height="12" rx="2" fill="#4a5258"/><text x="${px-50}" y="200" text-anchor="middle" font-size="11" fill="#c9d2d5">${ABS[st.ab][0]}</text>`; }
+  g+=`<rect x="${px}" y="104" width="96" height="22" rx="4" fill="url(#g-alu)" stroke="#6b7076"/><rect x="${px-4}" y="106" width="6" height="18" rx="1" fill="#c9a24a"/><rect x="${px+96}" y="108" width="14" height="14" rx="2" fill="#2b3034"/><path d="M${px+48} 126V178M${px+30} 178h36" stroke="#4a5258" stroke-width="5"/><text x="${px+48}" y="200" text-anchor="middle" font-size="11" fill="#c9d2d5">G–M tube (thin window faces source)</text><path d="M${px+110} 115C${px+130} 115 ${px+130} 130 ${px+150} 130" fill="none" stroke="#1b1f22" stroke-width="4"/><rect x="${px+150}" y="84" width="150" height="92" rx="8" fill="url(#g-plastic)" stroke="#a7aba4"/><rect x="${px+162}" y="96" width="126" height="38" rx="3" fill="#15191b"/><rect x="${px+165}" y="99" width="120" height="32" rx="2" fill="url(#g-lcd)"/><text x="${px+278}" y="124" text-anchor="end" font-family="'JetBrains Mono',ui-monospace,monospace" font-size="20" font-weight="700" style="fill:#1f2a18">${Math.round(st.counts)}</text><text x="${px+225}" y="152" text-anchor="middle" font-size="9" style="fill:#4b5258">COUNTER</text><circle cx="${px+178}" cy="160" r="5" fill="#c4531a"/><circle cx="${px+272}" cy="160" r="5" fill="#5a6168"/>`;
   const f=ABS[st.ab][1][st.s]*(st.s==="a"&&st.d>5?0:1);
   for(let i=0;i<10;i++){ const life=((st.ph*0.9+i*0.1)%1); let x=70+life*(px-70), y=115+(i%5-2)*6*life; const stopAbs=st.ab!=="none"&&ABS[st.ab][1][st.s]<0.5&&x>px-60&&(i/10)>=ABS[st.ab][1][st.s], stopAir=st.s==="a"&&x>70+5*24+30; if(stopAbs||stopAir) continue; g+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${st.s==="a"?4.5:st.s==="b"?3:2.5}" style="fill:${col}"/>`; }
   s.innerHTML=g;
@@ -5469,9 +5469,9 @@ function draw(){ const box=$("#at4-eq"); if(!box) return; const [name,Z,A]=NUC[s
   const s=$("#at4"), N=A-Z, N2=A2-Z2, x=z=>300+(z-Z)*60, y=n=>110-(n-N)*30;
   let g=""; for(let z=Z-3;z<=Z+2;z++) for(let n=N-3;n<=N+2;n++){ if(x(z)<20||x(z)>580||y(n)<10||y(n)>210) continue; g+=`<rect x="${x(z)-26}" y="${y(n)-13}" width="52" height="26" rx="3" class="fpan ln"/>`; }
   g+=`<text x="300" y="232" text-anchor="middle" font-size="11" class="tmut">proton number Z →</text><text x="12" y="110" font-size="11" class="tmut" transform="rotate(-90 12 110)" text-anchor="middle">neutron number N →</text>`;
+  if(st.t!=="g") g+=`<path d="M${x(Z)} ${y(N)} L${x(Z2)} ${y(N2)}" class="ink" stroke-width="1.5" stroke-dasharray="4 3"/>`;
   g+=`<rect x="${x(Z)-26}" y="${y(N)-13}" width="52" height="26" rx="3" class="fdat"/><text x="${x(Z)}" y="${y(N)+5}" text-anchor="middle" font-size="12" style="fill:#fff">${S}-${A}</text>`;
-  if(st.t!=="g"){ g+=`<rect x="${x(Z2)-26}" y="${y(N2)-13}" width="52" height="26" rx="3" class="facc"/><text x="${x(Z2)}" y="${y(N2)+5}" text-anchor="middle" font-size="12" style="fill:var(--on-accent)">${S2}-${A2}</text>`;
-    g+=`<path d="M${x(Z)} ${y(N)} L${x(Z2)} ${y(N2)}" class="ink" stroke-width="1.5" stroke-dasharray="4 3"/>`; }
+  if(st.t!=="g"){ g+=`<rect x="${x(Z2)-26}" y="${y(N2)-13}" width="52" height="26" rx="3" class="facc"/><text x="${x(Z2)}" y="${y(N2)+5}" text-anchor="middle" font-size="12" style="fill:var(--on-accent)">${S2}-${A2}</text>`; }
   s.innerHTML=g;
   $("#at4-dA").textContent=dA?`${dA}`:"0"; $("#at4-dZ").textContent=dZ>0?`+${dZ}`:`${dZ}`;
   const usual={a:"alpha",b:"beta",g:"gamma"}[NUC[st.i][3]];
@@ -6318,7 +6318,7 @@ function draw(){ const s=$("#fo11"); if(!s) return; const [n,a]=ROAD[st.r], th=s
   if(st.r==="wet") g+=`<rect x="0" y="70" width="900" height="70" fill="#5a9be6" opacity=".2"/>`; if(st.r==="icy") g+=`<rect x="0" y="70" width="900" height="70" fill="#e8f4ff" opacity=".45"/>`;
   const x0=40; g+=`<rect x="${x0}" y="40" width="${th*sc}" height="16" class="fdat"/><rect x="${x0+th*sc}" y="40" width="${br*sc}" height="16" class="fbd"/>`;
   g+=`<text x="${x0+th*sc/2}" y="32" text-anchor="middle" font-size="12" class="tdat">${fx(th,1)} m</text><text x="${x0+th*sc+br*sc/2}" y="32" text-anchor="middle" font-size="12" class="tbd">${fx(br,1)} m</text>`;
-  g+=`<rect x="${x0-30}" y="80" width="46" height="22" rx="5" class="facc"/><rect x="${x0+tot*sc-30}" y="112" width="46" height="22" rx="5" class="facc" opacity=".5"/><path d="M${x0+tot*sc+20} 60 V150" class="ink" stroke-dasharray="4 3"/>`;
+  g+=`<g transform="translate(${x0-36} 76)" opacity="1"><path d="M0 18 L4 8 Q8 2 16 2 H34 Q40 2 44 8 L52 10 Q56 11 56 16 V22 H0Z" fill="#e8862a"/><path d="M12 8 Q15 4 20 4 H26 V10 H11Z M29 4 H34 Q38 4 41 10 H29Z" fill="#cfe6f5"/><circle cx="13" cy="22" r="5.5" fill="#1b1f22"/><circle cx="13" cy="22" r="2.2" fill="#9aa0a6"/><circle cx="44" cy="22" r="5.5" fill="#1b1f22"/><circle cx="44" cy="22" r="2.2" fill="#9aa0a6"/><rect x="52" y="12" width="4" height="4" fill="#fff6b0"/></g><g transform="translate(${x0+tot*sc-36} 108)" opacity="0.55"><path d="M0 18 L4 8 Q8 2 16 2 H34 Q40 2 44 8 L52 10 Q56 11 56 16 V22 H0Z" fill="#e8862a"/><path d="M12 8 Q15 4 20 4 H26 V10 H11Z M29 4 H34 Q38 4 41 10 H29Z" fill="#cfe6f5"/><circle cx="13" cy="22" r="5.5" fill="#1b1f22"/><circle cx="13" cy="22" r="2.2" fill="#9aa0a6"/><circle cx="44" cy="22" r="5.5" fill="#1b1f22"/><circle cx="44" cy="22" r="2.2" fill="#9aa0a6"/><rect x="52" y="12" width="4" height="4" fill="#fff6b0"/></g><rect x="0" y="68" width="900" height="3" fill="#d8d2c2"/><rect x="0" y="139" width="900" height="3" fill="#d8d2c2"/><path d="M${x0+tot*sc+20} 60 V150" class="ink" stroke-dasharray="4 3"/>`;
   g+=`<text x="${x0}" y="170" font-size="12" class="tm">0 m</text><text x="${x0+tot*sc}" y="170" text-anchor="middle" font-size="12" font-weight="700">${fx(tot,1)} m</text>`;
   s.innerHTML=g;
   $("#fo11-vl").textContent=`${st.v} m/s (${fx(st.v*2.237,0)} mph)`; $("#fo11-rl").textContent=`${fx(st.rt,1)} s`; $("#fo11-th").textContent=`${fx(th,1)} m`; $("#fo11-br").textContent=`${fx(br,1)} m`; $("#fo11-st").textContent=`${fx(tot,1)} m`; $("#fo11-F").textContent=`${fx(st.m*a,0)} N`; }
@@ -6369,11 +6369,16 @@ function draw(){ const s=$("#fo12"); if(!s) return; const {m1,u1,m2,u2}=st, [v1,
   const xA0=150, xB0=450, sc=60; let xA, xB; const gap=v1;
   const tColl=(u1-u2)>0?(xB0-(xA0+60+m1*8))/((u1-u2)*sc):Infinity;
   if(t<tColl){ xA=xA0+u1*sc*t; xB=xB0+u2*sc*t; } else { const dt=t-tColl; xA=xA0+u1*sc*tColl+v1*sc*dt; xB=xB0+u2*sc*tColl+v2*sc*dt; }
-  const wA=60+m1*8, wB=60+m2*8; let g=`<path d="M0 150 H900" class="ink" stroke-width="2"/>`;
-  const tr=(x,w,m,col,lab,vel)=>`<rect x="${x.toFixed(1)}" y="${110-m*5}" width="${w}" height="${30+m*5}" rx="5" class="${col}"/><circle cx="${(x+12).toFixed(1)}" cy="146" r="5" class="fink"/><circle cx="${(x+w-12).toFixed(1)}" cy="146" r="5" class="fink"/><text x="${(x+w/2).toFixed(1)}" y="${135}" text-anchor="middle" font-size="12" style="fill:#fff">${lab} ${m} kg</text>`+(Math.abs(vel)>0.01?arr(x+w/2,90-m*5,x+w/2+vel*25,90-m*5,"ink","",2.5):"")+`<text x="${(x+w/2).toFixed(1)}" y="${78-m*5}" text-anchor="middle" font-size="11" class="tm">${fx(vel,2)} m/s</text>`;
+  const wA=60+m1*8, wB=60+m2*8; let g=(LAB.C&&LAB.C.room?LAB.C.room(156,200):"")+`<rect x="0" y="150" width="900" height="10" fill="url(#g-alu)"/><rect x="0" y="160" width="900" height="6" fill="#6b7076"/>`;
+  const tr=(x,w,m,col,lab,vel)=>{ const X=+x.toFixed(1), top=118, c=col==="facc"?"#e8862a":"#3d7fd6"; let q=`<rect x="${X}" y="${top}" width="${w}" height="24" rx="3" fill="#30363b"/><rect x="${X}" y="${top}" width="${w}" height="5" rx="2" fill="${c}"/><rect x="${X+4}" y="${top+8}" width="${w-8}" height="10" rx="2" fill="#4a5258"/>`;
+    for(let i=0;i<Math.max(0,m-1)&&i<6;i++) q+=`<rect x="${X+w/2-20}" y="${top-7-i*7}" width="40" height="6" rx="1.5" fill="url(#g-alu)" stroke="#6b7076" stroke-width=".6"/>`;
+    for(const wx of [X+12,X+w-12]) q+=`<circle cx="${wx}" cy="146" r="7" fill="#1b1f22"/><circle cx="${wx}" cy="146" r="3" fill="#9aa0a6"/>`;
+    q+=`<text x="${X+w/2}" y="${top+17}" text-anchor="middle" font-size="11" style="fill:#fff">${lab} ${m} kg</text>`;
+    return q+`<rect x="${col==="facc"?X+w:X-4}" y="${top+6}" width="4" height="12" fill="#c9c2b0"/>`; };
+  const trv=(x,w,m,col,lab,vel)=>tr(x,w,m,col,lab,vel)+(Math.abs(vel)>0.01?arr(x+w/2,96-Math.min(6,m)*7,x+w/2+vel*25,96-Math.min(6,m)*7,"bd","",2.5):"")+`<text x="${(x+w/2).toFixed(1)}" y="${84-Math.min(6,m)*7}" text-anchor="middle" font-size="12" font-weight="700" style="fill:#26313a">${fx(vel,2)} m/s</text>`;
   const cA=t<tColl?u1:v1, cB=t<tColl?u2:v2;
   if(xA<-200||xA>1100) xA=Math.max(-200,Math.min(1100,xA));
-  g+=tr(xA,wA,m1,"facc","A",cA)+tr(xB,wB,m2,"fdat","B",cB);
+  g+=trv(xA,wA,m1,"facc","A",cA)+trv(xB,wB,m2,"fdat","B",cB);
   s.innerHTML=g;
   const pb=m1*u1+m2*u2, pa=m1*v1+m2*v2, kb=0.5*m1*u1*u1+0.5*m2*u2*u2, ka=0.5*m1*v1*v1+0.5*m2*v2*v2;
   $("#fo12-m1l").textContent=`${m1} kg`; $("#fo12-u1l").textContent=`${u1} m/s`; $("#fo12-m2l").textContent=`${m2} kg`; $("#fo12-u2l").textContent=`${u2} m/s`;
@@ -6934,12 +6939,12 @@ lesson({id:"wa8",group:"c",num:8,lvl:"4.6.2 · Lesson 8",name:"Visible light and
 
 function draw(){ const s=$("#wa8"); if(!s) return; const L=C[st.light], F=st.filter==="none"?[1,1,1]:C[st.filter], O=C[st.obj];
   const inc=L.map((x,i)=>x*F[i]), out=inc.map((x,i)=>x*O[i]);
-  let g=`<rect x="20" y="90" width="80" height="60" rx="8" class="fpan ink" stroke-width="2"/><circle cx="100" cy="120" r="18" style="fill:${hex(L)}"/>`;
-  g+=`<path d="M120 105 L330 105 L330 135 L120 135 Z" style="fill:${hex(L)}" opacity=".6" class="mut" stroke-width="1"/>`;
-  if(st.filter!=="none") g+=`<rect x="330" y="70" width="18" height="100" style="fill:${hex(C[st.filter])}" opacity=".75" class="ink" stroke-width="1"/><text x="339" y="190" text-anchor="middle" font-size="12">${st.filter} filter</text>`;
-  g+=`<path d="M348 105 L560 105 L560 135 L348 135 Z" style="fill:${inc.some(x=>x)?hex(inc):"#222"}" opacity="${inc.some(x=>x)?.6:.15}" class="mut" stroke-width="1"/>`;
-  g+=`<rect x="560" y="70" width="120" height="120" rx="10" style="fill:${out.some(x=>x)?hex(out):"#111"}" class="ink" stroke-width="2"/><text x="620" y="215" text-anchor="middle" font-size="13" font-weight="700">appears ${nameOf(out)}</text>`;
-  if(out.some(x=>x)) g+=`<path d="M680 120 L820 60 L820 180 Z" style="fill:${hex(out)}" opacity=".3"/><circle cx="850" cy="120" r="16" fill="#fff" class="ink" stroke-width="1.5"/><circle cx="845" cy="120" r="6" class="fink"/>`;
+  let g=(LAB.C&&LAB.C.room?LAB.C.room(200,260):"")+`<path d="M60 150V200M36 200h48" stroke="#3a4146" stroke-width="6"/><path d="M20 96h74l14 10v28l-14 10H20z" fill="#2f3539"/><ellipse cx="108" cy="120" rx="8" ry="16" style="fill:${hex(L)}"/>`;
+  g+=`<path d="M120 105 L330 105 L330 135 L120 135 Z" style="fill:${hex(L)}" opacity=".75" stroke="#8a949b" stroke-width="1"/>`;
+  if(st.filter!=="none") g+=`<rect x="330" y="70" width="18" height="110" style="fill:${hex(C[st.filter])}" opacity=".7" stroke="#555" stroke-width="1"/><rect x="333" y="72" width="4" height="106" fill="#fff" opacity=".35"/><rect x="322" y="180" width="34" height="20" rx="2" fill="#4a5258"/><text x="339" y="222" text-anchor="middle" font-size="12" fill="#c9d2d5">${st.filter} filter</text>`;
+  g+=`<path d="M348 105 L560 105 L560 135 L348 135 Z" style="fill:${inc.some(x=>x)?hex(inc):"#222"}" opacity="${inc.some(x=>x)?.75:.15}" stroke="#8a949b" stroke-width="1"/>`;
+  g+=`<path d="M560 90l24 -20h96l-24 20z" style="fill:${out.some(x=>x)?hex(out):"#111"}" opacity=".8"/><path d="M656 90l24 -20v110l-24 20z" style="fill:${out.some(x=>x)?hex(out):"#111"}" opacity=".6"/><rect x="560" y="90" width="96" height="110" style="fill:${out.some(x=>x)?hex(out):"#111"}" stroke="#333"/><text x="608" y="226" text-anchor="middle" font-size="13" font-weight="700" fill="#c9d2d5">appears ${nameOf(out)}</text>`;
+  if(out.some(x=>x)) g+=`<path d="M680 120 L820 60 L820 180 Z" style="fill:${hex(out)}" opacity=".3"/><path d="M832 120q18 -18 40 0q-22 18 -40 0z" fill="#fff" stroke="#333" stroke-width="1.5"/><circle cx="846" cy="120" r="7" fill="#5a3b22"/><circle cx="846" cy="120" r="3" fill="#000"/><text x="852" y="152" text-anchor="middle" font-size="11" style="fill:#26313a">eye</text>`;
   s.innerHTML=g; $("#wa8-in").textContent=nameOf(inc); $("#wa8-out").textContent=nameOf(out);
   $("#wa8-msg").textContent=`A ${st.obj} object reflects ${st.obj==="white"?"all colours":st.obj==="black"?"no colours":st.obj==="yellow"?"red and green":st.obj+" light"} and absorbs the rest. ${nameOf(out)==="black"?"None of the light reaching it is reflected, so it looks black.":""}`; }
 $("#wa8-l").addEventListener("change",e=>{ st.light=e.target.value; draw(); });
@@ -7420,7 +7425,7 @@ function draw(){ const s=$("#mg6"); if(!s) return; const Vs=st.Vp*st.ns/st.np, I
   g+=coil(275,st.np,"bd")+coil(525,st.ns,"dat");
   g+=`<path d="M245 60 H120 M245 240 H120" class="ink" stroke-width="2"/><circle cx="100" cy="150" r="30" class="fpan ink" stroke-width="2"/><path d="M85 150 q7 -14 15 0 t15 0" fill="none" class="ink" stroke-width="2"/><path d="M100 120 V60 H120 M100 180 V240 H120" fill="none" class="ink" stroke-width="2"/>`;
   g+=`<path d="M555 60 H700 V120 M555 240 H700 V180" fill="none" class="ink" stroke-width="2"/><rect x="685" y="120" width="30" height="60" class="fsunk ink" stroke-width="2"/><text x="725" y="155" font-size="12">${st.R} Ω</text>`;
-  g+=`<text x="275" y="285" text-anchor="middle" font-size="13" class="tbd">primary ${st.np} turns</text><text x="525" y="285" text-anchor="middle" font-size="13" class="tdat">secondary ${st.ns} turns</text><text x="100" y="205" text-anchor="middle" font-size="12">${st.Vp} V a.c.</text><text x="620" y="30" font-size="13" font-weight="700">${fx(Vs,1)} V</text>`;
+  g+=`<text x="275" y="285" text-anchor="middle" font-size="13" class="tbd">primary ${st.np} turns</text><text x="525" y="285" text-anchor="middle" font-size="13" class="tdat">secondary ${st.ns} turns</text><text x="86" y="210" text-anchor="end" font-size="12">${st.Vp} V a.c.</text><text x="620" y="30" font-size="13" font-weight="700">${fx(Vs,1)} V</text>`;
   s.innerHTML=g; $("#mg6-Vl").textContent=`${st.Vp} V`; $("#mg6-pl").textContent=st.np; $("#mg6-sl").textContent=st.ns; $("#mg6-Rl").textContent=`${st.R} Ω`;
   $("#mg6-Vs").textContent=`${fx(Vs,2)} V`; $("#mg6-Is").textContent=`${fx(Is,3)} A`; $("#mg6-Ip").textContent=`${fx(Ip,3)} A`; $("#mg6-P").textContent=`${fx(P,1)} W`;
   $("#mg6-msg").textContent=st.ns>st.np?"Step-up transformer: the p.d. goes up and the current goes down.":st.ns<st.np?"Step-down transformer: the p.d. goes down and the current goes up.":"Equal turns: the p.d. is unchanged."; }
@@ -7616,12 +7621,12 @@ lesson({id:"sx2",group:"a",num:2,lvl:"4.8.1 · Lesson 2",name:"Orbital motion an
 function orbit(){ const r=RE+st.h*1e3, v0=Math.sqrt(GM/r); return {r,v0,T:2*Math.PI*r/v0}; }
 const R2px=h=>{ const re=70; return re+(h<2000?h/2000*50:50+Math.log10(h/2000)/Math.log10(18)*70); };
 function draw(){ const s=$("#sx2"); if(!s) return; const {v0,T}=orbit(), cx=300, cy=210, rp=R2px(st.h), a=st.ang;
-  let g=`<rect width="600" height="420" fill="#0d1626"/><circle cx="${cx}" cy="${cy}" r="70" fill="#3a7bd5"/><path d="M${cx-40} ${cy-30} q20 -15 40 0 t30 20 M${cx-30} ${cy+20} q25 10 50 -5" fill="none" stroke="#3aa58a" stroke-width="8" opacity=".7"/>`;
+  let g=`<rect width="600" height="420" fill="#0d1626"/>${Array.from({length:70},(_,i)=>`<circle cx="${(i*137)%600}" cy="${(i*89)%420}" r="${i%7?0.8:1.4}" fill="#fff" opacity="${.3+(i%5)/10}"/>`).join("")}<defs><radialGradient id="sx2-earth" cx=".35" cy=".35" r=".75"><stop offset="0" stop-color="#6fb1ff"/><stop offset=".7" stop-color="#2a63b8"/><stop offset="1" stop-color="#123a73"/></radialGradient></defs><circle cx="${cx}" cy="${cy}" r="74" fill="#4f8fe0" opacity=".25"/><circle cx="${cx}" cy="${cy}" r="70" fill="url(#sx2-earth)"/><path d="M${cx-40} ${cy-30} q20 -15 40 0 t30 20 M${cx-30} ${cy+20} q25 10 50 -5" fill="none" stroke="#3aa58a" stroke-width="8" opacity=".7"/>`;
   g+=`<circle cx="${cx}" cy="${cy}" r="${rp}" fill="none" stroke="#9aa6b8" stroke-dasharray="4 5"/>`;
   const sx=cx+rp*Math.cos(a), sy=cy+rp*Math.sin(a);
   if(Math.abs(st.vf-1)>0.01){ /* show spiral path */ let d=`M${sx.toFixed(1)} ${sy.toFixed(1)}`; let r=rp, an=a; for(let i=0;i<60;i++){ an+=0.06; r+= (st.vf-1)*3.2; if(r<70) break; d+=` L${(cx+r*Math.cos(an)).toFixed(1)} ${(cy+r*Math.sin(an)).toFixed(1)}`; } g+=`<path d="${d}" fill="none" stroke="#f2c53a" stroke-width="2" stroke-dasharray="3 3"/>`; }
   const tx=-Math.sin(a), ty=Math.cos(a); g+=arr(sx,sy,sx+tx*60*st.vf,sy+ty*60*st.vf,"dat","",3.5)+arr(sx,sy,sx-(Math.cos(a))*45,sy-(Math.sin(a))*45,"bd","",3.5);
-  g+=`<rect x="${sx-8}" y="${sy-5}" width="16" height="10" fill="#d8dde3"/><rect x="${sx-22}" y="${sy-3}" width="12" height="6" fill="#5a7bd5"/><rect x="${sx+10}" y="${sy-3}" width="12" height="6" fill="#5a7bd5"/>`;
+  g+=`<g transform="translate(${sx} ${sy}) rotate(${(a*180/Math.PI+90).toFixed(1)})"><rect x="-26" y="-5" width="16" height="10" fill="#2b4f9e" stroke="#9fb4e0" stroke-width=".6"/><path d="M-22 -5v10M-18 -5v10M-14 -5v10" stroke="#9fb4e0" stroke-width=".5"/><rect x="10" y="-5" width="16" height="10" fill="#2b4f9e" stroke="#9fb4e0" stroke-width=".6"/><path d="M14 -5v10M18 -5v10M22 -5v10" stroke="#9fb4e0" stroke-width=".5"/><path d="M-10 0H10" stroke="#aab" stroke-width="1.5"/><rect x="-7" y="-7" width="14" height="14" rx="1.5" fill="#d9b44a" stroke="#8a6d1d"/><circle cy="-10" r="3" fill="#e8e8e8"/></g>`;
   s.innerHTML=g; $("#sx2-hl").textContent=`${st.h.toLocaleString()} km`; $("#sx2-vl").textContent=`${fx(st.vf,2)} ×`; $("#sx2-v0").textContent=`${fx(v0/1000,2)} km/s`; $("#sx2-T").textContent=T<7200?`${fx(T/60,0)} minutes`:`${fx(T/3600,1)} hours`;
   $("#sx2-msg").textContent=st.vf<0.98?"Too slow for this orbit: gravity pulls the satellite inwards and it spirals towards the Earth (yellow path, schematic).":st.vf>1.02?"Too fast for this orbit: the satellite moves out to a larger orbit (yellow path, schematic).":st.h>35000?"At about 36 000 km a satellite takes 24 hours to orbit: a geostationary orbit, used for communications.":"Gravity (red) is at right angles to the velocity (blue): it changes the direction, not the speed."; }
 let last=0; function loop(now){ const dt=Math.min(.05,(now-last)/1000); last=now; if(!$("#lab-sx2").hidden){ const {T}=orbit(); st.ang+=dt*2*Math.PI/(4+Math.log10(T/5000)*6); draw(); } requestAnimationFrame(loop); }
@@ -9375,7 +9380,7 @@ window.ALP_ACCOUNTS={sb,merge,stats,get user(){ return user; },get profile(){ re
 <script src="assessment-core.js?v=20261023-ks3"></script>
 <script src="assignments.js?v=20261023-ks3"></script>
 <link rel="stylesheet" href="simple-layout.css?v=20261024-desktop">
-<link rel="stylesheet" href="diagram-fit.css?v=20261025-diagrams">
+<link rel="stylesheet" href="diagram-fit.css?v=20261025-labs">
 <script src="simple-layout.js?v=20261024-all"></script>
 <script src="diagram-fit.js?v=20261025-diagrams"></script>
 </body></html>
