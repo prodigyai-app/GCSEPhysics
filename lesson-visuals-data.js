@@ -1,0 +1,2 @@
+/* Generated: realistic figures and flow diagrams for lesson pages (see lesson-visuals.js). */
+window.LESSON_VISUALS=Object.assign(window.LESSON_VISUALS||{},{"at1":[{"title":"The nuclear model of the atom","fig":["atom",{"Z":3,"level":"gcse"}],"caption":"The nucleus is really about 100 000 times smaller than the atom.","after":1},{"title":"Isotopes of carbon","fig":["isotopes",{"Z":6,"masses":[12,14],"level":"gcse"}],"caption":"","after":1}],"at2":[{"title":"How the model of the atom developed","fig":["atomModels",{"level":"gcse"}],"caption":"","after":1}]});
