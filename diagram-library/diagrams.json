@@ -1,0 +1,168 @@
+[
+ {
+  "file": "energy-house-insulation",
+  "figure": "house",
+  "options": {},
+  "topic": "Energy",
+  "description": "Cutaway house: loft and cavity wall insulation, double glazing, draught excluder"
+ },
+ {
+  "file": "particle-model-states-of-matter",
+  "figure": "states",
+  "options": {
+   "level": "gcse"
+  },
+  "topic": "Particle model",
+  "description": "Particles in solids, liquids and gases"
+ },
+ {
+  "file": "particle-gas-pressure",
+  "figure": "gasPressure",
+  "options": {},
+  "topic": "Particle model",
+  "description": "Gas particles and pressure at two temperatures"
+ },
+ {
+  "file": "electricity-three-pin-plug",
+  "figure": "plug",
+  "options": {},
+  "topic": "Electricity",
+  "description": "Inside a UK three-pin plug"
+ },
+ {
+  "file": "electricity-national-grid",
+  "figure": "grid",
+  "options": {},
+  "topic": "Electricity",
+  "description": "The National Grid"
+ },
+ {
+  "file": "magnetism-transformer-step-up",
+  "figure": "transformer",
+  "options": {
+   "np": 6,
+   "ns": 12
+  },
+  "topic": "Magnetism",
+  "description": "Step-up transformer"
+ },
+ {
+  "file": "magnetism-transformer-step-down",
+  "figure": "transformer",
+  "options": {
+   "np": 12,
+   "ns": 6
+  },
+  "topic": "Magnetism",
+  "description": "Step-down transformer"
+ },
+ {
+  "file": "magnetism-field-magnet-solenoid",
+  "figure": "magField",
+  "options": {},
+  "topic": "Magnetism",
+  "description": "Field patterns of a bar magnet and a solenoid"
+ },
+ {
+  "file": "atomic-atom-lithium",
+  "figure": "atom",
+  "options": {
+   "Z": 3,
+   "level": "gcse"
+  },
+  "topic": "Atomic structure",
+  "description": "Lithium atom: nucleus, protons, neutrons, electron shells"
+ },
+ {
+  "file": "atomic-atom-carbon",
+  "figure": "atom",
+  "options": {
+   "Z": 6,
+   "level": "gcse"
+  },
+  "topic": "Atomic structure",
+  "description": "Carbon-12 atom"
+ },
+ {
+  "file": "atomic-atom-sodium",
+  "figure": "atom",
+  "options": {
+   "Z": 11,
+   "level": "gcse"
+  },
+  "topic": "Atomic structure",
+  "description": "Sodium atom (2,8,1)"
+ },
+ {
+  "file": "atomic-isotopes-carbon",
+  "figure": "isotopes",
+  "options": {
+   "Z": 6,
+   "masses": [
+    12,
+    14
+   ],
+   "level": "gcse"
+  },
+  "topic": "Atomic structure",
+  "description": "Isotopes: carbon-12 and carbon-14"
+ },
+ {
+  "file": "atomic-models-of-the-atom",
+  "figure": "atomModels",
+  "options": {
+   "level": "gcse"
+  },
+  "topic": "Atomic structure",
+  "description": "Plum pudding, nuclear and Bohr models"
+ },
+ {
+  "file": "atomic-radiation-penetration",
+  "figure": "penetration",
+  "options": {},
+  "topic": "Atomic structure",
+  "description": "Alpha, beta and gamma penetration"
+ },
+ {
+  "file": "forces-stopping-distances",
+  "figure": "stopping",
+  "options": {},
+  "topic": "Forces",
+  "description": "Thinking and braking distances at 30, 50 and 70 mph"
+ },
+ {
+  "file": "waves-transverse-longitudinal",
+  "figure": "waves",
+  "options": {},
+  "topic": "Waves",
+  "description": "Transverse and longitudinal waves"
+ },
+ {
+  "file": "waves-electromagnetic-spectrum",
+  "figure": "emSpectrum",
+  "options": {},
+  "topic": "Waves",
+  "description": "The electromagnetic spectrum and uses"
+ },
+ {
+  "file": "waves-refraction-glass-block",
+  "figure": "glassBlock",
+  "options": {},
+  "topic": "Waves",
+  "description": "Refraction through a glass block"
+ },
+ {
+  "file": "waves-convex-concave-lenses",
+  "figure": "lenses",
+  "options": {},
+  "topic": "Waves",
+  "description": "Convex and concave lens ray diagrams"
+ },
+ {
+  "file": "space-life-cycle-of-a-star",
+  "figure": "starLife",
+  "options": {},
+  "topic": "Space physics",
+  "description": "Life cycle of a star"
+ }
+]
