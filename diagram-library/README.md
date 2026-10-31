@@ -1,6 +1,6 @@
 # GCSE Physics diagram library
 
-20 realistic GCSE Physics diagrams, exported from the shared figure library used on the prodigyai revision sites
+30 realistic GCSE Physics diagrams, exported from the shared figure library used on the prodigyai revision sites
 (`ALevelPhysics/platform/client/science-figures.js` and `science-figures-2.js`).
 
 Open `index.html` to browse them.
@@ -36,6 +36,16 @@ File names start with the topic (energy, particle, electricity, magnetism, atomi
 - **Waves**: Refraction through a glass block (`waves-refraction-glass-block`)
 - **Waves**: Convex and concave lens ray diagrams (`waves-convex-concave-lenses`)
 - **Space physics**: Life cycle of a star (`space-life-cycle-of-a-star`)
+- **Energy**: Heating curve: melting and boiling plateaus (`energy-heating-curve`)
+- **Electricity**: Series and parallel circuits with ammeters and voltmeter (`electricity-series-parallel`)
+- **Electricity**: Alternating and direct p.d. traces (`electricity-ac-dc`)
+- **Forces**: Resultant force from balanced and unbalanced forces (`forces-resultant-force`)
+- **Forces**: Spring extension and Hooke's law graph (`forces-spring-hookes-law`)
+- **Forces**: Distance-time graph: speed from the gradient (`forces-distance-time-graph`)
+- **Forces**: Pressure increases with depth in a liquid (`forces-liquid-pressure`)
+- **Magnetism**: Magnetic field around a current-carrying wire (`magnetism-field-around-wire`)
+- **Atomic structure**: Nuclear fission chain reaction (`atomic-nuclear-fission`)
+- **Space physics**: Circular orbit: gravity provides the centripetal force (`space-orbits`)
 
 ## Making more or changing one
 

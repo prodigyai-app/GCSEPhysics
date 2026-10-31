@@ -24,6 +24,16 @@ FIGS=[
  ('waves-refraction-glass-block','glassBlock',{},'Waves','Refraction through a glass block'),
  ('waves-convex-concave-lenses','lenses',{},'Waves','Convex and concave lens ray diagrams'),
  ('space-life-cycle-of-a-star','starLife',{},'Space physics','Life cycle of a star'),
+ ('energy-heating-curve','heatingCurve',{},'Energy','Heating curve: melting and boiling plateaus'),
+ ('electricity-series-parallel','seriesParallel',{},'Electricity','Series and parallel circuits with ammeters and voltmeter'),
+ ('electricity-ac-dc','acdc',{},'Electricity','Alternating and direct p.d. traces'),
+ ('forces-resultant-force','resultantForce',{},'Forces','Resultant force from balanced and unbalanced forces'),
+ ('forces-spring-hookes-law','springHooke',{},'Forces','Spring extension and Hooke\'s law graph'),
+ ('forces-distance-time-graph','dtGraph',{},'Forces','Distance-time graph: speed from the gradient'),
+ ('forces-liquid-pressure','liquidPressure',{},'Forces','Pressure increases with depth in a liquid'),
+ ('magnetism-field-around-wire','wireField',{},'Magnetism','Magnetic field around a current-carrying wire'),
+ ('atomic-nuclear-fission','fission',{},'Atomic structure','Nuclear fission chain reaction'),
+ ('space-orbits','orbit',{},'Space physics','Circular orbit: gravity provides the centripetal force'),
 ]
 async def m():
   async with async_playwright() as p:

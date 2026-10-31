@@ -164,5 +164,75 @@
   "options": {},
   "topic": "Space physics",
   "description": "Life cycle of a star"
+ },
+ {
+  "file": "energy-heating-curve",
+  "figure": "heatingCurve",
+  "options": {},
+  "topic": "Energy",
+  "description": "Heating curve: melting and boiling plateaus"
+ },
+ {
+  "file": "electricity-series-parallel",
+  "figure": "seriesParallel",
+  "options": {},
+  "topic": "Electricity",
+  "description": "Series and parallel circuits with ammeters and voltmeter"
+ },
+ {
+  "file": "electricity-ac-dc",
+  "figure": "acdc",
+  "options": {},
+  "topic": "Electricity",
+  "description": "Alternating and direct p.d. traces"
+ },
+ {
+  "file": "forces-resultant-force",
+  "figure": "resultantForce",
+  "options": {},
+  "topic": "Forces",
+  "description": "Resultant force from balanced and unbalanced forces"
+ },
+ {
+  "file": "forces-spring-hookes-law",
+  "figure": "springHooke",
+  "options": {},
+  "topic": "Forces",
+  "description": "Spring extension and Hooke's law graph"
+ },
+ {
+  "file": "forces-distance-time-graph",
+  "figure": "dtGraph",
+  "options": {},
+  "topic": "Forces",
+  "description": "Distance-time graph: speed from the gradient"
+ },
+ {
+  "file": "forces-liquid-pressure",
+  "figure": "liquidPressure",
+  "options": {},
+  "topic": "Forces",
+  "description": "Pressure increases with depth in a liquid"
+ },
+ {
+  "file": "magnetism-field-around-wire",
+  "figure": "wireField",
+  "options": {},
+  "topic": "Magnetism",
+  "description": "Magnetic field around a current-carrying wire"
+ },
+ {
+  "file": "atomic-nuclear-fission",
+  "figure": "fission",
+  "options": {},
+  "topic": "Atomic structure",
+  "description": "Nuclear fission chain reaction"
+ },
+ {
+  "file": "space-orbits",
+  "figure": "orbit",
+  "options": {},
+  "topic": "Space physics",
+  "description": "Circular orbit: gravity provides the centripetal force"
  }
 ]
