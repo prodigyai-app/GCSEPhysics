@@ -1249,7 +1249,7 @@ function show(id){
 const lvl=p=>p.lvl?p.lvl:p.pag?`PAG ${p.pag}`:p.group==="gcse"&&p.num?`RP ${p.num}`:"Extension";
 let UNITS=null, curUnit=null;
 const unitOf=p=>UNITS&&UNITS.find(u=>u.groups.some(([g])=>g===p.group));
-const ulist=()=>curUnit?list.filter(p=>unitOf(p)===curUnit):list;
+const ulist=()=>(curUnit?list.filter(p=>unitOf(p)===curUnit):list).filter(p=>!window.LAB_HIDE?.(p));
 function pnav(){ const L=ulist(), i=L.indexOf(current), prev=L[i-1], next=L[i+1];
   const back=curUnit?`u-${curUnit.key}`:"";
   $("#pnav-top").innerHTML=`<nav class="pnav top" aria-label="Back to lesson list"><button class="btn pn-list" data-go="${back}">← ${curUnit?.key==="lab"?"Labs":curUnit?.key==="papers"?"Papers":"Lessons"}</button></nav>`;
@@ -1302,7 +1302,7 @@ function boot(opts={}){
 function svgPt(svg,e){ const p=svg.createSVGPoint(); p.x=e.clientX; p.y=e.clientY; return p.matrixTransform(svg.getScreenCTM().inverse()); }
 
 document.body.insertAdjacentHTML("afterbegin",DEFS);
-return {ICONS,$,$$,css,store,fmt,fx,sci,RUNCOL,gauss,clamp,nid,linfit,worst,nice,triX,W,C,setThermo,setStopwatch,setPsu,plot,bars,rows,build,register,boot,svgPt,list};
+return {ICONS,$,$$,css,store,fmt,fx,sci,RUNCOL,gauss,clamp,nid,linfit,worst,nice,triX,W,C,setThermo,setStopwatch,setPsu,plot,bars,rows,build,register,boot,svgPt,list,reroute:route,refreshNav:pnav};
 })();
 
 </script>
@@ -3430,8 +3430,8 @@ function grade(qid){ const [id,i]=qid.split(/-(?=\d+$)/), q=QZ[id][+i], fb=$(`#$
 function reveal(qid){ const [id,i]=qid.split(/-(?=\d+$)/), q=QZ[id][+i], fb=$(`#${qid}-fb`);
   if(q.opts) $$(`[data-q="${qid}"] .qo label`).forEach((l,j)=>l.classList.toggle("right",j===q.a));
   fb.hidden=false; fb.className="qfb ok"; fb.innerHTML=`<b>Answer: ${q.opts?q.opts[q.a]:`${q.show??q.a} ${q.unit||""}`}</b>. ${q.why||""}`; if(STATE[qid]!=="ok") STATE[qid]="shown"; persist(qid); score(id); }
-function score(id){ const n=QZ[id].length, ok=QZ[id].filter((_,i)=>STATE[`${id}-${i}`]==="ok").length; $(`#${id}-score`).textContent=`${ok} / ${n} correct`;
-  const sec=$(`#${id}`).closest("section.lab"); if(!sec) return; const all=$$(`#${sec.id} .lcard[id^="qz"]`).every(c=>QZ[c.id].every((_,i)=>STATE[`${c.id}-${i}`]==="ok"));
+function score(id){ const visible=(_,i)=>!window.TIER_HID?.(document.querySelector(`[data-q="${id}-${i}"]`)), n=QZ[id].filter(visible).length, ok=QZ[id].filter((q,i)=>visible(q,i)&&STATE[`${id}-${i}`]==="ok").length; $(`#${id}-score`).textContent=`${ok} / ${n} correct`;
+  const sec=$(`#${id}`).closest("section.lab"); if(!sec) return; const all=$$(`#${sec.id} .lcard[id^="qz"]`).every(c=>QZ[c.id].every((_,i)=>window.TIER_HID?.(document.querySelector(`[data-q="${c.id}-${i}"]`))||STATE[`${c.id}-${i}`]==="ok"));
   if(all){ const lid=sec.id.slice(4); done.add(lid); store.set(DONEKEY,[...done]); mark(); } }
 function mark(){ if(!restored) restore(); done.forEach(id=>{ const t=$("#tab-"+id); if(t) t.classList.add("done"); }); }
 
@@ -3581,7 +3581,7 @@ function cardHTML(cid){ const c=CARDS[cid]; let qn=c.start||1;
 function build(cid,cfg){ let k=0; CARDS[cid]=cfg; cfg.qs.forEach((q,qi)=>q.parts.forEach((p,pi)=>{ p.id=`${cid}q${qi}${L[pi]}`; if(q.parts.length>1&&p.l==null) p.l=L[pi]; if(!p.opts&&!p.lor&&p.ms&&p.ms.length!==p.m) console.warn("mark count",p.id); p.card=cid; p.tag=p.tag||cfg.tag; PARTS[p.id]=p; }));
   const el=document.createElement("div"); el.className="lcard exam"; el.id=cid; el.innerHTML=cardHTML(cid); return el; }
 function rerender(cid){ $("#"+cid).innerHTML=cardHTML(cid); refresh(cid); }
-function allParts(cid){ return CARDS[cid].qs.flatMap(q=>q.parts); }
+function allParts(cid){ return CARDS[cid].qs.flatMap(q=>q.parts).filter(p=>!(p.ht&&window.TIER==="f")); }
 function refresh(cid){ const ps=allParts(cid), T=ps.reduce((a,p)=>a+p.m,0); let got=0,mk=0,mt=0;
   ps.forEach(p=>{ const v=pscore(p); if(v!=null){ got+=v; mk++; mt+=p.m; } const e=$(`#${p.id}-pm`); if(e&&!p.lor){ const s=saved[p.id]; e.textContent=s&&s.done?`${pscore(p)} / ${p.m}`:""; } });
   $(`#${cid}-score`).textContent=`${got} / ${T} marks`;
@@ -9394,4 +9394,6 @@ window.ALP_ACCOUNTS={sb,merge,stats,get user(){ return user; },get profile(){ re
 <script src="lesson-visuals.js?v=20261026-electrons"></script>
 <script src="lesson-summary.js?v=20261026-summary"></script>
 <script src="diagram-fit.js?v=20261025-diagrams"></script>
+<link rel="stylesheet" href="gcse-tiers.css?v=20261031-tiers">
+<script src="gcse-tiers.js?v=20261031-tiers"></script>
 </body></html>
