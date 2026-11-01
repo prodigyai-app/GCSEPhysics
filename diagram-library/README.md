@@ -1,6 +1,6 @@
 # GCSE Physics diagram library
 
-30 realistic GCSE Physics diagrams, exported from the shared figure library used on the prodigyai revision sites
+39 realistic GCSE Physics diagrams, exported from the shared figure library used on the prodigyai revision sites
 (`ALevelPhysics/platform/client/science-figures.js` and `science-figures-2.js`).
 
 Open `index.html` to browse them.
@@ -46,6 +46,15 @@ File names start with the topic (energy, particle, electricity, magnetism, atomi
 - **Magnetism**: Magnetic field around a current-carrying wire (`magnetism-field-around-wire`)
 - **Atomic structure**: Nuclear fission chain reaction (`atomic-nuclear-fission`)
 - **Space physics**: Circular orbit: gravity provides the centripetal force (`space-orbits`)
+- **Required practicals**: Specific heat capacity: heater and thermometer in an insulated aluminium block (`practical-specific-heat-capacity`)
+- **Required practicals**: Thermal insulation: beakers wrapped in different materials, with cooling curves (`practical-thermal-insulation`)
+- **Required practicals**: Resistance of a wire: metre rule, crocodile clip, ammeter and voltmeter (`practical-resistance-of-a-wire`)
+- **Required practicals**: I–V characteristics: circuit and graphs for a resistor, filament lamp and diode (`practical-iv-characteristics`)
+- **Required practicals**: Density: regular block on a balance and an irregular object in a eureka can (`practical-density`)
+- **Required practicals**: Acceleration: trolley, light gates, pulley and hanging masses (`practical-acceleration`)
+- **Required practicals**: Waves: ripple tank and a vibrating string (`practical-waves`)
+- **Required practicals**: Infrared radiation: Leslie cube and infrared detector (`practical-infrared-leslie-cube`)
+- **Required practicals**: Specific latent heat of fusion: heater in crushed ice with a control funnel (`practical-specific-latent-heat`)
 
 ## Making more or changing one
 

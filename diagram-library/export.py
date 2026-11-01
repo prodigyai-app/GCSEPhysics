@@ -34,6 +34,15 @@ FIGS=[
  ('magnetism-field-around-wire','wireField',{},'Magnetism','Magnetic field around a current-carrying wire'),
  ('atomic-nuclear-fission','fission',{},'Atomic structure','Nuclear fission chain reaction'),
  ('space-orbits','orbit',{},'Space physics','Circular orbit: gravity provides the centripetal force'),
+ ('practical-specific-heat-capacity','shcPractical',{},'Required practicals','Specific heat capacity: heater and thermometer in an insulated aluminium block'),
+ ('practical-thermal-insulation','insulationPractical',{},'Required practicals','Thermal insulation: beakers wrapped in different materials, with cooling curves'),
+ ('practical-resistance-of-a-wire','resistanceWire',{},'Required practicals','Resistance of a wire: metre rule, crocodile clip, ammeter and voltmeter'),
+ ('practical-iv-characteristics','ivCharacteristic',{},'Required practicals','I–V characteristics: circuit and graphs for a resistor, filament lamp and diode'),
+ ('practical-density','densityPractical',{},'Required practicals','Density: regular block on a balance and an irregular object in a eureka can'),
+ ('practical-acceleration','accelerationPractical',{},'Required practicals','Acceleration: trolley, light gates, pulley and hanging masses'),
+ ('practical-waves','wavesPractical',{},'Required practicals','Waves: ripple tank and a vibrating string'),
+ ('practical-infrared-leslie-cube','irPractical',{},'Required practicals','Infrared radiation: Leslie cube and infrared detector'),
+ ('practical-specific-latent-heat','latentHeat',{},'Required practicals','Specific latent heat of fusion: heater in crushed ice with a control funnel'),
 ]
 async def m():
   async with async_playwright() as p:

@@ -234,5 +234,68 @@
   "options": {},
   "topic": "Space physics",
   "description": "Circular orbit: gravity provides the centripetal force"
+ },
+ {
+  "file": "practical-specific-heat-capacity",
+  "figure": "shcPractical",
+  "options": {},
+  "topic": "Required practicals",
+  "description": "Specific heat capacity: heater and thermometer in an insulated aluminium block"
+ },
+ {
+  "file": "practical-thermal-insulation",
+  "figure": "insulationPractical",
+  "options": {},
+  "topic": "Required practicals",
+  "description": "Thermal insulation: beakers wrapped in different materials, with cooling curves"
+ },
+ {
+  "file": "practical-resistance-of-a-wire",
+  "figure": "resistanceWire",
+  "options": {},
+  "topic": "Required practicals",
+  "description": "Resistance of a wire: metre rule, crocodile clip, ammeter and voltmeter"
+ },
+ {
+  "file": "practical-iv-characteristics",
+  "figure": "ivCharacteristic",
+  "options": {},
+  "topic": "Required practicals",
+  "description": "I\u2013V characteristics: circuit and graphs for a resistor, filament lamp and diode"
+ },
+ {
+  "file": "practical-density",
+  "figure": "densityPractical",
+  "options": {},
+  "topic": "Required practicals",
+  "description": "Density: regular block on a balance and an irregular object in a eureka can"
+ },
+ {
+  "file": "practical-acceleration",
+  "figure": "accelerationPractical",
+  "options": {},
+  "topic": "Required practicals",
+  "description": "Acceleration: trolley, light gates, pulley and hanging masses"
+ },
+ {
+  "file": "practical-waves",
+  "figure": "wavesPractical",
+  "options": {},
+  "topic": "Required practicals",
+  "description": "Waves: ripple tank and a vibrating string"
+ },
+ {
+  "file": "practical-infrared-leslie-cube",
+  "figure": "irPractical",
+  "options": {},
+  "topic": "Required practicals",
+  "description": "Infrared radiation: Leslie cube and infrared detector"
+ },
+ {
+  "file": "practical-specific-latent-heat",
+  "figure": "latentHeat",
+  "options": {},
+  "topic": "Required practicals",
+  "description": "Specific latent heat of fusion: heater in crushed ice with a control funnel"
  }
 ]
