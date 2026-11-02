@@ -297,5 +297,54 @@
   "options": {},
   "topic": "Required practicals",
   "description": "Specific latent heat of fusion: heater in crushed ice with a control funnel"
+ },
+ {
+  "file": "energy-ke-gpe",
+  "figure": "keGpe",
+  "options": {},
+  "topic": "Energy",
+  "description": "Kinetic and gravitational potential energy on a roller coaster"
+ },
+ {
+  "file": "forces-scalars-vectors",
+  "figure": "vectorsFig",
+  "options": {},
+  "topic": "Forces",
+  "description": "Scalars and vectors"
+ },
+ {
+  "file": "forces-momentum-collision",
+  "figure": "collisions",
+  "options": {},
+  "topic": "Forces",
+  "description": "Conservation of momentum in a collision"
+ },
+ {
+  "file": "atomic-nuclear-equations",
+  "figure": "decayEquations",
+  "options": {},
+  "topic": "Atomic structure",
+  "description": "Alpha and beta decay equations"
+ },
+ {
+  "file": "atomic-irradiation-contamination",
+  "figure": "contamination",
+  "options": {},
+  "topic": "Atomic structure",
+  "description": "Irradiation and contamination"
+ },
+ {
+  "file": "waves-colour-filters",
+  "figure": "colourFilters",
+  "options": {},
+  "topic": "Waves",
+  "description": "Prism, filters and coloured objects"
+ },
+ {
+  "file": "magnetism-induction",
+  "figure": "induction",
+  "options": {},
+  "topic": "Magnetism",
+  "description": "Electromagnetic induction"
  }
 ]

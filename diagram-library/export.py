@@ -43,6 +43,13 @@ FIGS=[
  ('practical-waves','wavesPractical',{},'Required practicals','Waves: ripple tank and a vibrating string'),
  ('practical-infrared-leslie-cube','irPractical',{},'Required practicals','Infrared radiation: Leslie cube and infrared detector'),
  ('practical-specific-latent-heat','latentHeat',{},'Required practicals','Specific latent heat of fusion: heater in crushed ice with a control funnel'),
+ ('energy-ke-gpe','keGpe',{},'Energy','Kinetic and gravitational potential energy on a roller coaster'),
+ ('forces-scalars-vectors','vectorsFig',{},'Forces','Scalars and vectors'),
+ ('forces-momentum-collision','collisions',{},'Forces','Conservation of momentum in a collision'),
+ ('atomic-nuclear-equations','decayEquations',{},'Atomic structure','Alpha and beta decay equations'),
+ ('atomic-irradiation-contamination','contamination',{},'Atomic structure','Irradiation and contamination'),
+ ('waves-colour-filters','colourFilters',{},'Waves','Prism, filters and coloured objects'),
+ ('magnetism-induction','induction',{},'Magnetism','Electromagnetic induction'),
 ]
 async def m():
   async with async_playwright() as p:

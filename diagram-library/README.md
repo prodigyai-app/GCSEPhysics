@@ -1,6 +1,6 @@
 # GCSE Physics diagram library
 
-39 realistic GCSE Physics diagrams, exported from the shared figure library used on the prodigyai revision sites
+46 realistic GCSE Physics diagrams, exported from the shared figure library used on the prodigyai revision sites
 (`ALevelPhysics/platform/client/science-figures.js` and `science-figures-2.js`).
 
 Open `index.html` to browse them.
@@ -55,6 +55,13 @@ File names start with the topic (energy, particle, electricity, magnetism, atomi
 - **Required practicals**: Waves: ripple tank and a vibrating string (`practical-waves`)
 - **Required practicals**: Infrared radiation: Leslie cube and infrared detector (`practical-infrared-leslie-cube`)
 - **Required practicals**: Specific latent heat of fusion: heater in crushed ice with a control funnel (`practical-specific-latent-heat`)
+- **Energy**: Kinetic and gravitational potential energy on a roller coaster (`energy-ke-gpe`)
+- **Forces**: Scalars and vectors (`forces-scalars-vectors`)
+- **Forces**: Conservation of momentum in a collision (`forces-momentum-collision`)
+- **Atomic structure**: Alpha and beta decay equations (`atomic-nuclear-equations`)
+- **Atomic structure**: Irradiation and contamination (`atomic-irradiation-contamination`)
+- **Waves**: Prism, filters and coloured objects (`waves-colour-filters`)
+- **Magnetism**: Electromagnetic induction (`magnetism-induction`)
 
 ## Making more or changing one
 
