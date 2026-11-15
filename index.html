@@ -3610,7 +3610,8 @@ document.addEventListener("change",e=>{ const t=e.target;
   else if(t.dataset.xlor){ const id=t.dataset.xlor, s=saved[id]=saved[id]||{}; s.v=+t.value; s.done=true; save(); refresh(PARTS[id].card); } });
 document.addEventListener("input",e=>{ const t=e.target, id=t.dataset.xw||t.dataset.xin; if(id){ const s=saved[id]=saved[id]||{}; if(t.dataset.xin) s.f=t.value; else s.w=t.value; save(); } });
 
-return {graph,attach,build,refresh,allParts,pscore,PARTS,CARDS,saved,save,rerender};
+function extend(cid,qs){ const c=CARDS[cid]; if(!c) return false; const base=c.qs.length; qs.forEach((q,k)=>{ c.qs.push(q); q.parts.forEach((p,pi)=>{ p.id=`${cid}q${base+k}${L[pi]}`; if(q.parts.length>1&&p.l==null) p.l=L[pi]; p.card=cid; p.tag=p.tag||c.tag; PARTS[p.id]=p; }); }); rerender(cid); return true; }
+return {graph,attach,build,refresh,allParts,pscore,PARTS,CARDS,saved,save,rerender,extend};
 })();
 
 </script>
@@ -9378,6 +9379,9 @@ window.ALP_ACCOUNTS={sb,merge,stats,get user(){ return user; },get profile(){ re
 })();
 </script>
 
+<script src="gcse-depth.js?v=20261115"></script>
+<script src="depth-s1.js?v=20261115"></script>
+<script>GcseDepth.apply();</script>
 <script src="subject-icons.js?v=20261023-ks3"></script>
 <script src="maths-keyboard.js?v=20261031-fast"></script>
 
