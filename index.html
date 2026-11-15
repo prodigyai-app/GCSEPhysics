@@ -464,17 +464,8 @@ body.rp-on{overflow:hidden}
 
   <nav class="nav" aria-label="Practicals" id="switcher"></nav>
 
-  <!-- ===================== THERMAL INSULATION ===================== -->
-  <section class="lab" id="lab-insulation" role="tabpanel" aria-labelledby="tab-insulation">
-    <div class="lab-head">
-      <span class="eyebrow">AQA GCSE Physics · Required practical · Energy</span>
-      <h2>Thermal insulation</h2>
-      <p class="muted">Investigate how the type and thickness of an insulating layer affects how quickly a beaker of hot water cools. Wrap the beaker, pour in 200&nbsp;cm³ of hot water, then read the thermometer every minute.</p>
-    </div>
-
-    <div class="bench">
-      <div class="stage">
-        <svg id="ins-svg" viewBox="0 0 900 470" role="img" aria-label="Lab bench with a kettle, an insulated beaker of water on a heat-proof mat, a thermometer held by a clamp stand, a stopwatch and a magnified view of the thermometer scale">
+  <!-- Thermal insulation: apparatus drawing and controls. The page itself is assembled by the shared lab builder. -->
+  <template id="ins-stage-tpl"><svg id="ins-svg" viewBox="0 0 900 470" role="img" aria-label="Lab bench with a kettle, an insulated beaker of water on a heat-proof mat, a thermometer held by a clamp stand, a stopwatch and a magnified view of the thermometer scale">
           <defs>
             <pattern id="tiles" width="64" height="42" patternUnits="userSpaceOnUse">
               <rect width="64" height="42" fill="#d7dfdc"/>
@@ -739,16 +730,8 @@ body.rp-on{overflow:hidden}
           <path d="M864 166 L892 200" stroke="#555d63" stroke-width="4" stroke-linecap="round" transform="translate(-3 -1)"/>
           <circle cx="812" cy="112" r="77" fill="none" stroke="url(#ringG)" stroke-width="8"/>
           <text x="812" y="214" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#3d474b" letter-spacing=".5">EYE-LEVEL VIEW</text>
-        </svg>
-        <div class="stage-bar">
-          <span>Room temperature <b>20.5 °C</b></span>
-          <span>Volume <b>200 cm³</b></span>
-          <span>Thermometer resolution <b>0.5 °C</b></span>
-          <span id="ins-status">Set up the beaker, then pour.</span>
-        </div>
-      </div>
-
-      <div class="panel">
+        </svg></template>
+  <template id="ins-panel-tpl">
         <div class="field">
           <div class="lbl">Insulating material</div>
           <div class="seg c2" id="ins-mats"></div>
@@ -783,74 +766,15 @@ body.rp-on{overflow:hidden}
             <button class="btn" id="ins-reset" title="Empty the beaker and start again">Reset</button>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="lower">
-      <div class="card">
-        <div class="card-h"><h3>Results</h3><button class="btn" id="ins-clear" style="min-height:34px;padding:5px 10px">Clear all runs</button></div>
-        <div class="results-tables">
-          <div class="tbl-wrap">
-            <table><thead><tr><th>Time / s</th><th>Temp / °C</th></tr></thead><tbody id="ins-tbody"></tbody></table>
-          </div>
-          <div class="tbl-wrap">
-            <table><thead><tr><th>Run</th><th>Start / °C</th><th>End / °C</th><th>Drop / °C</th><th>Rate / °C min⁻¹</th></tr></thead><tbody id="ins-runs"></tbody></table>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-h"><h3>Cooling curves</h3><span class="muted" style="font-size:.85rem">Temperature against time, every run</span></div>
-        <canvas class="graph" id="ins-graph" width="600" height="380" aria-label="Graph of temperature against time for each run"></canvas>
-      </div>
-    </div>
-
-    <div class="card">
-      <details open>
-        <summary>Method</summary>
-        <div class="prose"><ol>
-          <li>Wrap the outside of a 250&nbsp;cm³ beaker with one layer of the insulating material and hold it in place with elastic bands.</li>
-          <li>Measure 200&nbsp;cm³ of hot water from the kettle and pour it into the beaker.</li>
-          <li>Place a cardboard lid on the beaker and put the thermometer through the hole so the bulb sits in the water.</li>
-          <li>Start the stopwatch and record the starting temperature.</li>
-          <li>Record the temperature every minute for 10 minutes, reading the scale at eye level.</li>
-          <li>Repeat with a different material, or with more layers of the same material, keeping everything else the same.</li>
-        </ol></div>
-      </details>
-      <details>
-        <summary>Variables</summary>
-        <div class="prose"><dl class="vars">
-          <dt>Independent</dt><dd>Type of insulating material (or the number of layers)</dd>
-          <dt>Dependent</dt><dd>Temperature of the water after each minute, giving the temperature drop over 10 minutes</dd>
-          <dt>Control</dt><dd>Volume of water (200&nbsp;cm³), starting temperature, beaker size, lid on or off, total time, room temperature</dd>
-        </dl></div>
-      </details>
-      <details>
-        <summary>Safety</summary>
-        <div class="prose"><ul>
-          <li>Hot water can scald. Pour slowly with the beaker on a heat-proof mat and stand up while pouring.</li>
-          <li>Clamp the thermometer so it cannot roll off the bench; report any breakages straight away.</li>
-          <li>Mop up spills immediately and keep the kettle cable away from the edge of the bench.</li>
-        </ul></div>
-      </details>
-      <details>
-        <summary>Analysis questions</summary>
-        <div class="prose">
-          <p><b>1.</b> Which material was the best insulator? Use your temperature drops to justify your answer.</p>
-          <div class="ans">The best insulator gives the smallest temperature drop over the same time, because it reduces the rate of energy transfer from the water to the surroundings.</div>
-          <p><b>2.</b> Why does the water cool fastest at the start?</p>
-          <div class="ans">The temperature difference between the water and the room is largest at the start, so the rate of energy transfer is highest. As the difference falls, the cooling slows and the curve flattens.</div>
-          <p><b>3.</b> Suggest why the lid makes a difference.</p>
-          <div class="ans">The lid reduces energy transfer from the surface by convection and evaporation, so less energy leaves through the top of the beaker.</div>
-          <p><b>4.</b> Why does adding more layers give a smaller improvement each time?</p>
-          <div class="ans">Energy is still transferred through the lid and the base, which the wrapping does not cover, so these losses stay the same however thick the wrapping is.</div>
-        </div>
-      </details>
-    </div>
-  </section>
+  </template>
 
 </div>
 
 <style>
+/* Run comparison table: headings and run names wrap so six columns fit a half-width card and a phone. */
+.ins-runs th{white-space:normal;line-height:1.25;vertical-align:bottom}
+.ins-runs td:first-child{white-space:normal;min-width:88px}
+.ins-runs th,.ins-runs td{padding:6px 6px}
 .steam{animation:rise 2.8s ease-in infinite;transform-box:fill-box;transform-origin:50% 100%}
 .steam.s2{animation-delay:-.9s;animation-duration:3.2s}
 .steam.s3{animation-delay:-1.7s;animation-duration:2.5s}
@@ -3155,18 +3079,43 @@ register({id:"ir",group:"gcse",num:10,name:"Infrared radiation",icon:"ir",onShow
 
 (()=>{
 "use strict";
-const $=s=>document.querySelector(s);
-const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-function fmt(x,sf=3){ if(!isFinite(x))return "—"; if(Math.abs(x)<1e-9)return "0"; const d=Math.min(6,Math.max(0,sf-1-Math.floor(Math.log10(Math.abs(x))))); return x.toFixed(d); }
-const RUNCOL=["#c4531a","#1b6788","#2c7a4c","#8a4fb3","#b8892a","#b1352a"];
+const {$,css,store,RUNCOL,gauss,W,build}=LAB;
 
-/* registry: existing two practicals */
 /* =======================================================
    THERMAL INSULATION
    ======================================================= */
 const INS=(()=>{
-  const TA=20.5, K0=7.8e-4, ML=200;
+  const TA=20.5, K0=7.8e-4, ML=200, RES=0.5;
+  const tpl=id=>document.getElementById(id).innerHTML;
+  build({id:"insulation",eyebrow:"AQA GCSE Physics · Required practical 2 · Energy",title:"Thermal insulation",
+   intro:"Investigate how the type and thickness of an insulating layer affects how quickly a beaker of hot water cools. Wrap the beaker, pour in 200&nbsp;cm³ of hot water, then read the thermometer every minute.",
+   stage:tpl("ins-stage-tpl"),
+   bar:`<span>Room temperature <b>20.5 °C</b></span><span>Volume <b>200 cm³</b></span><span>Thermometer resolution <b>0.5 °C</b></span><span id="ins-status">Set up the beaker, then pour.</span>`,
+   panel:tpl("ins-panel-tpl"),
+   resultsBtn:`<button class="btn" id="ins-clear" style="min-height:34px;padding:5px 10px">Clear all runs</button>`,
+   results:`<div class="tbl-wrap"><table class="ins-runs"><thead><tr><th>Run</th><th>Start / °C</th><th>End / °C</th><th>Drop / °C</th><th>Time / min</th><th>Mean rate / °C per min</th></tr></thead><tbody id="ins-runs"></tbody></table></div>
+<div class="lbl" style="margin:16px 0 6px" id="ins-cur">Readings</div>
+<div class="tbl-wrap" style="max-height:300px;overflow-y:auto"><table><thead><tr><th>Time / s</th><th>Temperature / °C</th></tr></thead><tbody id="ins-tbody"></tbody></table></div>`,
+   graphTitle:"Cooling curves",graphSub:"Temperature against time, every run",
+   graphFoot:`<p class="muted" id="ins-gfoot" style="font-size:.85rem;margin:8px 0 0" hidden></p>`,
+   workSub:"Uses your own runs",workEmpty:"Complete a run and the calculation will appear here.",
+   info:{method:[
+    "Wrap the outside of a 250&nbsp;cm³ beaker with one layer of the insulating material and hold it in place with elastic bands.",
+    "Measure 200&nbsp;cm³ of hot water from the kettle and pour it into the beaker.",
+    "Place a cardboard lid on the beaker and put the thermometer through the hole so the bulb sits in the water.",
+    "Start the stopwatch and record the starting temperature.",
+    "Record the temperature every minute for 10 minutes, reading the scale at eye level.",
+    "Repeat with a different material, or with more layers of the same material, keeping everything else the same.",
+    "Work out the temperature drop for each run. The smallest drop in the same time shows the best insulator."],
+   vars:["Type of insulating material (or the number of layers)","Temperature of the water after each minute, giving the temperature drop over 10 minutes","Volume of water (200&nbsp;cm³), starting temperature, beaker size, lid on or off, total time, room temperature"],
+   safety:["Hot water can scald. Pour slowly with the beaker on a heat-proof mat and stand up while pouring.","Clamp the thermometer so it cannot roll off the bench; report any breakages straight away.","Mop up spills immediately and keep the kettle cable away from the edge of the bench."],
+   qa:[["Which material was the best insulator? Use your temperature drops to justify your answer.","The best insulator gives the smallest temperature drop over the same time, because it reduces the rate of energy transfer from the water to the surroundings."],
+    ["Why does the water cool fastest at the start?","The temperature difference between the water and the room is largest at the start, so the rate of energy transfer is highest. As the difference falls, the cooling slows and the curve flattens."],
+    ["Suggest why the lid makes a difference.","The lid reduces energy transfer from the surface by convection and evaporation, so less energy leaves through the top of the beaker."],
+    ["Why does adding more layers give a smaller improvement each time?","Each extra layer cuts the rate of energy transfer through the sides by a smaller amount than the layer before it: going from no layers to one makes a big change, but going from three layers to four changes very little. Energy also still leaves through the lid and the base, which the wrapping does not cover, so the temperature drop can never fall to zero."],
+    ["Two runs start at different temperatures. Explain why comparing their temperature drops is not a fair test, and suggest an improvement.","Hotter water cools faster, because the temperature difference between the water and the room is bigger. The run that starts hotter has a larger drop even with the same insulation. Start timing every run at the same temperature, for example wait until the water has cooled to 75&nbsp;°C before starting the stopwatch."],
+    ["A bar chart is used to compare different materials, but a line graph is used for the number of layers. Explain why.","The type of material is a categoric variable: it is described by a name, not a number, so there are no values in between and a bar chart is used. The number of layers (the thickness of the insulation) is a numerical variable, so the points can be plotted on a scale and a line of best fit shows the pattern."]]}
+  });
   const MAT={
     none:{name:"None (control)",R:0,sw:"linear-gradient(135deg,#e8f4f8,#cfe3ea)"},
     newspaper:{name:"Newspaper",R:.35,th:3,op:1,sw:"repeating-linear-gradient(0deg,#e6e1d3 0 3px,#8e8a80 3px 4px)"},
@@ -3266,16 +3215,70 @@ const INS=(()=>{
   }
 
   function kFor(){ const m=MAT[st.mat]; const n=st.mat==="none"?0:st.layers; return K0*(st.lid?1:1.45)*(.3+.7/(1+m.R*n)); }
-  const gauss=()=>{let u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);};
   function takeReading(time){ const r=Math.round((st.Tw+gauss()*.12)*2)/2; st.readings.push([time,r]); tableRows(); drawGraph(); }
 
+  const d1=x=>x.toFixed(1), d2=x=>x.toFixed(2), dm=x=>Number.isInteger(x)?String(x):x.toFixed(1);
+  function stats(r){ const a=r.data[0][1], b=r.data[r.data.length-1][1], dur=r.data[r.data.length-1][0]/60; return {label:r.label,a,b,drop:a-b,dur,rate:dur?(a-b)/dur:NaN}; }
   function tableRows(){
-    const tb=$("#ins-tbody");
-    const rows=st.readings.length?st.readings:(st.runs.length?st.runs[st.runs.length-1].data:[]);
+    const tb=$("#ins-tbody"), live=st.readings.length>0;
+    const rows=live?st.readings:(st.runs.length?st.runs[st.runs.length-1].data:[]);
+    $("#ins-cur").textContent=live?"Readings for this run":st.runs.length?"Readings for the latest run: "+st.runs[st.runs.length-1].label:"Readings";
     tb.innerHTML=rows.length?rows.map(([t,T])=>`<tr><td>${t}</td><td>${T.toFixed(1)}</td></tr>`).join(""):`<tr><td colspan="2" class="empty">No readings yet</td></tr>`;
     const rb=$("#ins-runs");
-    rb.innerHTML=st.runs.length?st.runs.map((r,i)=>{const a=r.data[0][1], b=r.data[r.data.length-1][1], dur=r.data[r.data.length-1][0]/60;
-      return `<tr><td><span class="dot" style="background:${RUNCOL[i%6]}"></span>${r.label}</td><td>${a.toFixed(1)}</td><td>${b.toFixed(1)}</td><td>${(a-b).toFixed(1)}</td><td>${dur?((a-b)/dur).toFixed(2):"—"}</td></tr>`}).join(""):`<tr><td colspan="5" class="empty">Complete a run to compare materials here.</td></tr>`;
+    rb.innerHTML=st.runs.length?st.runs.map((r,i)=>{const s=stats(r);
+      return `<tr><td><span class="dot" style="background:${RUNCOL[i%6]}"></span>${r.label}</td><td>${d1(s.a)}</td><td>${d1(s.b)}</td><td>${d1(s.drop)}</td><td>${dm(s.dur)}</td><td>${s.dur?d2(s.rate):"—"}</td></tr>`}).join(""):`<tr><td colspan="6" class="empty">Complete a run to compare materials here.</td></tr>`;
+    work();
+  }
+
+  /* ---------- worked calculation ---------- */
+  // Smooth curve through a run: straight-line fit of ln(temperature above room temperature) against time.
+  function fitRun(r){
+    const d=r.data.filter(([,T])=>T>TA+1); if(d.length<4) return null;
+    const n=d.length, xs=d.map(q=>q[0]), ys=d.map(q=>Math.log(q[1]-TA));
+    const mx=xs.reduce((s,x)=>s+x,0)/n, my=ys.reduce((s,y)=>s+y,0)/n;
+    let sxy=0,sxx=0; xs.forEach((x,i)=>{ sxy+=(x-mx)*(ys[i]-my); sxx+=(x-mx)**2; });
+    const k=-sxy/sxx; if(!(k>0)) return null; const A=Math.exp(my+k*mx);
+    return {T:t=>TA+A*Math.exp(-k*t), slope:t=>-k*A*Math.exp(-k*t)};
+  }
+  // Tangents to a run one minute after the start and one minute before the end.
+  // Each is described by two points read from the tangent line, as a student would read them from the graph.
+  function tangents(r){
+    const f=r&&fitRun(r); if(!f) return [];
+    const tEnd=r.data[r.data.length-1][0]; if(tEnd<240) return [];
+    return [60,tEnd-60].map(t0=>{ const ta=Math.max(0,t0-120), tb=Math.min(tEnd,t0+120), at=t=>f.T(t0)+f.slope(t0)*(t-t0);
+      const ya=Math.round(at(ta)*10)/10, yb=Math.round(at(tb)*10)/10;
+      return {t0,T0:f.T(t0),ta,tb,ya,yb,at,g:(yb-ya)/((tb-ta)/60)}; });
+  }
+  function work(){
+    const el=$("#insulation-work"); if(!el) return;
+    if(!st.runs.length){ el.innerHTML=`<p class="empty">Complete a run and the calculation will appear here.</p>`; return; }
+    const {fr,res,step,chips}=W, note=t=>`<span class="tx muted">${t}</span>`, tx=t=>`<span class="tx">${t}</span>`; // tx lines wrap on narrow screens
+    const S=st.runs.map(stats), cur=S[S.length-1], rank=S.slice().sort((x,y)=>x.rate-y.rate), best=rank[0], next=rank[1];
+    let out=chips([["Runs recorded",S.length],["Latest run",cur.label],["Mean rate of cooling",`${d2(cur.rate)} °C/min`,1],...(next&&next.rate>best.rate?[["Slowest cooling",best.label]]:[])])+`<div class="work" style="margin-top:14px">`;
+    out+=step(1,"Temperature drop",`For your latest run (${cur.label}): subtract the final temperature from the starting temperature.`,
+      [tx(`temperature drop = ${d1(cur.a)} − ${d1(cur.b)} = ${res(`${d1(cur.drop)} °C`)}`)]);
+    out+=step(2,"Mean rate of cooling","Divide the temperature drop by the time taken.",
+      [`rate = ${fr("temperature drop","time")}`,`rate = ${fr(d1(cur.drop),dm(cur.dur))} = ${res(`${d2(cur.rate)} °C per min`)}`]);
+    const cmp=[];
+    if(!next) cmp.push(note("Complete another run with a different material, or a different number of layers, and the runs will be ranked here."));
+    else{
+      rank.forEach((s,i)=>cmp.push(tx(`${i+1}. ${s.label}: ${d1(s.drop)} °C in ${dm(s.dur)} min = ${i?`${d2(s.rate)} °C per min`:res(`${d2(s.rate)} °C per min`)}`)));
+      cmp.push(note(next.rate>best.rate?`${best.label} cooled most slowly, so it was the best insulator in your runs.`:`Your two slowest runs cooled at the same mean rate, so these results cannot separate them.`));
+      const starts=S.map(s=>s.a), spread=Math.max(...starts)-Math.min(...starts);
+      if(spread>2) cmp.push(note(`Fair test check: your starting temperatures differ by ${d1(spread)} °C. Hotter water cools faster, so a run that started hotter is at a disadvantage.`));
+      if(S.some(s=>s.dur!==cur.dur)) cmp.push(note("Fair test check: your runs lasted for different times. Water cools more slowly as it gets cooler, so a longer run has a lower mean rate. Compare runs of the same length."));
+    }
+    out+=step(3,"Compare your runs","The run with the lowest mean rate of cooling has the best insulation.",cmp);
+    const unc=[tx(`temperature drop = ${d1(cur.drop)} ± ${d1(RES)} °C`)];
+    if(next&&next.dur===best.dur){ const gap=Math.abs(next.drop-best.drop);
+      unc.push(tx(`difference between the two smallest drops = ${d1(Math.max(next.drop,best.drop))} − ${d1(Math.min(next.drop,best.drop))} = ${res(`${d1(gap)} °C`)}`));
+      unc.push(note(gap>RES?`This is bigger than ${d1(RES)} °C, so the difference between ${best.label} and ${next.label} is real.`:`This is not bigger than ${d1(RES)} °C, so these readings cannot tell ${best.label} and ${next.label} apart. Run for longer, or repeat and take a mean.`)); }
+    out+=step(4,"How sure can you be?",`The thermometer reads to the nearest ${d1(RES)} °C, so each reading could be up to ${d2(RES/2)} °C out. A temperature drop uses two readings, so it could be up to ${d1(RES)} °C out.`,unc);
+    const tg=tangents(st.runs[st.runs.length-1]);
+    if(tg.length){ const [e,l]=tg, line=t=>[tx(`The tangent at ${dm(t.t0/60)} min passes through (${dm(t.ta/60)} min, ${d1(t.ya)} °C) and (${dm(t.tb/60)} min, ${d1(t.yb)} °C).`),`gradient = ${fr(`${d1(t.yb)} − ${d1(t.ya)}`,`${dm(t.tb/60)} − ${dm(t.ta/60)}`)}`,`gradient = ${res(`${d2(t.g).replace("-","−")} °C per min`)}`];
+      out+=`<div class="htbox"><span class="ht">Higher</span>`+step(5,"Rate of cooling at one moment","The gradient of a tangent to the cooling curve gives the rate of cooling at that time. The dashed lines on the graph are tangents to your latest run. Read two points from each tangent.",
+        [...line(e),...line(l),note(`The gradient is negative because the temperature is falling. The water was cooling at ${d2(-e.g)} °C per min after ${dm(e.t0/60)} min, but only ${d2(-l.g)} °C per min after ${dm(l.t0/60)} min. The temperature difference between the water and the room had fallen, so energy was transferred more slowly.`)])+`</div>`; }
+    el.innerHTML=out+`</div>`;
   }
   function label(){ const m=MAT[st.mat]; return st.mat==="none"?`None${st.lid?"":", no lid"}`:`${m.name} ×${st.layers}${st.lid?"":", no lid"}`; }
 
@@ -3344,7 +3347,8 @@ const INS=(()=>{
 
   // graph
   function drawGraph(){
-    const cv=$("#ins-graph"); if(!cv.offsetParent) return;
+    const cv=$("#insulation-graph"); if(!cv.offsetParent) return;
+    const foot=$("#ins-gfoot"); if(foot) foot.hidden=true;
     const w=cv.clientWidth, h=Math.round(w*0.62), dpr=window.devicePixelRatio||1;
     cv.width=w*dpr; cv.height=h*dpr; cv.style.height=h+"px";
     const c=cv.getContext("2d"); c.setTransform(dpr,0,0,dpr,0,0); c.clearRect(0,0,w,h);
@@ -3375,11 +3379,17 @@ const INS=(()=>{
       c.stroke(); c.globalAlpha=1; c.lineWidth=1.6;
       s.data.forEach(([t,v])=>{ const x=X(t),y=Y(v),k=3.6; c.beginPath(); c.moveTo(x-k,y-k); c.lineTo(x+k,y+k); c.moveTo(x+k,y-k); c.lineTo(x-k,y+k); c.stroke(); });
     });
+    // tangents to the latest finished run (Higher tier)
+    const tg=!st.readings.length&&window.TIER!=="f"?tangents(st.runs[st.runs.length-1]):[];
+    tg.forEach(t=>{ c.strokeStyle=ink; c.lineWidth=1.4; c.setLineDash([6,4]); c.save(); c.beginPath(); c.rect(L,T,pw,ph); c.clip(); c.beginPath(); c.moveTo(X(0),Y(t.at(0))); c.lineTo(X(tMax),Y(t.at(tMax))); c.stroke(); c.restore(); c.setLineDash([]);
+      c.fillStyle=ink; c.beginPath(); c.arc(X(t.t0),Y(t.T0),3.2,0,7); c.fill(); });
+    if(foot){ foot.hidden=!tg.length; if(tg.length) foot.textContent=`Dashed lines: tangents to the latest run at ${dm(tg[0].t0/60)} min and ${dm(tg[1].t0/60)} min (Higher tier).`; }
     // legend
     c.textAlign="left"; c.textBaseline="middle"; c.font=`11px ${css("--f-body")}`;
     let ly=T+10; sets.forEach(s=>{ const tw=c.measureText(s.label).width; const lx=L+pw-tw-24; c.fillStyle=css("--panel"); c.globalAlpha=.85; c.fillRect(lx-4,ly-8,tw+28,16); c.globalAlpha=1; c.fillStyle=s.col; c.fillRect(lx,ly-1.5,14,3); c.fillStyle=ink; c.fillText(s.label,lx+18,ly); ly+=17; });
   }
 
+  addEventListener("prodigy-tier-change",drawGraph);
   drawWrap(); setStage("ready"); tableRows(); render(); requestAnimationFrame(loop);
   LAB.register({id:"insulation",group:"gcse",num:2,name:"Thermal insulation",tag:"Physics only",icon:"insulation",onShow:drawGraph,redraw:drawGraph});
   return {drawGraph};
