@@ -70,7 +70,12 @@
       S('Rate of cooling', 'temperature drop ÷ time.', ['X: (80 − 60) ÷ 10 = 2.0 °C per minute', 'Y: (80 − 70) ÷ 10 = 1.0 °C per minute']),
       S('Conclusion', 'A slower rate of cooling means a lower rate of energy transfer.', [res('Y’s material is the better insulator')]),
       S('Fair test', '', ['Same volume and starting temperature of water, same thickness of material.'])
-    ], { chk: [['(80-60)/10', 2], ['(80-70)/10', 1]] }]
+    ], { chk: [['(80-60)/10', 2], ['(80-70)/10', 1]] }],
+    ['Cavity wall insulation', 'Explain how cavity wall insulation reduces the energy a house loses each second.', [
+      S('The material', '', ['Foam or mineral wool fills the gap between the two layers of brick.']),
+      S('Why it works', 'It traps air, which has a very low thermal conductivity.', ['Energy is conducted through the wall much more slowly, and air in the gap can no longer circulate.']),
+      S('Link to the question', '', ['The rate of energy transfer through the walls is lower, so the house cools more slowly and less heating is needed.'])
+    ], { desc: true }]
   ] });
   add('en8', { ex: [
     ['How many wind turbines?', 'A 1200 MW gas power station is to be replaced by wind turbines. Each turbine has a maximum power of 3.0 MW but, on average, produces 35 % of this. Estimate how many turbines are needed.', [
@@ -168,6 +173,11 @@
       S('Charging', 'Friction between insulators transfers electrons.', ['Rubbing against the seat transfers electrons, so the passenger becomes charged.']),
       S('The p.d.', '', ['A large p.d. builds up between her and the car (which is earthed through the ground).']),
       S('Discharge', '', ['When she touches the metal, electrons flow suddenly through her: a spark or small shock.'])
+    ], { desc: true }]
+ ,
+    ['Force in an electric field', 'A small positive charge is placed near a large negatively charged sphere. Describe the force on it and how the force changes as it moves closer.', [
+      S('Direction', 'Opposite charges attract.', ['The force is towards the sphere, along the field lines (which point into a negative charge).']),
+      S('Size', 'The field is stronger where the lines are closer together.', ['The force increases as the charge moves closer to the sphere.'])
     ], { desc: true }]
   ] });
   add('el9', { ex: [
