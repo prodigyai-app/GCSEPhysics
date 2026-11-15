@@ -1,0 +1,702 @@
+[
+ {
+  "file": "practical-01-specific-heat-capacity.html",
+  "kind": "lab",
+  "id": "shc",
+  "title": "Specific heat capacity",
+  "topic": "Required practicals",
+  "lesson": null,
+  "lessonName": null,
+  "practical": 1
+ },
+ {
+  "file": "practical-03-resistance.html",
+  "kind": "lab",
+  "id": "rs",
+  "title": "Resistance",
+  "topic": "Required practicals",
+  "lesson": null,
+  "lessonName": null,
+  "practical": 3
+ },
+ {
+  "file": "practical-04-i-v-characteristics.html",
+  "kind": "lab",
+  "id": "iv",
+  "title": "I–V characteristics",
+  "topic": "Required practicals",
+  "lesson": null,
+  "lessonName": null,
+  "practical": 4
+ },
+ {
+  "file": "practical-05-density.html",
+  "kind": "lab",
+  "id": "de",
+  "title": "Density",
+  "topic": "Required practicals",
+  "lesson": null,
+  "lessonName": null,
+  "practical": 5
+ },
+ {
+  "file": "practical-06-force-and-extension.html",
+  "kind": "lab",
+  "id": "sp",
+  "title": "Force and extension",
+  "topic": "Required practicals",
+  "lesson": null,
+  "lessonName": null,
+  "practical": 6
+ },
+ {
+  "file": "practical-07-acceleration.html",
+  "kind": "lab",
+  "id": "ac",
+  "title": "Acceleration",
+  "topic": "Required practicals",
+  "lesson": null,
+  "lessonName": null,
+  "practical": 7
+ },
+ {
+  "file": "practical-08-waves.html",
+  "kind": "lab",
+  "id": "wv",
+  "title": "Waves",
+  "topic": "Required practicals",
+  "lesson": null,
+  "lessonName": null,
+  "practical": 8
+ },
+ {
+  "file": "practical-09-reflection-and-refraction.html",
+  "kind": "lab",
+  "id": "lt",
+  "title": "Reflection and refraction",
+  "topic": "Required practicals",
+  "lesson": null,
+  "lessonName": null,
+  "practical": 9
+ },
+ {
+  "file": "practical-10-infrared-radiation.html",
+  "kind": "lab",
+  "id": "ir",
+  "title": "Infrared radiation",
+  "topic": "Required practicals",
+  "lesson": null,
+  "lessonName": null,
+  "practical": 10
+ },
+ {
+  "file": "practical-02-thermal-insulation.html",
+  "kind": "lab",
+  "id": "insulation",
+  "title": "Thermal insulation",
+  "topic": "Required practicals",
+  "lesson": null,
+  "lessonName": null,
+  "practical": 2
+ },
+ {
+  "file": "en1-following-energy-between-stores.html",
+  "kind": "sim",
+  "id": "en1-sim",
+  "title": "Following energy between stores",
+  "topic": "Energy",
+  "lesson": "en1",
+  "lessonName": "Energy stores and systems",
+  "practical": null
+ },
+ {
+  "file": "en2-dropping-an-object.html",
+  "kind": "sim",
+  "id": "en2-sim",
+  "title": "Dropping an object",
+  "topic": "Energy",
+  "lesson": "en2",
+  "lessonName": "Kinetic and gravitational potential energy",
+  "practical": null
+ },
+ {
+  "file": "en3-stretching-a-spring.html",
+  "kind": "sim",
+  "id": "en3-sim",
+  "title": "Stretching a spring",
+  "topic": "Energy",
+  "lesson": "en3",
+  "lessonName": "Elastic potential energy",
+  "practical": null
+ },
+ {
+  "file": "en4-same-energy-different-materials.html",
+  "kind": "sim",
+  "id": "en4-sim",
+  "title": "Same energy, different materials",
+  "topic": "Energy",
+  "lesson": "en4",
+  "lessonName": "Specific heat capacity",
+  "practical": null
+ },
+ {
+  "file": "en5-comparing-two-motors.html",
+  "kind": "sim",
+  "id": "en5-sim",
+  "title": "Comparing two motors",
+  "topic": "Energy",
+  "lesson": "en5",
+  "lessonName": "Power",
+  "practical": null
+ },
+ {
+  "file": "en6-sankey-diagrams-for-real-devices.html",
+  "kind": "sim",
+  "id": "en6-sim",
+  "title": "Sankey diagrams for real devices",
+  "topic": "Energy",
+  "lesson": "en6",
+  "lessonName": "Conservation, dissipation and efficiency",
+  "practical": null
+ },
+ {
+  "file": "en7-how-fast-does-a-room-cool.html",
+  "kind": "sim",
+  "id": "en7-sim",
+  "title": "How fast does a room cool?",
+  "topic": "Energy",
+  "lesson": "en7",
+  "lessonName": "Thermal conductivity and insulation",
+  "practical": null
+ },
+ {
+  "file": "en8-meeting-demand-on-the-national-grid.html",
+  "kind": "sim",
+  "id": "en8-sim",
+  "title": "Meeting demand on the National Grid",
+  "topic": "Energy",
+  "lesson": "en8",
+  "lessonName": "Energy resources",
+  "practical": null
+ },
+ {
+  "file": "el1-charge-flowing-round-a-circuit.html",
+  "kind": "sim",
+  "id": "el1-sim",
+  "title": "Charge flowing round a circuit",
+  "topic": "Electricity",
+  "lesson": "el1",
+  "lessonName": "Circuit symbols, charge and current",
+  "practical": null
+ },
+ {
+  "file": "el2-measuring-resistance.html",
+  "kind": "sim",
+  "id": "el2-sim",
+  "title": "Measuring resistance",
+  "topic": "Electricity",
+  "lesson": "el2",
+  "lessonName": "Resistance and V = IR",
+  "practical": null
+ },
+ {
+  "file": "el3-i-v-characteristics.html",
+  "kind": "sim",
+  "id": "el3-sim",
+  "title": "I–V characteristics",
+  "topic": "Electricity",
+  "lesson": "el3",
+  "lessonName": "I–V characteristics",
+  "practical": null
+ },
+ {
+  "file": "el4-series-or-parallel.html",
+  "kind": "sim",
+  "id": "el4-sim",
+  "title": "Series or parallel?",
+  "topic": "Electricity",
+  "lesson": "el4",
+  "lessonName": "Series and parallel circuits",
+  "practical": null
+ },
+ {
+  "file": "el5-looking-at-a-c-and-d-c.html",
+  "kind": "sim",
+  "id": "el5-sim",
+  "title": "Looking at a.c. and d.c.",
+  "topic": "Electricity",
+  "lesson": "el5",
+  "lessonName": "Mains electricity",
+  "practical": null
+ },
+ {
+  "file": "el5-why-the-earth-wire-matters.html",
+  "kind": "sim",
+  "id": "el5-sim2",
+  "title": "Why the earth wire matters",
+  "topic": "Electricity",
+  "lesson": "el5",
+  "lessonName": "Mains electricity",
+  "practical": null
+ },
+ {
+  "file": "el6-comparing-appliances.html",
+  "kind": "sim",
+  "id": "el6-sim",
+  "title": "Comparing appliances",
+  "topic": "Electricity",
+  "lesson": "el6",
+  "lessonName": "Power and energy transfers",
+  "practical": null
+ },
+ {
+  "file": "el7-why-transmit-at-high-voltage.html",
+  "kind": "sim",
+  "id": "el7-sim",
+  "title": "Why transmit at high voltage?",
+  "topic": "Electricity",
+  "lesson": "el7",
+  "lessonName": "The National Grid",
+  "practical": null
+ },
+ {
+  "file": "el8-the-field-around-a-charged-sphere.html",
+  "kind": "sim",
+  "id": "el8-sim",
+  "title": "The field around a charged sphere",
+  "topic": "Electricity",
+  "lesson": "el8",
+  "lessonName": "Static electricity and electric fields",
+  "practical": null
+ },
+ {
+  "file": "pm1-same-substance-three-states.html",
+  "kind": "sim",
+  "id": "pm1-sim",
+  "title": "Same substance, three states",
+  "topic": "Particle model of matter",
+  "lesson": "pm1",
+  "lessonName": "Density and states of matter",
+  "practical": null
+ },
+ {
+  "file": "pm2-a-heating-curve.html",
+  "kind": "sim",
+  "id": "pm2-sim",
+  "title": "A heating curve",
+  "topic": "Particle model of matter",
+  "lesson": "pm2",
+  "lessonName": "Internal energy and changes of state",
+  "practical": null
+ },
+ {
+  "file": "pm3-measuring-specific-latent-heat.html",
+  "kind": "sim",
+  "id": "pm3-sim",
+  "title": "Measuring specific latent heat",
+  "topic": "Particle model of matter",
+  "lesson": "pm3",
+  "lessonName": "Specific latent heat",
+  "practical": null
+ },
+ {
+  "file": "pm4-heating-a-sealed-gas.html",
+  "kind": "sim",
+  "id": "pm4-sim",
+  "title": "Heating a sealed gas",
+  "topic": "Particle model of matter",
+  "lesson": "pm4",
+  "lessonName": "Gas pressure and temperature",
+  "practical": null
+ },
+ {
+  "file": "pm5-squashing-a-gas.html",
+  "kind": "sim",
+  "id": "pm5-sim",
+  "title": "Squashing a gas",
+  "topic": "Particle model of matter",
+  "lesson": "pm5",
+  "lessonName": "Pressure and volume of a gas",
+  "practical": null
+ },
+ {
+  "file": "at1-build-an-atom.html",
+  "kind": "sim",
+  "id": "at1-sim",
+  "title": "Build an atom",
+  "topic": "Atomic structure",
+  "lesson": "at1",
+  "lessonName": "Atoms and isotopes",
+  "practical": null
+ },
+ {
+  "file": "at2-alpha-particle-scattering.html",
+  "kind": "sim",
+  "id": "at2-sim",
+  "title": "Alpha particle scattering",
+  "topic": "Atomic structure",
+  "lesson": "at2",
+  "lessonName": "Developing the model of the atom",
+  "practical": null
+ },
+ {
+  "file": "at3-investigating-penetration.html",
+  "kind": "sim",
+  "id": "at3-sim",
+  "title": "Investigating penetration",
+  "topic": "Atomic structure",
+  "lesson": "at3",
+  "lessonName": "Radioactive decay and nuclear radiation",
+  "practical": null
+ },
+ {
+  "file": "at4-building-nuclear-equations.html",
+  "kind": "sim",
+  "id": "at4-sim",
+  "title": "Building nuclear equations",
+  "topic": "Atomic structure",
+  "lesson": "at4",
+  "lessonName": "Nuclear equations",
+  "practical": null
+ },
+ {
+  "file": "at5-watching-nuclei-decay.html",
+  "kind": "sim",
+  "id": "at5-sim",
+  "title": "Watching nuclei decay",
+  "topic": "Atomic structure",
+  "lesson": "at5",
+  "lessonName": "Half-life",
+  "practical": null
+ },
+ {
+  "file": "at6-your-annual-radiation-dose.html",
+  "kind": "sim",
+  "id": "at6-sim",
+  "title": "Your annual radiation dose",
+  "topic": "Atomic structure",
+  "lesson": "at6",
+  "lessonName": "Contamination, irradiation and background radiation",
+  "practical": null
+ },
+ {
+  "file": "at7-choose-the-right-isotope.html",
+  "kind": "sim",
+  "id": "at7-sim",
+  "title": "Choose the right isotope",
+  "topic": "Atomic structure",
+  "lesson": "at7",
+  "lessonName": "Uses of nuclear radiation",
+  "practical": null
+ },
+ {
+  "file": "at8-controlling-a-chain-reaction.html",
+  "kind": "sim",
+  "id": "at8-sim",
+  "title": "Controlling a chain reaction",
+  "topic": "Atomic structure",
+  "lesson": "at8",
+  "lessonName": "Nuclear fission and fusion",
+  "practical": null
+ },
+ {
+  "file": "fo1-forces-in-everyday-situations.html",
+  "kind": "sim",
+  "id": "fo1-sim",
+  "title": "Forces in everyday situations",
+  "topic": "Forces",
+  "lesson": "fo1",
+  "lessonName": "Scalars, vectors and types of force",
+  "practical": null
+ },
+ {
+  "file": "fo2-weight-on-different-worlds.html",
+  "kind": "sim",
+  "id": "fo2-sim",
+  "title": "Weight on different worlds",
+  "topic": "Forces",
+  "lesson": "fo2",
+  "lessonName": "Gravity, weight and mass",
+  "practical": null
+ },
+ {
+  "file": "fo3-combining-and-resolving-forces.html",
+  "kind": "sim",
+  "id": "fo3-sim",
+  "title": "Combining and resolving forces",
+  "topic": "Forces",
+  "lesson": "fo3",
+  "lessonName": "Resultant forces",
+  "practical": null
+ },
+ {
+  "file": "fo4-pushing-a-crate.html",
+  "kind": "sim",
+  "id": "fo4-sim",
+  "title": "Pushing a crate",
+  "topic": "Forces",
+  "lesson": "fo4",
+  "lessonName": "Work done and energy transfer",
+  "practical": null
+ },
+ {
+  "file": "fo5-loading-a-spring.html",
+  "kind": "sim",
+  "id": "fo5-sim",
+  "title": "Loading a spring",
+  "topic": "Forces",
+  "lesson": "fo5",
+  "lessonName": "Forces and elasticity",
+  "practical": null
+ },
+ {
+  "file": "fo6-balancing-a-see-saw.html",
+  "kind": "sim",
+  "id": "fo6-sim",
+  "title": "Balancing a see-saw",
+  "topic": "Forces",
+  "lesson": "fo6",
+  "lessonName": "Moments, levers and gears",
+  "practical": null
+ },
+ {
+  "file": "fo7-pressure-depth-and-upthrust.html",
+  "kind": "sim",
+  "id": "fo7-sim",
+  "title": "Pressure, depth and upthrust",
+  "topic": "Forces",
+  "lesson": "fo7",
+  "lessonName": "Pressure in fluids and upthrust",
+  "practical": null
+ },
+ {
+  "file": "fo8-a-cyclists-journey.html",
+  "kind": "sim",
+  "id": "fo8-sim",
+  "title": "A cyclist’s journey",
+  "topic": "Forces",
+  "lesson": "fo8",
+  "lessonName": "Speed and distance–time graphs",
+  "practical": null
+ },
+ {
+  "file": "fo9-velocity-time-graphs.html",
+  "kind": "sim",
+  "id": "fo9-sim",
+  "title": "Velocity–time graphs",
+  "topic": "Forces",
+  "lesson": "fo9",
+  "lessonName": "Acceleration and velocity–time graphs",
+  "practical": null
+ },
+ {
+  "file": "fo10-force-mass-and-acceleration.html",
+  "kind": "sim",
+  "id": "fo10-sim",
+  "title": "Force, mass and acceleration",
+  "topic": "Forces",
+  "lesson": "fo10",
+  "lessonName": "Newton’s laws of motion",
+  "practical": null
+ },
+ {
+  "file": "fo11-stopping-a-car.html",
+  "kind": "sim",
+  "id": "fo11-sim",
+  "title": "Stopping a car",
+  "topic": "Forces",
+  "lesson": "fo11",
+  "lessonName": "Stopping distances",
+  "practical": null
+ },
+ {
+  "file": "fo12-collisions-and-conservation-of-momentum.html",
+  "kind": "sim",
+  "id": "fo12-sim",
+  "title": "Collisions and conservation of momentum",
+  "topic": "Forces",
+  "lesson": "fo12",
+  "lessonName": "Momentum",
+  "practical": null
+ },
+ {
+  "file": "wa1-watching-a-wave-pass.html",
+  "kind": "sim",
+  "id": "wa1-sim",
+  "title": "Watching a wave pass",
+  "topic": "Waves",
+  "lesson": "wa1",
+  "lessonName": "Transverse and longitudinal waves",
+  "practical": null
+ },
+ {
+  "file": "wa2-measuring-waves-in-a-ripple-tank.html",
+  "kind": "sim",
+  "id": "wa2-sim",
+  "title": "Measuring waves in a ripple tank",
+  "topic": "Waves",
+  "lesson": "wa2",
+  "lessonName": "Wave speed",
+  "practical": null
+ },
+ {
+  "file": "wa3-rays-at-a-boundary.html",
+  "kind": "sim",
+  "id": "wa3-sim",
+  "title": "Rays at a boundary",
+  "topic": "Waves",
+  "lesson": "wa3",
+  "lessonName": "Reflection and refraction",
+  "practical": null
+ },
+ {
+  "file": "wa4-echo-sounding.html",
+  "kind": "sim",
+  "id": "wa4-sim",
+  "title": "Echo sounding",
+  "topic": "Waves",
+  "lesson": "wa4",
+  "lessonName": "Sound, ultrasound and seismic waves",
+  "practical": null
+ },
+ {
+  "file": "wa5-exploring-the-spectrum.html",
+  "kind": "sim",
+  "id": "wa5-sim",
+  "title": "Exploring the spectrum",
+  "topic": "Waves",
+  "lesson": "wa5",
+  "lessonName": "The electromagnetic spectrum",
+  "practical": null
+ },
+ {
+  "file": "wa6-which-wave-for-which-job.html",
+  "kind": "sim",
+  "id": "wa6-sim",
+  "title": "Which wave for which job?",
+  "topic": "Waves",
+  "lesson": "wa6",
+  "lessonName": "Uses and dangers of electromagnetic waves",
+  "practical": null
+ },
+ {
+  "file": "wa7-ray-diagrams.html",
+  "kind": "sim",
+  "id": "wa7-sim",
+  "title": "Ray diagrams",
+  "topic": "Waves",
+  "lesson": "wa7",
+  "lessonName": "Lenses",
+  "practical": null
+ },
+ {
+  "file": "wa8-lights-filters-and-objects.html",
+  "kind": "sim",
+  "id": "wa8-sim",
+  "title": "Lights, filters and objects",
+  "topic": "Waves",
+  "lesson": "wa8",
+  "lessonName": "Visible light and colour",
+  "practical": null
+ },
+ {
+  "file": "wa9-the-spectrum-of-a-hot-object.html",
+  "kind": "sim",
+  "id": "wa9-sim",
+  "title": "The spectrum of a hot object",
+  "topic": "Waves",
+  "lesson": "wa9",
+  "lessonName": "Black body radiation",
+  "practical": null
+ },
+ {
+  "file": "mg1-mapping-a-magnetic-field.html",
+  "kind": "sim",
+  "id": "mg1-sim",
+  "title": "Mapping a magnetic field",
+  "topic": "Magnetism and electromagnetism",
+  "lesson": "mg1",
+  "lessonName": "Magnets and magnetic fields",
+  "practical": null
+ },
+ {
+  "file": "mg2-fields-from-currents.html",
+  "kind": "sim",
+  "id": "mg2-sim",
+  "title": "Fields from currents",
+  "topic": "Magnetism and electromagnetism",
+  "lesson": "mg2",
+  "lessonName": "Electromagnetism",
+  "practical": null
+ },
+ {
+  "file": "mg3-force-on-a-current-carrying-wire.html",
+  "kind": "sim",
+  "id": "mg3-sim",
+  "title": "Force on a current-carrying wire",
+  "topic": "Magnetism and electromagnetism",
+  "lesson": "mg3",
+  "lessonName": "The motor effect",
+  "practical": null
+ },
+ {
+  "file": "mg4-a-simple-d-c-motor.html",
+  "kind": "sim",
+  "id": "mg4-sim",
+  "title": "A simple d.c. motor",
+  "topic": "Magnetism and electromagnetism",
+  "lesson": "mg4",
+  "lessonName": "Electric motors and loudspeakers",
+  "practical": null
+ },
+ {
+  "file": "mg5-generator-output.html",
+  "kind": "sim",
+  "id": "mg5-sim",
+  "title": "Generator output",
+  "topic": "Magnetism and electromagnetism",
+  "lesson": "mg5",
+  "lessonName": "Induced potential and generators",
+  "practical": null
+ },
+ {
+  "file": "mg6-step-up-and-step-down.html",
+  "kind": "sim",
+  "id": "mg6-sim",
+  "title": "Step-up and step-down",
+  "topic": "Magnetism and electromagnetism",
+  "lesson": "mg6",
+  "lessonName": "Transformers",
+  "practical": null
+ },
+ {
+  "file": "sx1-following-a-stars-life.html",
+  "kind": "sim",
+  "id": "sx1-sim",
+  "title": "Following a star’s life",
+  "topic": "Space physics",
+  "lesson": "sx1",
+  "lessonName": "The solar system and the life cycle of stars",
+  "practical": null
+ },
+ {
+  "file": "sx2-putting-a-satellite-into-orbit.html",
+  "kind": "sim",
+  "id": "sx2-sim",
+  "title": "Putting a satellite into orbit",
+  "topic": "Space physics",
+  "lesson": "sx2",
+  "lessonName": "Orbital motion and satellites",
+  "practical": null
+ },
+ {
+  "file": "sx3-red-shift-and-distance.html",
+  "kind": "sim",
+  "id": "sx3-sim",
+  "title": "Red-shift and distance",
+  "topic": "Space physics",
+  "lesson": "sx3",
+  "lessonName": "Red-shift and the Big Bang",
+  "practical": null
+ }
+]

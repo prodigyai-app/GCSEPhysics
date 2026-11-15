@@ -261,7 +261,7 @@
   "figure": "ivCharacteristic",
   "options": {},
   "topic": "Required practicals",
-  "description": "I\u2013V characteristics: circuit and graphs for a resistor, filament lamp and diode"
+  "description": "I–V characteristics: circuit and graphs for a resistor, filament lamp and diode"
  },
  {
   "file": "practical-density",
@@ -346,5 +346,707 @@
   "options": {},
   "topic": "Magnetism",
   "description": "Electromagnetic induction"
+ },
+ {
+  "file": "energy-elastic-potential-energy",
+  "figure": "elasticEnergy",
+  "options": {
+   "level": "gcse"
+  },
+  "topic": "Energy",
+  "description": "Energy stored in a stretched spring: the area under the force–extension graph"
+ },
+ {
+  "file": "energy-power-and-energy-bills",
+  "figure": "powerBill",
+  "options": {
+   "level": "gcse"
+  },
+  "topic": "Energy",
+  "description": "Power ratings of appliances, kilowatt-hours and the cost of electricity"
+ },
+ {
+  "file": "energy-resources",
+  "figure": "energyResources",
+  "options": {
+   "level": "gcse"
+  },
+  "topic": "Energy",
+  "description": "Renewable and non-renewable energy resources"
+ },
+ {
+  "file": "electricity-power-in-circuits",
+  "figure": "powerCircuit",
+  "options": {
+   "level": "gcse"
+  },
+  "topic": "Electricity",
+  "description": "Electrical power in a circuit: ammeter and voltmeter readings, P = VI, P = I²R and E = Pt"
+ },
+ {
+  "file": "particle-boyles-law",
+  "figure": "boylesLaw",
+  "options": {
+   "level": "gcse"
+  },
+  "topic": "Particle model",
+  "description": "Pressure and volume of a gas: Boyle’s law apparatus and a graph of pressure against 1 ÷ volume"
+ },
+ {
+  "file": "atomic-half-life-curve",
+  "figure": "halfLifeCurve",
+  "options": {
+   "level": "gcse"
+  },
+  "topic": "Atomic structure",
+  "description": "Half-life read from a decay curve: activity halves every half-life"
+ },
+ {
+  "file": "forces-mass-and-weight",
+  "figure": "massWeight",
+  "options": {
+   "level": "gcse"
+  },
+  "topic": "Forces",
+  "description": "Mass and weight: the same 60 kg mass on Earth and on the Moon"
+ },
+ {
+  "file": "forces-work-done",
+  "figure": "workDone",
+  "options": {
+   "level": "gcse"
+  },
+  "topic": "Forces",
+  "description": "Work done: a force moving an object through a distance"
+ },
+ {
+  "file": "waves-uses-of-em-waves",
+  "figure": "emUses",
+  "options": {
+   "level": "gcse"
+  },
+  "topic": "Waves",
+  "description": "Uses and hazards of each part of the electromagnetic spectrum"
+ },
+ {
+  "file": "space-solar-system",
+  "figure": "solarSystem",
+  "options": {
+   "level": "gcse"
+  },
+  "topic": "Space physics",
+  "description": "Our solar system: the Sun, planets and their orbits"
+ },
+ {
+  "file": "energy-the-seven-energy-stores-and-the-four",
+  "figure": null,
+  "options": {},
+  "topic": "Energy",
+  "description": "The seven energy stores and the four transfer pathways.",
+  "source": {
+   "page": "en1",
+   "lesson": "Energy stores and systems",
+   "kind": "figure"
+  }
+ },
+ {
+  "file": "energy-exam-question-the-graph-shows-how-the-force-on",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Elastic potential energy): The graph shows how the force on a rubber band changes with its extension.",
+  "source": {
+   "page": "en3",
+   "lesson": "Elastic potential energy",
+   "kind": "exam",
+   "question": "xm-en3q1a-fb"
+  }
+ },
+ {
+  "file": "energy-in-a-sankey-diagram-the-width-of",
+  "figure": null,
+  "options": {},
+  "topic": "Energy",
+  "description": "In a Sankey diagram the width of each arrow is proportional to the energy.",
+  "source": {
+   "page": "en6",
+   "lesson": "Conservation, dissipation and efficiency",
+   "kind": "figure"
+  }
+ },
+ {
+  "file": "electricity-symbol-cell",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: Cell",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-symbol-battery",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: Battery",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-symbol-switch-open",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: Switch (open)",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-symbol-switch-closed",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: Switch (closed)",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-symbol-lamp",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: Lamp",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-symbol-resistor",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: Resistor",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-symbol-variable-resistor",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: Variable resistor",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-symbol-fuse",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: Fuse",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-symbol-diode",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: Diode",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-symbol-led",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: LED",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-symbol-thermistor",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: Thermistor",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-symbol-ldr",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: LDR",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-symbol-ammeter",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: Ammeter",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-symbol-voltmeter",
+  "figure": null,
+  "options": {},
+  "topic": "Circuit symbols",
+  "description": "Circuit symbol: Voltmeter",
+  "source": {
+   "page": "el1",
+   "lesson": "Circuit symbols, charge and current",
+   "kind": "symbol"
+  }
+ },
+ {
+  "file": "electricity-exam-question-the-diagram-shows-a-circuit-used-to",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Resistance and V = IR): The diagram shows a circuit used to find the resistance R of a resistor.",
+  "source": {
+   "page": "el2",
+   "lesson": "Resistance and V = IR",
+   "kind": "exam",
+   "question": "xm-el2q0a-fb"
+  }
+ },
+ {
+  "file": "electricity-rubbing-moves-electrons-from-one-insulator-to",
+  "figure": null,
+  "options": {},
+  "topic": "Electricity",
+  "description": "Rubbing moves electrons from one insulator to the other.",
+  "source": {
+   "page": "el8",
+   "lesson": "Static electricity and electric fields",
+   "kind": "figure"
+  }
+ },
+ {
+  "file": "particle-exam-question-the-graph-shows-how-the-temperature-of",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Internal energy and changes of state): The graph shows how the temperature of a substance changes as it cools.",
+  "source": {
+   "page": "pm2",
+   "lesson": "Internal energy and changes of state",
+   "kind": "exam",
+   "question": "xm-pm2q0a-fb"
+  }
+ },
+ {
+  "file": "atomic-read-the-half-life-from-the-time",
+  "figure": null,
+  "options": {},
+  "topic": "Atomic structure",
+  "description": "Read the half-life from the time taken to fall to half of any starting value.",
+  "source": {
+   "page": "at5",
+   "lesson": "Half-life",
+   "kind": "figure"
+  }
+ },
+ {
+  "file": "atomic-exam-question-the-graph-shows-how-the-count-rate",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Half-life): The graph shows how the count rate from a radioactive sample changes with time (background has been subtracted).",
+  "source": {
+   "page": "at5",
+   "lesson": "Half-life",
+   "kind": "exam",
+   "question": "xm-at5q0a-fb"
+  }
+ },
+ {
+  "file": "atomic-fission-of-uranium-235-after-absorbing-a",
+  "figure": null,
+  "options": {},
+  "topic": "Atomic structure",
+  "description": "Fission of uranium-235 after absorbing a neutron.",
+  "source": {
+   "page": "at8",
+   "lesson": "Nuclear fission and fusion",
+   "kind": "figure"
+  }
+ },
+ {
+  "file": "forces-exam-question-the-graph-shows-force-against-extension-for",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Forces and elasticity): The graph shows force against extension for a different spring.",
+  "source": {
+   "page": "fo5",
+   "lesson": "Forces and elasticity",
+   "kind": "exam",
+   "question": "xm-fo5q1a-fb"
+  }
+ },
+ {
+  "file": "forces-a-small-gear-driving-a-large-gear",
+  "figure": null,
+  "options": {},
+  "topic": "Forces",
+  "description": "A small gear driving a large gear: lower speed, larger moment.",
+  "source": {
+   "page": "fo6",
+   "lesson": "Moments, levers and gears",
+   "kind": "figure"
+  }
+ },
+ {
+  "file": "forces-exam-question-the-distance-time-graph-shows-a-short",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Speed and distance–time graphs): The distance–time graph shows a short walk.",
+  "source": {
+   "page": "fo8",
+   "lesson": "Speed and distance–time graphs",
+   "kind": "exam",
+   "question": "xm-fo8q0a-fb"
+  }
+ },
+ {
+  "file": "forces-a-skydiver-reaches-terminal-velocity-opening-the",
+  "figure": null,
+  "options": {},
+  "topic": "Forces",
+  "description": "A skydiver reaches terminal velocity; opening the parachute increases the drag, giving a lower terminal velocity.",
+  "source": {
+   "page": "fo9",
+   "lesson": "Acceleration and velocity–time graphs",
+   "kind": "figure"
+  }
+ },
+ {
+  "file": "forces-exam-question-the-velocity-time-graph-shows-a-train",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Acceleration and velocity–time graphs): The velocity–time graph shows a train leaving a station.",
+  "source": {
+   "page": "fo9",
+   "lesson": "Acceleration and velocity–time graphs",
+   "kind": "exam",
+   "question": "xm-fo9q0a-fb"
+  }
+ },
+ {
+  "file": "waves-seismic-waves-through-the-earth",
+  "figure": null,
+  "options": {},
+  "topic": "Waves",
+  "description": "Seismic waves through the Earth.",
+  "source": {
+   "page": "wa4",
+   "lesson": "Sound, ultrasound and seismic waves Higher",
+   "kind": "figure"
+  }
+ },
+ {
+  "file": "magnetism-flemings-left-hand-rule",
+  "figure": null,
+  "options": {},
+  "topic": "Magnetism",
+  "description": "Fleming’s left-hand rule.",
+  "source": {
+   "page": "mg3",
+   "lesson": "The motor effect Higher",
+   "kind": "figure"
+  }
+ },
+ {
+  "file": "magnetism-a-moving-coil-loudspeaker",
+  "figure": null,
+  "options": {},
+  "topic": "Magnetism",
+  "description": "A moving-coil loudspeaker.",
+  "source": {
+   "page": "mg4",
+   "lesson": "Electric motors and loudspeakers Higher",
+   "kind": "figure"
+  }
+ },
+ {
+  "file": "space-as-the-universe-expands-all-distant-galaxies",
+  "figure": null,
+  "options": {},
+  "topic": "Space physics",
+  "description": "As the universe expands, all distant galaxies move further apart.",
+  "source": {
+   "page": "sx3",
+   "lesson": "Red-shift and the Big Bang",
+   "kind": "figure"
+  }
+ },
+ {
+  "file": "exam-paper-pp11-a-student-investigated-how-the-current-in",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Set 1 · Paper 1 (Higher tier)): A student investigated how the current in a filament lamp depends on the potential difference across it.",
+  "source": {
+   "page": "pp11",
+   "lesson": "Set 1 · Paper 1 (Higher tier)",
+   "kind": "exam",
+   "question": "xm-pp11q1a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pp11-polonium-210-is-radioactive-and-decays-by",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Set 1 · Paper 1 (Higher tier)): Polonium-210 is radioactive and decays by emitting alpha particles.",
+  "source": {
+   "page": "pp11",
+   "lesson": "Set 1 · Paper 1 (Higher tier)",
+   "kind": "exam",
+   "question": "xm-pp11q6a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pp11-figure-5-shows-a-circuit-used-as",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Set 1 · Paper 1 (Higher tier)): Figure 5 shows a circuit used as a temperature sensor.",
+  "source": {
+   "page": "pp11",
+   "lesson": "Set 1 · Paper 1 (Higher tier)",
+   "kind": "exam",
+   "question": "xm-pp11q8a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pp12-a-student-investigated-how-the-extension-of",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Set 1 · Paper 2 (Higher tier)): A student investigated how the extension of a spring depends on the force applied to it. She hung the spring from a clamp and added weights one at a time.",
+  "source": {
+   "page": "pp12",
+   "lesson": "Set 1 · Paper 2 (Higher tier)",
+   "kind": "exam",
+   "question": "xm-pp12q1a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pp12-figure-2-shows-a-velocity-time-graph",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Set 1 · Paper 2 (Higher tier)): Figure 2 shows a velocity–time graph for a cyclist.",
+  "source": {
+   "page": "pp12",
+   "lesson": "Set 1 · Paper 2 (Higher tier)",
+   "kind": "exam",
+   "question": "xm-pp12q2a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pp21-a-student-heated-0-40-kg-of",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Set 2 · Paper 1 (Higher tier)): A student heated 0.40 kg of solid wax with a 150 W heater. Figure 1 shows how the temperature of the wax changed.",
+  "source": {
+   "page": "pp21",
+   "lesson": "Set 2 · Paper 1 (Higher tier)",
+   "kind": "exam",
+   "question": "xm-pp21q2a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pp21-figure-4-shows-two-lamps-connected-in",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Set 2 · Paper 1 (Higher tier)): Figure 4 shows two lamps connected in parallel to a 12 V battery. The current in lamp A is 2.0 A and the current in lamp B is 0.50 A.",
+  "source": {
+   "page": "pp21",
+   "lesson": "Set 2 · Paper 1 (Higher tier)",
+   "kind": "exam",
+   "question": "xm-pp21q6a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pp22-a-boy-walks-to-a-bus-stop",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Set 2 · Paper 2 (Higher tier)): A boy walks to a bus stop, waits, and then runs to catch the bus. Figure 1 shows the distance–time graph for his journey.",
+  "source": {
+   "page": "pp22",
+   "lesson": "Set 2 · Paper 2 (Higher tier)",
+   "kind": "exam",
+   "question": "xm-pp22q2a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pp31-a-student-investigated-how-the-current-in",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Set 3 · Paper 1 (Higher tier)): A student investigated how the current in a component depends on the potential difference across it.",
+  "source": {
+   "page": "pp31",
+   "lesson": "Set 3 · Paper 1 (Higher tier)",
+   "kind": "exam",
+   "question": "xm-pp31q1a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pp32-a-student-drops-a-steel-sphere-of",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Set 3 · Paper 2 (Higher tier)): A student drops a steel sphere of mass 0.050 kg into a tall tube of oil. Figure 1 shows how the velocity of the sphere changes as it falls through the oil.",
+  "source": {
+   "page": "pp32",
+   "lesson": "Set 3 · Paper 2 (Higher tier)",
+   "kind": "exam",
+   "question": "xm-pp32q0a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pf11-figure-1-shows-a-series-circuit",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Foundation Set 1 · Paper 1): Figure 1 shows a series circuit.",
+  "source": {
+   "page": "pf11",
+   "lesson": "Foundation Set 1 · Paper 1",
+   "kind": "exam",
+   "question": "xm-pf11q2a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pf12-figure-1-shows-the-distance-time-graph",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Foundation Set 1 · Paper 2): Figure 1 shows the distance–time graph for a car.",
+  "source": {
+   "page": "pf12",
+   "lesson": "Foundation Set 1 · Paper 2",
+   "kind": "exam",
+   "question": "xm-pf12q2a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pf21-a-student-measured-the-current-in-a",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Foundation Set 2 · Paper 1): A student measured the current in a resistor for different potential differences. Figure 1 shows the results.",
+  "source": {
+   "page": "pf21",
+   "lesson": "Foundation Set 2 · Paper 1",
+   "kind": "exam",
+   "question": "xm-pf21q2a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pf21-a-student-heated-a-tube-of-stearic",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Foundation Set 2 · Paper 1): A student heated a tube of stearic acid until it melted, then let it cool. Figure 2 shows how the temperature of the stearic acid changed as it cooled.",
+  "source": {
+   "page": "pf21",
+   "lesson": "Foundation Set 2 · Paper 1",
+   "kind": "exam",
+   "question": "xm-pf21q5a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pf22-figure-1-shows-a-velocity-time-graph",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Foundation Set 2 · Paper 2): Figure 1 shows a velocity–time graph for a bus between two stops.",
+  "source": {
+   "page": "pf22",
+   "lesson": "Foundation Set 2 · Paper 2",
+   "kind": "exam",
+   "question": "xm-pf22q2a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pf31-figure-1-shows-two-lamps-x-and",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Foundation Set 3 · Paper 1): Figure 1 shows two lamps, X and Y, connected in parallel. The current in lamp X is 0.40 A and the current in lamp Y is 0.20 A.",
+  "source": {
+   "page": "pf31",
+   "lesson": "Foundation Set 3 · Paper 1",
+   "kind": "exam",
+   "question": "xm-pf31q2a-fb"
+  }
+ },
+ {
+  "file": "exam-paper-pf31-uranium-238-23892u-decays-by-emitting-an",
+  "figure": null,
+  "options": {},
+  "topic": "Exam question figures",
+  "description": "Exam question figure (Foundation Set 3 · Paper 1): Uranium-238 (23892U) decays by emitting an alpha particle to form thorium.",
+  "source": {
+   "page": "pf31",
+   "lesson": "Foundation Set 3 · Paper 1",
+   "kind": "exam",
+   "question": "xm-pf31q6a-fb"
+  }
  }
 ]

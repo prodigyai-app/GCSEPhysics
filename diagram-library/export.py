@@ -2,7 +2,7 @@ import asyncio,json,re
 from playwright.async_api import async_playwright
 import os
 HERE=os.path.dirname(os.path.abspath(__file__))
-C=os.path.join(HERE,'..','..','ALevelPhysics','platform','client')+'/'; OUT=HERE+'/'
+C=os.path.join(HERE,'..')+'/'; OUT=HERE+'/'  # the figure scripts this site loads
 FIGS=[
  ('energy-house-insulation','house',{},'Energy','Cutaway house: loft and cavity wall insulation, double glazing, draught excluder'),
  ('particle-model-states-of-matter','states',{'level':'gcse'},'Particle model','Particles in solids, liquids and gases'),
@@ -50,12 +50,22 @@ FIGS=[
  ('atomic-irradiation-contamination','contamination',{},'Atomic structure','Irradiation and contamination'),
  ('waves-colour-filters','colourFilters',{},'Waves','Prism, filters and coloured objects'),
  ('magnetism-induction','induction',{},'Magnetism','Electromagnetic induction'),
+ ('energy-elastic-potential-energy','elasticEnergy',{'level':'gcse'},'Energy','Energy stored in a stretched spring: the area under the force–extension graph'),
+ ('energy-power-and-energy-bills','powerBill',{'level':'gcse'},'Energy','Power ratings of appliances, kilowatt-hours and the cost of electricity'),
+ ('energy-resources','energyResources',{'level':'gcse'},'Energy','Renewable and non-renewable energy resources'),
+ ('electricity-power-in-circuits','powerCircuit',{'level':'gcse'},'Electricity','Electrical power in a circuit: ammeter and voltmeter readings, P = VI, P = I²R and E = Pt'),
+ ('particle-boyles-law','boylesLaw',{'level':'gcse'},'Particle model','Pressure and volume of a gas: Boyle’s law apparatus and a graph of pressure against 1 ÷ volume'),
+ ('atomic-half-life-curve','halfLifeCurve',{'level':'gcse'},'Atomic structure','Half-life read from a decay curve: activity halves every half-life'),
+ ('forces-mass-and-weight','massWeight',{'level':'gcse'},'Forces','Mass and weight: the same 60 kg mass on Earth and on the Moon'),
+ ('forces-work-done','workDone',{'level':'gcse'},'Forces','Work done: a force moving an object through a distance'),
+ ('waves-uses-of-em-waves','emUses',{'level':'gcse'},'Waves','Uses and hazards of each part of the electromagnetic spectrum'),
+ ('space-solar-system','solarSystem',{'level':'gcse'},'Space physics','Our solar system: the Sun, planets and their orbits'),
 ]
 async def m():
   async with async_playwright() as p:
     b=await p.chromium.launch(); pg=await b.new_page(viewport={'width':1700,'height':1200},device_scale_factor=2)
     await pg.set_content('<html><body style="margin:0"></body></html>')
-    for f in ['science-figures.js','science-figures-2.js','science-figures-img.js']: await pg.add_script_tag(path=C+f)
+    for f in ['science-figures.js','science-figures-2.js','science-figures-img.js','gcse-figures.js']: await pg.add_script_tag(path=C+f)
     meta=[]
     for name,fig,o,topic,desc in FIGS:
       for theme,bg,ink,panel in [('light','#ffffff','#1d2733','#ffffff'),('dark','#0f1620','#e8ecf5','#0f1620')]:
@@ -72,6 +82,8 @@ async def m():
         await pg.evaluate("s=>{document.body.innerHTML='<div id=w style=\"display:inline-block\">'+s+'</div>'}",svg)
         el=await pg.query_selector('#w svg'); await el.screenshot(path=OUT+f'png-{theme}/{name}.png')
       meta.append({'file':name,'figure':fig,'options':o,'topic':topic,'description':desc})
-    json.dump(meta,open(OUT+'diagrams.json','w'),indent=1)
+    try: keep=[d for d in json.load(open(OUT+'diagrams.json')) if d.get('source')]  # figures from export-site-figures.cjs
+    except FileNotFoundError: keep=[]
+    json.dump(meta+keep,open(OUT+'diagrams.json','w'),indent=1,ensure_ascii=False)
     await b.close(); print(len(meta),'diagrams')
 asyncio.run(m())
