@@ -98,7 +98,7 @@
     P('State what happens to the mass of gas in the syringe.', 1, ['it stays the same'])
   ])] });
   add('pm5', { exam: [Q('Air in a bicycle pump has a volume of 120 cm³ at a pressure of 100 kPa. The outlet is blocked and the plunger is pushed in slowly, so the temperature stays constant.', [
-    P('Calculate the pressure when the volume is 40 cm³.', 3, ['p₁V₁ = p₂V₂', 'p₂ = 100 × 120 ÷ 40', '= 300 kPa'], Object.assign(C(300, 'kPa', '100*120/40'), { ht: true })),
+    P('Calculate the pressure when the volume is 40 cm³.', 3, ['p₁V₁ = p₂V₂', 'p₂ = 100 × 120 ÷ 40', '= 300 kPa'], C(300, 'kPa', '100*120/40')),
     P('Explain, in terms of particles, why the pressure increases as the volume decreases.', 2, ['the same number of particles are in a smaller volume', 'so they collide with the walls more often (per unit area), giving a larger force per unit area'])
   ])] });
   add('pm6', { exam: [Q('A student wants to find the density of an irregularly shaped stone and of a liquid.', [

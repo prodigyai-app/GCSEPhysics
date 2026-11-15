@@ -40,7 +40,7 @@
   ] });
   add('fo9', { gaps: [
     G('A car accelerates from 0 to 24 m/s in 8.0 s.', ['a = Δv ÷ t = 24 ÷ 8.0 = [[3.0|3]] m/s²'], ['24/8.0'], 'a = Δv ÷ t.'),
-    G('(Higher) A car accelerates from rest at 2.0 m/s² over 25 m.', ['v² = 2as = 2 × 2.0 × 25 = [[100]]', 'v = [[10]] m/s'], ['2*2.0*25', 'sqrt(100)'], 'Use v² − u² = 2as with u = 0.', true),
+    G('A car accelerates from rest at 2.0 m/s² over 25 m.', ['v² = 2as = 2 × 2.0 × 25 = [[100]]', 'v = [[10]] m/s'], ['2*2.0*25', 'sqrt(100)'], 'Use v² − u² = 2as with u = 0 (given on the equation sheet).'),
     G('Velocity–time graphs.', ['The gradient is the [[acceleration]]. The area under the graph is the [[distance|displacement]] travelled.'], [], 'Split the area into shapes.'),
     G('A car accelerates uniformly from 0 to 12 m/s in 6.0 s, then travels at 12 m/s for 4.0 s.', ['distance in 6.0 s = ½ × 6.0 × 12 = [[36]] m', 'distance in the next 4.0 s = 12 × 4.0 = [[48]] m'], ['0.5*6.0*12', '12*4.0'], 'Triangle then rectangle.')
   ] });

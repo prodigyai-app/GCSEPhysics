@@ -27,16 +27,16 @@
     G('Direction of gas pressure.', ['The force from gas pressure acts at [[right angles|90°|90 degrees]] to the walls of the container.'], [], 'The pressure acts on every surface.')
   ] });
   add('pm5', { gaps: [
-    G('(Higher) A gas has a volume of 4.0 m³ at 100 kPa. It is compressed to 1.0 m³ at constant temperature.', ['p<sub>2</sub> = p<sub>1</sub>V<sub>1</sub> ÷ V<sub>2</sub> = 100 × 4.0 ÷ 1.0 = [[400]] kPa'], ['100*4.0/1.0'], 'pV = constant.', true),
-    G('(Higher) 240 cm³ of gas at 100 kPa is compressed until its pressure is 150 kPa.', ['V<sub>2</sub> = 100 × 240 ÷ 150 = [[160]] cm³'], ['100*240/150'], 'The volume falls as the pressure rises.', true),
-    G('(Higher) A bubble of volume 2.0 cm³ at 300 kPa rises to where the pressure is 100 kPa.', ['V<sub>2</sub> = 300 × 2.0 ÷ 100 = [[6.0|6]] cm³'], ['300*2.0/100'], 'Assume the temperature is constant.', true),
+    G('A gas has a volume of 4.0 m³ at 100 kPa. It is compressed to 1.0 m³ at constant temperature.', ['p<sub>2</sub> = p<sub>1</sub>V<sub>1</sub> ÷ V<sub>2</sub> = 100 × 4.0 ÷ 1.0 = [[400]] kPa'], ['100*4.0/1.0'], 'pV = constant.'),
+    G('240 cm³ of gas at 100 kPa is compressed until its pressure is 150 kPa.', ['V<sub>2</sub> = 100 × 240 ÷ 150 = [[160]] cm³'], ['100*240/150'], 'The volume falls as the pressure rises.'),
+    G('A bubble of volume 2.0 cm³ at 300 kPa rises to where the pressure is 100 kPa.', ['V<sub>2</sub> = 300 × 2.0 ÷ 100 = [[6.0|6]] cm³'], ['300*2.0/100'], 'Assume the temperature is constant.'),
     G('Halving the volume of a gas at constant temperature.', ['The pressure [[doubles|is doubled|doubled]].'], [], 'Pressure is inversely proportional to volume.')
   ] });
   add('pm6', { gaps: [
     G('A block of mass 2.7 kg has a volume of 0.0010 m³.', ['ρ = 2.7 ÷ 0.0010 = [[2700]] kg/m³'], ['2.7/0.0010'], 'ρ = m ÷ V.'),
     G('0.30 kg of water is heated by 50 °C (c = 4200 J/kg °C).', ['ΔE = 0.30 × 4200 × 50 = [[63000]] J'], ['0.30*4200*50'], 'ΔE = mcΔθ.'),
     G('Melting 2.0 kg of ice (L<sub>f</sub> = 334 000 J/kg).', ['E = 2.0 × 334 000 = [[668000]] J'], ['2.0*334000'], 'E = mL.'),
-    G('(Higher) A gas at 500 kPa and 2.0 m³ expands to 5.0 m³ at constant temperature.', ['p<sub>2</sub> = 500 × 2.0 ÷ 5.0 = [[200]] kPa'], ['500*2.0/5.0'], 'pV = constant.', true)
+    G('A gas at 500 kPa and 2.0 m³ expands to 5.0 m³ at constant temperature.', ['p<sub>2</sub> = 500 × 2.0 ÷ 5.0 = [[200]] kPa'], ['500*2.0/5.0'], 'pV = constant.')
   ] });
 
   add('at1', { gaps: [

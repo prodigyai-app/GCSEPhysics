@@ -43,10 +43,10 @@
     ], { desc: true }]
   ] });
   add('pm5', { ex: [
-    ['A rising weather balloon (Higher)', 'A balloon holds 2.0 m³ of helium at 100 kPa. It rises until the pressure is 25 kPa. Assuming constant temperature, calculate the new volume.', [
+    ['A rising weather balloon', 'A balloon holds 2.0 m³ of helium at 100 kPa. It rises until the pressure is 25 kPa. Assuming constant temperature, calculate the new volume.', [
       S('pV = constant', '', [`${v('p')}₁${v('V')}₁ = ${v('p')}₂${v('V')}₂`]),
       S('Substitute', '', [`${v('V')}₂ = ${fr('100 × 2.0', '25')} = ${res('8.0 m³')}`])
-    ], { chk: [['100*2.0/25', 8]], higher: true }]
+    ], { chk: [['100*2.0/25', 8]] }]
   ] });
   add('pm6', { ex: [
     ['From ice to warm water', 'Calculate the energy needed to change 0.50 kg of ice at 0 °C into water at 20 °C. (L<sub>f</sub> = 334 000 J/kg, c = 4200 J/kg °C)', [
@@ -162,11 +162,11 @@
       S('Law of reflection', '', ['angle of reflection = 25°']),
       S('Between the rays', '', [`25 + 25 = ${res('50°')}`])
     ], { chk: [['25+25', 50]] }],
-    ['Why light bends', 'Explain, using wave fronts, why light bends towards the normal when it enters glass at an angle.', [
+    ['Why light bends (Higher)', 'Explain, using wave fronts, why light bends towards the normal when it enters glass at an angle.', [
       S('Speed change', '', ['Light travels more slowly in glass than in air.']),
       S('Wave fronts', '', ['One end of each wave front enters the glass first and slows down while the other end is still moving faster.']),
       S('Result', '', ['The wave front turns, so the ray bends towards the normal. The frequency stays the same; the wavelength gets shorter.'])
-    ], { desc: true }]
+    ], { desc: true, higher: true }]
   ] });
   add('wa5', { ex: [
     ['Wavelength of a microwave', 'Wi-Fi uses microwaves with a frequency of 2.4 GHz. Calculate the wavelength. (speed = 3.0 × 10⁸ m/s)', [
