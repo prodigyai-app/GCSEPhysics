@@ -10,7 +10,7 @@ test('every numerical answer in the depth data is reproduced by its calculation'
   assert.ok(r.asserts > 40, 'expected the data files to be checked');
 });
 
-const MIN_MARKS = 5; /* raise as the exam-question passes land: target 10 */
+const MIN_MARKS = 12;
 test('every lesson with depth data reaches the exam-mark floor and has new worked examples and fill-the-gaps', () => {
   const cat = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'assessment-catalog.json'), 'utf8'));
   for (const row of verify().rows) {
