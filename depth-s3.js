@@ -22,9 +22,9 @@
   ] });
   add('pm4', { gaps: [
     G('Gas pressure.', ['Gas pressure is caused by particles colliding with the [[walls|container]]. Heating a gas at constant volume [[increases|raises]] the pressure.'], [], 'The particles move faster and hit the walls harder and more often.'),
-    G('Absolute zero.', ['Absolute zero is [[-273]] °C, which is [[0]] K.'], ['-273', '0'], 'The coldest possible temperature.'),
-    G('Convert 25 °C to kelvin.', ['T = 25 + 273 = [[298]] K'], ['25+273'], 'Add 273.'),
-    G('A gas is heated from 300 K to 600 K.', ['The average kinetic energy of its molecules [[doubles|is doubled|doubled]].'], [], 'Kinetic energy is proportional to the temperature in kelvin.')
+    G('Collisions and pressure.', ['If the particles hit the walls more [[often|frequently]] and with more [[force]], the pressure increases.'], [], 'Both happen when a gas is heated at constant volume.'),
+    G('Temperature of a gas.', ['The temperature of a gas is related to the average [[kinetic]] energy of its particles.'], [], 'Faster particles mean a higher temperature.'),
+    G('Direction of gas pressure.', ['The force from gas pressure acts at [[right angles|90°|90 degrees]] to the walls of the container.'], [], 'The pressure acts on every surface.')
   ] });
   add('pm5', { gaps: [
     G('(Higher) A gas has a volume of 4.0 m³ at 100 kPa. It is compressed to 1.0 m³ at constant temperature.', ['p<sub>2</sub> = p<sub>1</sub>V<sub>1</sub> ÷ V<sub>2</sub> = 100 × 4.0 ÷ 1.0 = [[400]] kPa'], ['100*4.0/1.0'], 'pV = constant.', true),
