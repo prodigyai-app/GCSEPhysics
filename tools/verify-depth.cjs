@@ -64,7 +64,9 @@ function verify() {
         if (!close(p.ans.a, got, 0.005)) bad(tag, `${p.calc} = ${got}, but ans.a = ${p.ans.a}`);
       } else if (p.calc) bad(tag, 'calc without ans');
     }));
-    rows.push({ id, examples: d.ex.length, gaps: d.gaps.length, parts, marks });
+    let words = 0;
+    (d.learn || []).forEach(([title, html], i) => { const w = String(html || '').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length; words += w; if (!title || w < 40) bad(`${id} learn ${i + 1}`, 'needs a title and at least 40 words'); });
+    rows.push({ id, examples: d.ex.length, gaps: d.gaps.length, parts, marks, learnWords: words });
   }
   return { errs, rows, asserts, files, prompts };
 }

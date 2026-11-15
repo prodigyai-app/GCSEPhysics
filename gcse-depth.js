@@ -8,7 +8,7 @@
 (function (root) {
   'use strict';
   const DATA = {}, ORDER = [];
-  const add = (id, d) => { if (!DATA[id]) { DATA[id] = { ex: [], gaps: [], exam: [] }; ORDER.push(id); } for (const k of ['ex', 'gaps', 'exam']) if (d[k]) DATA[id][k].push(...d[k]); };
+  const add = (id, d) => { if (!DATA[id]) { DATA[id] = { ex: [], gaps: [], exam: [], learn: [] }; ORDER.push(id); } for (const k of ['ex', 'gaps', 'exam', 'learn']) if (d[k]) DATA[id][k].push(...d[k]); };
   const api = { add, DATA, ORDER, apply: () => {} };
   if (typeof module === 'object' && module.exports) { module.exports = api; return; }
   root.GcseDepth = api;
@@ -80,6 +80,13 @@
       const firstCheck = cards.find(c => /^qz/.test(c.id)) || cards.find(c => c.querySelector('.kp'));
       let after = lastEx || null;
       const place = el => { if (after) { after.after(el); } else if (firstCheck) { sec.insertBefore(el, firstCheck); } else sec.appendChild(el); after = el; };
+      if (d.learn.length) {
+        const isText = c => c.className === 'lcard' && !c.id;
+        const firstEx = cards.findIndex(c => c.classList.contains('ex') || c.classList.contains('sim') || /^qz/.test(c.id));
+        const pool = cards.filter((c, i) => isText(c) && (firstEx < 0 || i < firstEx));
+        let at = pool.pop() || cards.filter(isText).pop();
+        d.learn.forEach(([title, html, higher]) => { const el = frag(B.text(title, html)); if (higher) el.classList.add('gcse-higher-only'); if (at) at.after(el); else sec.prepend(el); at = el; });
+      }
       d.ex.forEach(([title, q, steps, meta]) => { const el = frag(B.example(title, q, steps)); if (meta && meta.higher) el.classList.add('gcse-higher-only'); place(el); });
       if (d.gaps.length) place(frag(gapsHTML(id, d.gaps)));
       if (d.exam.length) {
