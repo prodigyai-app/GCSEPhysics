@@ -220,6 +220,16 @@
   "practical": null
  },
  {
+  "file": "el11-build-a-sensing-circuit.html",
+  "kind": "sim",
+  "id": "el11-sim",
+  "title": "Build a sensing circuit",
+  "topic": "Electricity",
+  "lesson": "el11",
+  "lessonName": "Potential dividers and sensing circuits",
+  "practical": null
+ },
+ {
   "file": "el5-looking-at-a-c-and-d-c.html",
   "kind": "sim",
   "id": "el5-sim",

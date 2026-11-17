@@ -1603,11 +1603,11 @@ const B={
  fig:(svg,cap)=>`<figure class="fig">${svg}${cap?`<figcaption>${cap}</figcaption>`:""}</figure>`,
  eq:(...items)=>`<div class="eqbox">${items.map(i=>`<div>${i}</div>`).join("")}</div>`,
  sim:(id,title,stage,panel,bar,after="")=>`<div class="lcard sim" id="${id}"><h3>${kind("k-sim","Interactive")}${title}</h3><div class="bench"><div class="stage">${stage}${bar?`<div class="stage-bar">${bar}</div>`:""}</div><div class="panel">${panel}</div></div>${after}</div>`,
- example:(title,q,steps)=>{ const id="ex"+(++qid); return `<div class="lcard ex" id="${id}"><h3>${kind("k-ex","Worked example")}${title}</h3><div class="exq">${q}</div><div class="exs">${steps.map(([t,why,eqs],i)=>W.step(i+1,t,why,eqs).replace('<div class="wstep"',`<div class="wstep" ${i?"hidden":""}`)).join("")}</div><div class="exbtns"><button class="btn primary" data-exnext="${id}">Show next step</button><button class="btn" data-exall="${id}">Show all steps</button></div></div>`; },
+ example:(title,q,steps,fixed)=>{ /* a fixed id keeps the numbering of later lessons unchanged */ const id=fixed||"ex"+(++qid); return `<div class="lcard ex" id="${id}"><h3>${kind("k-ex","Worked example")}${title}</h3><div class="exq">${q}</div><div class="exs">${steps.map(([t,why,eqs],i)=>W.step(i+1,t,why,eqs).replace('<div class="wstep"',`<div class="wstep" ${i?"hidden":""}`)).join("")}</div><div class="exbtns"><button class="btn primary" data-exnext="${id}">Show next step</button><button class="btn" data-exall="${id}">Show all steps</button></div></div>`; },
  keypoints:(list,title="Key points")=>`<div class="lcard"><h3>${title}</h3><ul class="kp">${list.map(x=>`<li>${x}</li>`).join("")}</ul></div>`,
  mistakes:(list)=>`<div class="lcard"><h3>Common mistakes</h3><ul class="kp kbad">${list.map(x=>`<li>${x}</li>`).join("")}</ul></div>`,
  practical:(html,label)=>`<div class="lcard"><h3>${kind("k-prac","Practical")}${label}</h3><div class="prac-link"><div class="prose" style="flex:1 1 320px">${html}</div></div></div>`,
- check:(qs,title="Check your understanding")=>{ const id="qz"+(++qid); QZ[id]=qs;
+ check:(qs,title="Check your understanding",fixed)=>{ const id=fixed||"qz"+(++qid); QZ[id]=qs;
   return `<div class="lcard" id="${id}"><h3>${kind("k-chk","Check")}${title} <span class="qscore" id="${id}-score"></span></h3><div class="qz">${qs.map((q,i)=>{ const n=`${id}-${i}`;
    const body=q.opts?`<div class="qo">${q.opts.map((o,j)=>`<label><input type="radio" name="${n}" value="${j}"><span>${o}</span></label>`).join("")}</div>`:`<div class="qnum"><input type="text" inputmode="decimal" id="${n}-in" aria-label="Your answer" autocomplete="off"><span>${q.unit||""}</span></div>`;
    return `<div class="qi" data-q="${n}"><div class="qq"><b class="qn">${i+1}</b>${q.q}</div>${body}<div class="qact"><button class="btn primary" data-chk="${n}">Check</button><button class="btn" data-show="${n}">Show answer</button></div><div class="qfb" id="${n}-fb" hidden></div></div>`; }).join("")}</div></div>`; }
@@ -1977,8 +1977,8 @@ const panel=`<div class="field"><div class="lbl">Appliance</div><select id="el6-
 <div class="field"><div class="lbl">Time switched on <b id="el6-tl"></b></div><input type="range" id="el6-t" min="1" max="60" step="1" value="5" aria-label="Time in minutes"></div>
 <div class="readout"><div><span>Current I = P/V</span><b id="el6-I">—</b></div><div><span>Energy E = Pt</span><b id="el6-E">—</b></div><div><span>Charge Q = It</span><b id="el6-Q">—</b></div><div><span>Check: E = QV</span><b id="el6-QV">—</b></div></div>`;
 
-lesson({id:"el6",group:"c",num:6,lvl:"4.2.4 · Lesson 6",name:"Power and energy transfers",icon:"power",
- eyebrow:eb("4.2.4 Energy transfers",6),title:"Power and energy transfers",
+lesson({id:"el6",group:"c",num:7,lvl:"4.2.4 · Lesson 7",name:"Power and energy transfers",icon:"power",
+ eyebrow:eb("4.2.4 Energy transfers",7),title:"Power and energy transfers",
  intro:"Every appliance transfers energy from the mains or a battery. How much it transfers depends on its power and how long it is switched on. The power depends on the current and the potential difference.",
  outcomes:[["Use P = VI and P = I²R","4.2.4.1"],["Use E = Pt and E = QV","4.2.4.2"],["Describe how different appliances transfer energy, and explain how power ratings relate to energy transferred","4.2.4.2"]],
  blocks:[

@@ -1,10 +1,10 @@
 # GCSE Physics diagram library
 
-105 GCSE Physics diagrams and 70 animations from the prodigyai GCSE Physics site.
+105 GCSE Physics diagrams and 71 animations from the prodigyai GCSE Physics site.
 
 - **56 realistic figures** drawn by the shared figure library (`science-figures.js`, `science-figures-2.js`, `gcse-figures.js`), exported by `export.py`.
 - **49 lesson figures, circuit symbols and exam-question figures** taken from the lesson and exam-paper pages, exported by `export-site-figures.cjs`.
-- **70 animations** in `animations/`: 60 lesson simulations and 10 required practical labs, exported by `export-animations.cjs`.
+- **71 animations** in `animations/`: 61 lesson simulations and 10 required practical labs, exported by `export-animations.cjs`.
 
 Open `index.html` to browse the diagrams, and `animations/index.html` for the animations.
 

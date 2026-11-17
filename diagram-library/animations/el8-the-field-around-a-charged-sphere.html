@@ -1603,11 +1603,11 @@ const B={
  fig:(svg,cap)=>`<figure class="fig">${svg}${cap?`<figcaption>${cap}</figcaption>`:""}</figure>`,
  eq:(...items)=>`<div class="eqbox">${items.map(i=>`<div>${i}</div>`).join("")}</div>`,
  sim:(id,title,stage,panel,bar,after="")=>`<div class="lcard sim" id="${id}"><h3>${kind("k-sim","Interactive")}${title}</h3><div class="bench"><div class="stage">${stage}${bar?`<div class="stage-bar">${bar}</div>`:""}</div><div class="panel">${panel}</div></div>${after}</div>`,
- example:(title,q,steps)=>{ const id="ex"+(++qid); return `<div class="lcard ex" id="${id}"><h3>${kind("k-ex","Worked example")}${title}</h3><div class="exq">${q}</div><div class="exs">${steps.map(([t,why,eqs],i)=>W.step(i+1,t,why,eqs).replace('<div class="wstep"',`<div class="wstep" ${i?"hidden":""}`)).join("")}</div><div class="exbtns"><button class="btn primary" data-exnext="${id}">Show next step</button><button class="btn" data-exall="${id}">Show all steps</button></div></div>`; },
+ example:(title,q,steps,fixed)=>{ /* a fixed id keeps the numbering of later lessons unchanged */ const id=fixed||"ex"+(++qid); return `<div class="lcard ex" id="${id}"><h3>${kind("k-ex","Worked example")}${title}</h3><div class="exq">${q}</div><div class="exs">${steps.map(([t,why,eqs],i)=>W.step(i+1,t,why,eqs).replace('<div class="wstep"',`<div class="wstep" ${i?"hidden":""}`)).join("")}</div><div class="exbtns"><button class="btn primary" data-exnext="${id}">Show next step</button><button class="btn" data-exall="${id}">Show all steps</button></div></div>`; },
  keypoints:(list,title="Key points")=>`<div class="lcard"><h3>${title}</h3><ul class="kp">${list.map(x=>`<li>${x}</li>`).join("")}</ul></div>`,
  mistakes:(list)=>`<div class="lcard"><h3>Common mistakes</h3><ul class="kp kbad">${list.map(x=>`<li>${x}</li>`).join("")}</ul></div>`,
  practical:(html,label)=>`<div class="lcard"><h3>${kind("k-prac","Practical")}${label}</h3><div class="prac-link"><div class="prose" style="flex:1 1 320px">${html}</div></div></div>`,
- check:(qs,title="Check your understanding")=>{ const id="qz"+(++qid); QZ[id]=qs;
+ check:(qs,title="Check your understanding",fixed)=>{ const id=fixed||"qz"+(++qid); QZ[id]=qs;
   return `<div class="lcard" id="${id}"><h3>${kind("k-chk","Check")}${title} <span class="qscore" id="${id}-score"></span></h3><div class="qz">${qs.map((q,i)=>{ const n=`${id}-${i}`;
    const body=q.opts?`<div class="qo">${q.opts.map((o,j)=>`<label><input type="radio" name="${n}" value="${j}"><span>${o}</span></label>`).join("")}</div>`:`<div class="qnum"><input type="text" inputmode="decimal" id="${n}-in" aria-label="Your answer" autocomplete="off"><span>${q.unit||""}</span></div>`;
    return `<div class="qi" data-q="${n}"><div class="qq"><b class="qn">${i+1}</b>${q.q}</div>${body}<div class="qact"><button class="btn primary" data-chk="${n}">Check</button><button class="btn" data-show="${n}">Show answer</button></div><div class="qfb" id="${n}-fb" hidden></div></div>`; }).join("")}</div></div>`; }
@@ -1977,8 +1977,8 @@ const panel=`<div class="field"><div class="lbl">Charge on the sphere</div><div 
 <div class="field"><div class="lbl">Distance from the sphere <b id="el8-dl"></b></div><input type="range" id="el8-d" min="1" max="4" step="0.1" value="2" aria-label="Distance"></div>
 <div class="readout"><div><span>Force (relative)</span><b id="el8-F">—</b></div><div><span>Direction</span><b id="el8-dir">—</b></div></div>`;
 
-lesson({id:"el8",group:"d",num:8,lvl:"4.2.5 · Lesson 8",name:"Static electricity and electric fields",icon:"static",
- eyebrow:eb("4.2.5 Static electricity",8),title:"Static electricity and electric fields",
+lesson({id:"el8",group:"d",num:9,lvl:"4.2.5 · Lesson 9",name:"Static electricity and electric fields",icon:"static",
+ eyebrow:eb("4.2.5 Static electricity",9),title:"Static electricity and electric fields",
  intro:"Rub a balloon on your jumper and it sticks to the wall. Rubbing two insulating materials transfers electrons, leaving both objects charged. Charged objects create electric fields that exert forces on other charges.",
  outcomes:[["Explain how insulators become charged by friction (electron transfer)","4.2.5.1"],["Describe the forces between like and unlike charges, and explain sparking","4.2.5.1"],["Draw the electric field pattern around an isolated charged sphere and explain how the force varies with distance","4.2.5.2"]],
  blocks:[

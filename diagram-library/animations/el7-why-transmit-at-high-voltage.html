@@ -1603,11 +1603,11 @@ const B={
  fig:(svg,cap)=>`<figure class="fig">${svg}${cap?`<figcaption>${cap}</figcaption>`:""}</figure>`,
  eq:(...items)=>`<div class="eqbox">${items.map(i=>`<div>${i}</div>`).join("")}</div>`,
  sim:(id,title,stage,panel,bar,after="")=>`<div class="lcard sim" id="${id}"><h3>${kind("k-sim","Interactive")}${title}</h3><div class="bench"><div class="stage">${stage}${bar?`<div class="stage-bar">${bar}</div>`:""}</div><div class="panel">${panel}</div></div>${after}</div>`,
- example:(title,q,steps)=>{ const id="ex"+(++qid); return `<div class="lcard ex" id="${id}"><h3>${kind("k-ex","Worked example")}${title}</h3><div class="exq">${q}</div><div class="exs">${steps.map(([t,why,eqs],i)=>W.step(i+1,t,why,eqs).replace('<div class="wstep"',`<div class="wstep" ${i?"hidden":""}`)).join("")}</div><div class="exbtns"><button class="btn primary" data-exnext="${id}">Show next step</button><button class="btn" data-exall="${id}">Show all steps</button></div></div>`; },
+ example:(title,q,steps,fixed)=>{ /* a fixed id keeps the numbering of later lessons unchanged */ const id=fixed||"ex"+(++qid); return `<div class="lcard ex" id="${id}"><h3>${kind("k-ex","Worked example")}${title}</h3><div class="exq">${q}</div><div class="exs">${steps.map(([t,why,eqs],i)=>W.step(i+1,t,why,eqs).replace('<div class="wstep"',`<div class="wstep" ${i?"hidden":""}`)).join("")}</div><div class="exbtns"><button class="btn primary" data-exnext="${id}">Show next step</button><button class="btn" data-exall="${id}">Show all steps</button></div></div>`; },
  keypoints:(list,title="Key points")=>`<div class="lcard"><h3>${title}</h3><ul class="kp">${list.map(x=>`<li>${x}</li>`).join("")}</ul></div>`,
  mistakes:(list)=>`<div class="lcard"><h3>Common mistakes</h3><ul class="kp kbad">${list.map(x=>`<li>${x}</li>`).join("")}</ul></div>`,
  practical:(html,label)=>`<div class="lcard"><h3>${kind("k-prac","Practical")}${label}</h3><div class="prac-link"><div class="prose" style="flex:1 1 320px">${html}</div></div></div>`,
- check:(qs,title="Check your understanding")=>{ const id="qz"+(++qid); QZ[id]=qs;
+ check:(qs,title="Check your understanding",fixed)=>{ const id=fixed||"qz"+(++qid); QZ[id]=qs;
   return `<div class="lcard" id="${id}"><h3>${kind("k-chk","Check")}${title} <span class="qscore" id="${id}-score"></span></h3><div class="qz">${qs.map((q,i)=>{ const n=`${id}-${i}`;
    const body=q.opts?`<div class="qo">${q.opts.map((o,j)=>`<label><input type="radio" name="${n}" value="${j}"><span>${o}</span></label>`).join("")}</div>`:`<div class="qnum"><input type="text" inputmode="decimal" id="${n}-in" aria-label="Your answer" autocomplete="off"><span>${q.unit||""}</span></div>`;
    return `<div class="qi" data-q="${n}"><div class="qq"><b class="qn">${i+1}</b>${q.q}</div>${body}<div class="qact"><button class="btn primary" data-chk="${n}">Check</button><button class="btn" data-show="${n}">Show answer</button></div><div class="qfb" id="${n}-fb" hidden></div></div>`; }).join("")}</div></div>`; }
@@ -1977,8 +1977,8 @@ const panel=`<div class="field"><div class="lbl">Transmission p.d. <b id="el7-Vl
 <div class="readout"><div><span>Current in cables I = P/V</span><b id="el7-I">—</b></div><div><span>Power lost in cables I²R</span><b id="el7-L">—</b></div><div><span>Percentage lost</span><b id="el7-pc">—</b></div></div>
 <p class="note">Power station output 100 MW; total cable resistance 5 Ω. The 25 kV setting means no step-up transformer.</p>`;
 
-lesson({id:"el7",group:"c",num:7,lvl:"4.2.4 · Lesson 7",name:"The National Grid",icon:"grid",
- eyebrow:eb("4.2.4.3 The National Grid",7),title:"The National Grid",
+lesson({id:"el7",group:"c",num:8,lvl:"4.2.4 · Lesson 8",name:"The National Grid",icon:"grid",
+ eyebrow:eb("4.2.4.3 The National Grid",8),title:"The National Grid",
  intro:"The National Grid is a nationwide system of cables and transformers linking power stations to homes and businesses. It transmits electricity at very high potential differences, and this lesson explains why.",
  outcomes:[["Describe the National Grid as a system of cables and transformers","4.2.4.3"],["Explain why step-up transformers are used to transmit at high p.d. and step-down transformers to supply homes","4.2.4.3"],["Explain why the National Grid is an efficient way to transfer energy","4.2.4.3"]],
  blocks:[
