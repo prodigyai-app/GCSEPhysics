@@ -30,6 +30,13 @@ use it on the board, or put it in a lesson page with an iframe:
 They open in the light theme; add `?theme=dark` to the address for the dark theme. Readings in the practical labs are not saved
 between visits (there is no sign-in or notebook in the standalone files).
 
+## KS3 heat transfer animations
+
+`animations/ks3/` holds three interactive models from the KS3 Science site (Year 9 Heating and cooling), useful for
+recapping before GCSE energy transfers: `ks3-conduction-along-a-rod.html`, `ks3-convection-currents.html` and
+`ks3-infrared-radiation.html`. They are single offline HTML files like the others. Rebuild them from the KS3Science repo
+with `node scripts/export_models.cjs`.
+
 ## Diagrams
 
 - **Energy**: Cutaway house: loft and cavity wall insulation, double glazing, draught excluder (`energy-house-insulation`)
