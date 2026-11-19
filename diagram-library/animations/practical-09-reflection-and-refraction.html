@@ -1611,7 +1611,8 @@ const panel=`
 <label class="check"><input type="checkbox" id="lt-lift"> Lift the block off to see the pencil lines</label>
 <div class="readout"><div><span id="lt-r1l">Incidence</span><b id="lt-r1">40°</b></div><div><span id="lt-r2l">Refraction</span><b id="lt-r2">—</b></div></div>
 <button class="btn primary" id="lt-rec">Record angles</button>
-<p class="warn" id="lt-warn"></p>`;
+<p class="warn" id="lt-warn"></p>
+<p class="note" id="lt-joke" hidden></p>`;
 
 build({id:"lt",eyebrow:"AQA GCSE Physics · Required practical 9 · Waves (light)",title:"Reflection and refraction",
  intro:"Shine a narrow ray of light from a ray box at a rectangular block, then at different surfaces. Trace the rays on paper, draw the normal and measure the angles with a protractor.",
@@ -1723,6 +1724,8 @@ function readouts(g){
   if(st.mode==="refr"){ $("#lt-r2l").textContent="Refraction"; $("#lt-r2").textContent=st.prot?`${Math.round(D(g.r))}°`:"use the protractor"; }
   else { $("#lt-r2l").textContent="Reflection"; $("#lt-r2").textContent=st.surf==="mirror"?(st.prot?`${st.i}°`:"use the protractor"):"no clear ray"; }
   $("#lt-i-o").textContent=`${st.i}°`;
+  const joke=$("#lt-joke"), fin=st.mode==="refr"&&st.mat==="water"&&st.i===42;
+  joke.hidden=!fin; joke.textContent=fin?"😄 At 42° the light slows down as it enters the water and bends towards the normal. Finlay came into this lesson at exactly the same angle and hasn't slowed down once. He's still talking.":"";
 }
 
 /* drag ray box */
